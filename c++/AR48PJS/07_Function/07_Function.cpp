@@ -3,18 +3,102 @@
 
 #include <iostream>
 
-int main()
+// 전역 변수
+// 프로그램 시작과 동시에
+// 메모리할당이 된다.
+// 프로그램 종류 될떄까지 안사라진다.
+// 초기화 하지 않아도 자동으로 0으로 초기화 된다.
+int g = 0;
+
+// 함수란 
+// 소스코드를 묶어서 
+// 반복적인 작업이나 또는 나만의 기능
+// 명령어를 만드는 기능
+
+
+//반환값 함수이름()
+void HelloWorld(/*int a*/)
 {
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
     std::cout << "Hello World!\n";
+    std::cout << "Hello World!\n";
+    std::cout << "Hello World!\n";
+    std::cout << "Hello World!\n";
+    std::cout << "Hello World!\n";
+
+    return;
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
+void Increase()
+{
+    // 지역 변수
+    // 해당 지역안에서만 사용이가능하고
+    // 지역을 벗어나면 메모리에서 해제된다.
+    // 초기화 하지 않으면 쓰레기값이 할당되어있다.
+    int d = 0;
+
+    g++;
+    std::cout << g;
+}
+
+
+int main()
+{
+
+    //std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
+
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
+    //int i;
+    //for (i = 0; i < 5; i++)
+    //{
+    //    std::cout << "Hello World!\n";
+    //}
+
+    //a++;
+
+    HelloWorld();
+    HelloWorld();
+    HelloWorld();
+    HelloWorld();
+    HelloWorld();
+
+    //지역 변수
+    int a = 0;
+
+    Increase();
+    g--;
+
+    return 0;
