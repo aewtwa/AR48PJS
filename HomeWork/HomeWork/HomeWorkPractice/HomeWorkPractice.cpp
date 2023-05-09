@@ -1,18 +1,23 @@
 ﻿#include <iostream>
 
+char a;
+char b;
+
+void ABC()
+{
+	std::cin >> a;
+	std::cin >> b;
+}
+
+void OUTPUT()
+{
+	std::cout << a;
+	std::cout << " ";
+	std::cout << b;
+}
+
 int main()
 {
-	int arr[6] = {};
-	int a;
-	std::cin >> a;
-	int b;
-	std::cin >> b;
-	int t = b - a + 1;
-	int i;
-	for (i = 0; i < t; i++)
-	{
-		arr[i] = a;
-		std::cout << a;
-		a++;
-	}
+	ABC();
+	OUTPUT();
 }
