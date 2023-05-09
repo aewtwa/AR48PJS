@@ -5,12 +5,14 @@ int main()
 	int arr[6] = {};
 	int a;
 	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int t = b - a + 1;
 	int i;
-	int sum = a;
-	for (i = 0; i < 6; i++)
+	for (i = 0; i < t; i++)
 	{
-		arr[i] = sum;
-		std::cout << sum << " ";
-		sum = sum + a;
+		arr[i] = a;
+		std::cout << a;
+		a++;
 	}
 }
