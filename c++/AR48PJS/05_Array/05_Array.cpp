@@ -79,5 +79,38 @@ int main()
 
     //int arr[1024] = {};
 
+    int arr1[5];
+    //int arr2[5];
+    //int arr3[5];
 
+    int arr2D[3][5] =
+    {
+        {1,2,3,4,5},
+        {1,2,3,9,5},
+        {1,2,3,4,5}
+    };
+
+    arr2D[2][1] = 3;
+
+    int num2 = 1;
+    for (int y = 0; y < 3; y++)
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            arr2D[y][x] = num2;
+            num2++;
+        }
+    }
+    std::cout << std::endl;
+    for (int y = 0; y < 3; y++)
+    {
+        for (int x = 0; x < 5; x++)
+        {
+            std::cout << arr2D[y][x];
+        }
+        std::cout << std::endl;
+    }
+
+
+    return 0;
 }

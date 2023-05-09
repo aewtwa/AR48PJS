@@ -16,8 +16,21 @@ int main()
 
     //printf("%d", ch);
 
+    //0 NULL nullptr '\0'  -> 값이 전부 0입니다.
 
+    // 가독성의 차이가 생긴다.
+    // 자료형의 유추가 가능하다.
+    char ch = '\0';
+    void* p = nullptr;
+    int data = NULL;
+    int num = 0;
+
+    //char ch = 0;
+    //void* p = 0;
+    //int data = 0;
+    //int num = 0;
 
     return 0;
 }
+
 
