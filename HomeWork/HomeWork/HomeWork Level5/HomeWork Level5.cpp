@@ -449,113 +449,379 @@ int main()
 
 #include <iostream>
 
-void input()
-{
-	
-}
-
 int main()
 {
 	int arr[11] = { 3,4,1,5,8,1,7,7,3,6,9 };
 	int a;
 	std::cin >> a;
 	int i;
-	for (i = 0; i < 11;i += input())
+	for (i = 0; i < 11; i += a)
 	{
 		std::cout << arr[i];
 	}
 }
 
 //문제 14번
+//ljjcoding 함수를 정의해 주세요.
+//이 함수 안에서 숫자 두개를 입력받고 출력하면 됩니다.
+//main 함수에서는 ljjcoding 함수를 호출 해 주세요.
+//입력 예시
+//3 1
+//출력 예시
+//(3)(1)
 
 #include <iostream>
 
+void ljjcoding()
+{
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	std::cout << "(" << a << ") " << "(" << b << ")";
+}
+
 int main()
 {
-
+	ljjcoding();
 }
 
 //문제 15번
+//함수 2개를 정의 해 주세요
+//- KFC함수 : "KFC" 출력
+//- BBQ함수 : "BBQ" 출력
+//그리고 문자 1개를 입력받아주세요.
+//그 문자가 만약에 'B'라면 KFC함수와 BBQ함수를 모두 호출하고
+//그 문자가 만약에 'b'라면 BBQ함수를 출력 해주세요.
+//그 문자가 만약에 '7'이라면 KFC함수만 호출 해주세요.
+//입력 예시
+//B
+//출력 예시
+//KFC
+//BBQ
 
 #include <iostream>
 
+void KFC()
+{
+	std::cout << "KFC";
+}
+
+void BBQ()
+{
+	std::cout << "BBQ";
+}
+
 int main()
 {
-
+	char a;
+	std::cin >> a;
+	if (a == 'B')
+	{
+		KFC();
+		std::cout << "\n";
+		BBQ();
+	}
+	else if (a == 'b')
+	{
+		BBQ();
+	}
+	else if (a == 7)
+	{
+		KFC();
+	}
 }
 
 //문제 16번
+//5칸짜리 배열을 2개 만들어주세요.
+//그리고 숫자 2개를 입력받고, 그 숫자로 배열에 값을 채워주세요.
+//만약 3 5를 입력받았으면, 첫번째 배열은
+//3	3 3	3 3
+//두번째 배열은
+//5	5 5	5 5
+//이렇게 채워주시면 됩니다.
+//그리고 PrintAll이라는 함수를 정의하시고, 그 함수를 호출하면
+//두 배열값이 모두 출력되도록 코딩 해 주세요.
+//입력 예시
+//3 5
+//출력 예시
+//33333
+//55555
 
 #include <iostream>
 
+int arr0[5] = {};
+int arr1[5] = {};
+
+void PrintAll()
+{
+	int c;
+	for (c = 0; c < 5; c++)
+	{
+		std::cout << arr0[c];
+	}
+	std::cout << "\n";
+	int d;
+	for (d = 0; d < 5; d++)
+	{
+		std::cout << arr1[d];
+	}
+}
+
 int main()
 {
-
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		arr0[i] = a;
+	}
+	int o;
+	for (o = 0; o < 5; o++)
+	{
+		arr1[o] = b;
+	}
+	PrintAll();
 }
 
 //문제 17번
+//배열 5칸짜리를 만들어주세요.
+//그리고 숫자를 하나 입력받고, 그 숫자부터 1씩 감소하는 값들을 배열에 채워주세요.
+//만약 6를 입력받았다면 이렇게 채우시면 됩니다.
+//6	5 4	3 2
+//그리고 이 배열을 모두 출력하는 KFC 함수를 정의하고
+//KFC함수를 호출 해 주세요.
+//입력 예시
+//6
+//출력 예시
+//65432
 
 #include <iostream>
 
+int arr[5] = {};
+
+void KFC()
+{
+	int o;
+	for (o = 0; o < 5; o++)
+	{
+		std::cout << arr[o];
+	}
+}
+
 int main()
 {
-
+	int a;
+	std::cin >> a;
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		arr[i] = a;
+		a--;
+	}
+	KFC();
 }
 
 //문제 18번
+//5칸짜리 arr 배열에 아래의 값을 하드코딩 해 주세요
+//4 1 2 3 5
+//문자 하나를 입력 받고
+//그 문자가 'a' 이거나 'b' 이거나 'c' 라면
+//-- > 3번 index 에서 0번 index 까지 출력
+//그렇지 않으면
+//-- > 4번 index에서 1번 index 까지 출력 해 주세요.
+//입력 예시
+//b
+//출력 예시
+//3 2 1 4
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[5] = { 4,1,2,3,5 };
+	char a;
+	std::cin >> a;
+	if (a == 'a' || a == 'b' || a == 'c')
+	{
+		int i;
+		for (i = 3; i >= 0; i--)
+		{
+			std::cout << arr[i] << " ";
+		}
+	}
+	else
+	{
+		int o;
+		for (o = 4; o >= 1; o--)
+		{
+			std::cout << arr[o] << " ";
+		}
+	}
 }
 
 //문제 19번
+//다음 배열을 하드코딩 하세요.
+//3 5 1 2 4 6 7
+//숫자 2개를 입력 받습니다.
+//입력한 숫자 범위에 해당하는 인덱스 값을 출력 하는 문제입니다.
+//만약 3, 5를 입력 받으면
+//배열의 3번 index에서 부터 5번 index까지 해당하는 값을 출력 합니다.
+//ex)
+//입력 : 3 5
+//출력 : 2 4 6
+//입력 예시
+//3 5
+//출력 예시
+//2 4 6
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[7] = { 3,5,1,2,4,6,7 };
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int i;
+	for (i >= a; i <= b; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
 }
 
 //문제 20번
+//4칸짜리 data배열이 있습니다.
+//숫자 1개를 입력받아주세요.
+//만약 10을 입력 받으면 아래와 같이 배열에 채워집니다.
+//10 9 8 7
+//그리고 채워진 배열을 출력 하세요.
+//ex)
+//입력: 10
+//출력 : 10 9 8 7
+//입력 예시
+//10
+//출력 예시
+//10 9 8 7
 
 #include <iostream>
 
 int main()
 {
-
+	int data[4] = {};
+	int a;
+	std::cin >> a;
+	int i;
+	for (i = 0; i < 4; i++)
+	{
+		data[i] = a;
+		std::cout << data[i] << " ";
+		a--;
+	}
 }
 
 //문제 21번
+//6칸짜리 arr배열이 있습니다.
+//a와 b 변수에 숫자 2개를 입력받아주세요
+//a서 부터 증가되는 숫자를 0 ~2번 index에 채우고
+//b서 부터 감소되는 숫자를 5 ~3번 index에 채워주세요
+//예를 들어
+//1 9가 입력 받았다면
+//1 2 3 7 8 9 가 배열에 채워져야 합니다.
+//예를 들어
+//5 55이 입력 받았다면
+//5 6 7 53 54 55 가 배열에 채워져야 합니다.
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[6] = {};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int i;
+	for (i = 0; i < 3; i++)
+	{
+		arr[i] = a;
+		std::cout << arr[i] << " ";
+		a++;
+	}
+	int o;
+	for (o = 3; o <= 5; o++)
+	{
+		arr[o] = b - 2;
+		std::cout << arr[o] << " ";
+		b++;
+	}
 }
 
 //문제 22번
+//숫자 2개를 입력 받아주세요.
+//첫번째로 입력한 숫자는 배열의 0번째에 들어가는 값입니다.
+//두번째로 입력한 숫자는 첫번째로 입력한 숫자에 플러스 되는 값입니다.
+//아래 예시를 보고 배열에 값을 채운 후 출력 해주세요.
+//ex)
+//입력 : 1 2
+//출력 : 1 3 5 7 9
+//입력 예시
+//1 2
+//출력 예시
+//1 3 5 7 9
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[5] = {};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int i;
+	for (i = 0; i < 5; i++)
+	{
+		arr[i] = a;
+		std::cout << arr[i] << " ";
+		a = a + b;
+	}
 }
 
 //문제 23번
+//숫자 1개를 입력 받고, 아래 규칙에 따라 배열에 값을 채운 후
+//채운 값을 출력 해 주세요.
+//만약 3을 입력 받으면
+//아래와 같이 배열에 채워집니다.
+//3 6 9 12 15 18
+//만약 2를 입력 받으면
+//아래와 같이 배열에 채워집니다.
+//2 4 6 8 10 12
+//입력 예시
+//3
+//출력 예시
+//3 6 9 12 15 18
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[6] = {};
+	int a;
+	std::cin >> a;
+	int i;
+	int sum = a;
+	for (i = 0; i < 6; i++)
+	{
+		arr[i] = sum;
+		std::cout << sum << " ";
+		sum = sum + a;
+	}
 }
-
 //문제 24번
 
 #include <iostream>
