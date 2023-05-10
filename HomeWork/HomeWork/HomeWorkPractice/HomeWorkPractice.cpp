@@ -2,26 +2,30 @@
 
 int main()
 {
-	int arr2d[3][3] =
+	int arr[5] = {};
+	int i;
+	char j = 0;
+	char k = 0;
+	char l = 0;
+	int a;
+	for (i = 0; i < 5; i++)
 	{
-		{3,4,1},
-		{2,1,4},
-		{3,3,0}
-	};
-	int i = 0;
-	int j = 0;
-	arr2d[3][3] = arr2d[i][j];
-	int a = arr2d[i][j] % 2;
-	int b = 0;
-	int c = 0;
-	if (a == 0)
-	{
-		b++;
+		std::cin >> arr[i];
 	}
-	else
+	if (arr[i] >= 70)
 	{
-		c++;
+		j = 'PASS';
 	}
-	std::cout << "짝수 : " << b;
-	std::cout << "홀수 : " << c;
+	else if (arr[i] >= 50)
+	{
+		k = 'RE';
+	}
+	else if (arr[i] < 50)
+	{
+		l = 'FAIL';
+	}
+
+
+	std::cout << "1번사람은" << arr[0] << "점" << j;
+	
 }
