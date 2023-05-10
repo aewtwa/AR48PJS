@@ -2,21 +2,30 @@
 
 int main()
 {
+	int arr[5] = {};
+	int i;
+	char j = 0;
+	char k = 0;
+	char l = 0;
 	int a;
-	for (int i = 0; i < 4; i++)
+	for (i = 0; i < 5; i++)
 	{
-		std::cin >> a;
-		if (a == 20)
-		{
-			std::cout << "정답입니다." << "\n";
-		}
-		else if (a < 20)
-		{
-			std::cout << "더 큰 수를 입력하세요." << "\n";
-		}
-		else if (a > 20)
-		{
-			std::cout << "더 작은 수를 입력하세요." << "\n";
-		}
+		std::cin >> arr[i];
 	}
+	if (arr[i] >= 70)
+	{
+		j = 'PASS';
+	}
+	else if (arr[i] >= 50)
+	{
+		k = 'RE';
+	}
+	else if (arr[i] < 50)
+	{
+		l = 'FAIL';
+	}
+
+
+	std::cout << "1번사람은" << arr[0] << "점" << j;
+	
 }
