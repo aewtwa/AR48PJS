@@ -2,21 +2,26 @@
 
 int main()
 {
-	int a;
-	for (int i = 0; i < 4; i++)
+	int arr2d[3][3] =
 	{
-		std::cin >> a;
-		if (a == 20)
-		{
-			std::cout << "정답입니다." << "\n";
-		}
-		else if (a < 20)
-		{
-			std::cout << "더 큰 수를 입력하세요." << "\n";
-		}
-		else if (a > 20)
-		{
-			std::cout << "더 작은 수를 입력하세요." << "\n";
-		}
+		{3,4,1},
+		{2,1,4},
+		{3,3,0}
+	};
+	int i = 0;
+	int j = 0;
+	arr2d[3][3] = arr2d[i][j];
+	int a = arr2d[i][j] % 2;
+	int b = 0;
+	int c = 0;
+	if (a == 0)
+	{
+		b++;
 	}
+	else
+	{
+		c++;
+	}
+	std::cout << "짝수 : " << b;
+	std::cout << "홀수 : " << c;
 }
