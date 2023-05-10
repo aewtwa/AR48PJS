@@ -333,17 +333,21 @@ int main()
 	{
 		std::cin >> arr[i];
 	}
-	if (arr[i] >= 70)
+	int j;
+	for (j = 0; j < 5; j++)
 	{
-		std::cout << "PASS";
-	}
-	else if (arr[i] >= 50)
-	{
-		std::cout << "RETEST";
-	}
-	else if (arr[i] < 50)
-	{
-		std::cout << "FAIL";
+		if (arr[j] >= 70)
+		{
+			std::cout << j + 1 << "번 사람은 " << arr[j] << "점 " << "PASS" << "\n";
+		}
+		else if (arr[j] >= 50)
+		{
+			std::cout << j + 1 << "번 사람은 " << arr[j] << "점 " << "RETEST" << "\n";
+		}
+		else if (arr[j] < 50)
+		{
+			std::cout << j + 1 << "번 사람은 " << arr[j] << "점 " << "FAIL" << "\n";
+		}
 	}
 }
 
