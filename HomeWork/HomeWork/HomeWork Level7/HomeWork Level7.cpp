@@ -352,28 +352,166 @@ int main()
 }
 
 //문제 10번
+//문자 1개를 입력받고
+//input함수에서 4 x 4 배열에 입력받은 문자를 꽉 채워주세요
+//output함수에서 4 x 4 배열값을 출력 해 주세요
+//ex) 만약 t를 입력받았다면 이렇게 채우고 출력하시면 됩니다.
+//t	t t	t
+//t	t t	t
+//t	t t	t
+//t	t t	t
+//입력 예시
+//a
+//출력 예시
+//aaaa
+//aaaa
+//aaaa
+//aaaa
 
 #include <iostream>
 
+char a;
+char arr[4][4] = {};
+void input()
+{
+	for (int y = 0; y < 4; y++)
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			arr[y][x] = a;
+		}
+	}
+}
+
+void output()
+{
+	for (int y = 0; y < 4; y++)
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			std::cout << a << " ";
+		}
+		std::cout << "\n";
+	}
+}
+
 int main()
 {
-
+	std::cin >> a;
+	input();
+	output();
 }
 
 //문제 11번
+//input함수에서 숫자 1개를 입력받아주세요
+//그리고 process함수에서 그 숫자로 부터 1씩 더한 값들을 배열에 채워주세요
+//그리고 output함수에서 출력 해 주세요
+//ex) 만약 5를 입력받았다면
+//5	6 7
+//8	9 10
+//11 12	13
+//입력 예시
+//3
+//출력 예시
+//3 4 5
+//6 7 8
+//9 10 11
 
 #include <iostream>
+int a;
+int arr[3][3] = {};
+void input()
+{
+	std::cin >> a;
+}
+
+void process()
+{
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			arr[y][x] = a;
+			a++;
+		}
+	}
+}
+
+void output()
+{
+	for (int y = 0; y < 3; y++)
+	{
+		for (int x = 0; x < 3; x++)
+		{
+			std::cout << arr[y][x] << " ";
+		}
+		std::cout << "\n";
+	}
+}
 
 int main()
 {
-
+	input();
+	process();
+	output();
 }
 
 //문제 12번
+//숫자 1개를 입력받으세요
+//- 만약 3 또는 5 또는 7을 입력 받았다면 1 ~10까지 출력(for문 사용)
+//- 그렇지 않고 만약 0 또는 8을 입력받았다면 10 ~1까지 출력(for문 사용)
+//- 두 조건이 모두 성립하지 않다면
+//BBQ 함수를 호출 해 주세요.
+//BBQ 함수
+//- 만약 입력받은 값이 0 < x < 5 이면, "초기값" 출력
+//- 만약 6 < x < 10 이면, "중간값" 출력
+//- 모두 아니라면 "알수없는값" 출력
+//ex) 만약 3을 입력받았다면 "12345678910" 출력
+//ex) 만약 1을 입력받았다면 BBQ함수가 호출되고 "초기값" 출력
+//입력 예시
+//8
+//출력 예시
+//10987654321
 
 #include <iostream>
 
+int a;
+
+void BBQ()
+{
+	if (0 < a && a < 5)
+	{
+		std::cout << "초기값";
+	}
+	else if (6 < a && a < 10)
+	{
+		std::cout << "중간값";
+	}
+	else
+	{
+		std::cout << "알 수 없는 값";
+	}
+}
+
 int main()
 {
-
+	std::cin >> a;
+	if (a == 3 || a == 5 || a == 7)
+	{
+		for (int i = 1; i <= 10; i++)
+		{
+			std::cout << i;
+		}
+	}
+	else if (a == 0 || a == 8)
+	{
+		for (int i = 10; i >= 1; i--)
+		{
+			std::cout << i;
+		}
+	}
+	else
+	{
+		BBQ();
+	}
 }
