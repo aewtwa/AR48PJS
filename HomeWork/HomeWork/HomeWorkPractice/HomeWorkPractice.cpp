@@ -3,17 +3,20 @@
 int main()
 {
 	int a;
-	std::cin >> a;
-	int b;
-	std::cin >> b;
-	int c;
-	std::cin >> c;
-	for (int i = 0; i < c; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		for (int x = a; x <= b; x++)
+		std::cin >> a;
+		if (a == 20)
 		{
-			std::cout << x << " ";
+			std::cout << "정답입니다." << "\n";
 		}
-		std::cout << "\n";
+		else if (a < 20)
+		{
+			std::cout << "더 큰 수를 입력하세요." << "\n";
+		}
+		else if (a > 20)
+		{
+			std::cout << "더 작은 수를 입력하세요." << "\n";
+		}
 	}
 }
