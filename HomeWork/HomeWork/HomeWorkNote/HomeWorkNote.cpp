@@ -1,25 +1,18 @@
 ﻿#include <iostream>
 
-int a;
-int b;
-void input()
-{
-	std::cin >> a;
-	std::cin >> b;
-}
-
-void output()
-{
-	int i = 5;
-	while (i <= a + b)
-	{
-		std::cout << i << " ";
-		i++;
-	}
-}
-
 int main()
 {
-	input();
-	output();
+	int arr[6] = {};
+	for (int i = 0; i < 6; i++)
+	{
+		std::cin >> arr[i];
+	}
+	for (int j = 5; j >= 0; j--)
+	{
+		std::cout << arr[j] << " ";
+		if (arr[j] == 7)
+		{
+			break;
+		}
+	}
 }

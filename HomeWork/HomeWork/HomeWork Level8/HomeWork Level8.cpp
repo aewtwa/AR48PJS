@@ -108,12 +108,12 @@ int main()
 	{
 		std::cin >> arr[i];
 	}
-	for (int j = 0; j < 6; j++)
+	for (int j = 5; j >= 0; j--)
 	{
 		std::cout << arr[j] << " ";
 		if (arr[j] == 7)
 		{
-			 
+			break;
 		}
 	}
 }
