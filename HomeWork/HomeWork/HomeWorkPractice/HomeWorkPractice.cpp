@@ -1,23 +1,19 @@
 ﻿#include <iostream>
 
-char a;
-char b;
-
-void ABC()
-{
-	std::cin >> a;
-	std::cin >> b;
-}
-
-void OUTPUT()
-{
-	std::cout << a;
-	std::cout << " ";
-	std::cout << b;
-}
-
 int main()
 {
-	ABC();
-	OUTPUT();
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	for (int i = 0; i < c; i++)
+	{
+		for (int x = a; x <= b; x++)
+		{
+			std::cout << x << " ";
+		}
+		std::cout << "\n";
+	}
 }
