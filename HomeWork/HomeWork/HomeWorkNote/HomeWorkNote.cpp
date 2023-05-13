@@ -2,9 +2,22 @@
 
 int main()
 {
-	char a;
-	std::cin >> a;
-	char b;
-	std::cin >> b;
-	std::cout << b - a;
+	int arr[3][2] = {};
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			std::cin >> arr[i][j];
+			arr[i][j]++;
+			arr[i][j]++;
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			std::cout << arr[i][j] <<" ";
+		}
+		std::cout << "\n";
+	}
 }
