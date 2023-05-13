@@ -459,48 +459,200 @@ int main()
 }
 
 //문제 12번
+//for문을 돌려 6칸짜리 배열에 숫자 6개를 입력받아주세요
+//그리고 다시 for문을 돌려 각 칸을 탐색 해 주세요.
+//각 칸이 숫자 5보다 작다면(< ) "불합격"을 출력
+//각 칸이 숫자 5보다 같거나 크다면(>= ) "합격"을 출력 하세요
+//ex) 만약 숫자 8 1 4 7 8 2를 입력받았다면
+//8	1	4	7	8	2
+//이렇게 값을 채운 후 각 칸을 검사하여 합격 / 불합격을 출력하면 됩니다.
+//출력 결과
+//0번은 8점 합격
+//1번은 1점 불합격
+//2번은 4점 불합격
+//3번은 7점 합격
+//4번은 8점 합격
+//5번은 2점 불합격
+//입력 예시
+//1 9 8 7 2 9
+//출력 예시
+//0번은 1점 불합격
+//1번은 9점 합격
+//2번은 8점 합격
+//3번은 7점 합격
+//4번은 2점 불합격
+//5번은 9점 합격
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[6] = {};
+	for (int i = 0; i < 6; i++)
+	{
+		std::cin >> arr[i];
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		if (arr[i] < 5)
+		{
+			std::cout << i << "번은 " << arr[i] << "점 불합격" << "\n";
+		}
+		else if (arr[i] >= 5)
+		{
+			std::cout << i << "번은 " << arr[i] << "점 합격" << "\n";
+		}
+	}
 }
 
 //문제 13번
+//D	T A	B W	Q
+//놀이동산에 친구들이 줄 서 있습니다. (위 배열을 하드코딩 해 주세요)
+//친구의 이니셜 문자 하나를 입력받고, 그 친구가 몇 번째 Index에서 기다리고 있는지
+//출력 해 주세요.
+//ex) A를 입력받았다면 "2번 INDEX"를 출력하면 됩니다.
+//입력 예시
+//B
+//출력 예시
+//3번 INDEX
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[6] = { 'D','T','A','B','W','Q' };
+	char a;
+	std::cin >> a;
+	for (int i = 0; i < 6; i++)
+	{
+		if (arr[i] == a)
+		{
+			std::cout << i << "번 INDEX";
+		}
+	}
 }
 
 //문제 14번
+//5칸 char배열을 선언 해 주세요
+//그리고 int형 변수 n에다가 숫자 1개를 입력받으세요(1 <= n <= 5)
+//이제 n번 반복해서 n개의 문자를 배열에 입력(cin)받으면 됩니다.
+//입력받은 배열 값만 모두 출력하세요
+//ex) 만약 3을 입력받았으면 문자 3개를 더 입력받으셔야 합니다.
+//3
+//a b c
+//이렇게 입력을 받았다면
+//a	b c
+//n에는 3이 들어가고, 위와 같이 배열에 값이 채워집니다.
+//그런 후 다시 for문을 3번만 돌려 입력받은 문자를 출력하면 됩니다.
+//출력결과 : abc
+//입력 예시
+//5
+//a b c d e
+//출력 예시
+//abcde
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[5] = {};
+	int n;
+	std::cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		std::cin >> arr[i];
+	}
+	for (int i = 0; i < n; i++)
+	{
+		std::cout << arr[i];
+	}
 }
 
 //문제 15번
+//17 칸의 긴 배열을 선언해주세요.
+//input함수에서 문자 3개를 입력받아주세요
+//- 0번 ~6번 index에 첫번째 문자를 채우고
+//- 7번 ~12번 index에 두번째 문자를 채우고
+//- 13번 ~16번 index에는 세번째 문자를 채워주세요
+//이제, 16번 index에서 0번 index까지 거꾸로 출력해주시면 됩니다.
+//ex) 만약 'A' 'B' 'C'를 입력받았다면
+//A	A A	A A	A A	B B	B B	B B	C C	C C
+//이렇게 값을 채운 후 뒤에서부터 출력 해 주시면 됩니다.
+//"CCCCBBBBBBAAAAAAA"
+//입력 예시
+//A B C
+//출력 예시
+//CCCCBBBBBBAAAAAAA
 
 #include <iostream>
 
+char arr[17] = {};
+char a;
+char b;
+char c;
+void input()
+{
+	std::cin >> a;
+	std::cin >> b;
+	std::cin >> c;
+	for (int i = 0; i < 7; i++)
+	{
+		arr[i] = a;
+	}
+	for (int i = 7; i < 13; i++)
+	{
+		arr[i] = b;
+	}
+	for (int i = 13; i < 17; i++)
+	{
+		arr[i] = c;
+	}
+	for (int i = 16; i >= 0; i--)
+	{
+		std::cout << arr[i];
+	}
+}
+
 int main()
 {
-
+	input();
 }
 
 //문제 16번
+//대문자 2개와 숫자 1개를 입력받아주세요
+//첫번째 대문자부터 두번째 대문자 까지 알파벳들을
+//입력받은 숫자 만큼 반복해서 출력 해 주세요
+//(첫번째 문자 < 두번째 문자)
+//ex) 만약 A E 3 이라고 입력받았다면
+//A ~E 까지 문자를 3번 반복해서 출력하면 됩니다.
+//아래와 같이 출력 됩니다
+//ABCDE
+//ABCDE
+//ABCDE
+//입력 예시
+//B H 2
+//출력 예시
+//BCDEFGH
+//BCDEFGH
 
 #include <iostream>
 
 int main()
 {
-
+	char a;
+	std::cin >> a;
+	char b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	for (int i = 0; i < c; i++)
+	{
+		for (char i = a; i <= b; i++)
+		{
+			std::cout << i;
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 17번

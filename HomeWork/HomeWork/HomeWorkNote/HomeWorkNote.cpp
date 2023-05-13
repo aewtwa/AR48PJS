@@ -2,21 +2,17 @@
 
 int main()
 {
-	int arr[3][2] = {};
-	for (int i = 0; i < 3; i++)
+	char a;
+	std::cin >> a;
+	char b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	for (int i = 0; i < c; i++)
 	{
-		for (int j = 0; j < 2; j++)
+		for (char i = a; i <= b; i++)
 		{
-			std::cin >> arr[i][j];
-			arr[i][j]++;
-			arr[i][j]++;
-		}
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 2; j++)
-		{
-			std::cout << arr[i][j] <<" ";
+			std::cout << i;
 		}
 		std::cout << "\n";
 	}
