@@ -907,7 +907,7 @@ void KFC(int _a)
 {
 	for (int i = 0; i < 7; i++)
 	{
-		std::cout << _a;
+		std::cout << (char)(_a);
 	}
 }
 
@@ -918,10 +918,14 @@ int main()
 	int mod = a % 2;
 	if (mod == 1)
 	{
-		BBQ(a);
+		int b;
+		std::cin >> b;
+		BBQ(b);
 	}
 	if (mod == 0)
 	{
-		KFC(a);
+		char d;
+		std::cin >> d;
+		KFC(d);
 	}
 }
