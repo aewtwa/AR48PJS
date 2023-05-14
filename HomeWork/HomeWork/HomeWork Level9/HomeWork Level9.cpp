@@ -506,73 +506,422 @@ int main()
 }
 
 //문제 12번
+//아래와같이 배열A와 배열B를 하드코딩 해 주세요
+//배열A
+//2	1 2	4 5
+//배열B
+//2	5 3
+//4	5 7
+//8	7 2
+//숫자를 하나 입력받고
+//배열 A와 배열 B를 뒤져서, 입력받은 숫자가 몇개 있는지 출력 해 주세요
+//ex) 만약 숫자2를 입력받았다면,
+//배열A에서는 2개를 발견할 수 있고, 배열B에서도 2개를 발견할 수 있으니 더해서
+//4를 출력하시면 됩니다.
+//입력 예시
+//5
+//출력 예시
+//3
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[5] = { 2,1,2,4,5 };
+	int arr2d[3][3] =
+	{
+		{2,5,3},
+		{4,5,7},
+		{8,7,2}
+	};
+	int a;
+	std::cin >> a;
+	int count = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (arr[i] == a)
+		{
+			count++;
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (arr2d[i][j] == a)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << count;
 }
 
 //문제 13번
+//문자 5개를 1차배열에 입력 받아주세요
+//그리고 입력받은 문자 중, 문자 'A'가 몇개 존재하는지 counting해서 출력해주세요
+//그런 후 문자 A의 index도 출력 해 주세요.
+//ex) 만약 A b c d A 를 입력받았다면 이렇게 출력하시면 됩니다
+//문자A는 2개발견
+//0번
+//4번
+//입력 예시
+//A b c d A
+//출력 예시
+//문자A는 2개발견
+//0번
+//4번
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[5] = {};
+	int count = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+		if (arr[i] == 'A')
+		{
+			count++;
+		}
+	}
+	std::cout << "문자A는 " << count << "개 발견" << "\n";
+	for (int i = 0; i < 5; i++)
+	{
+		if (arr[i] == 'A')
+		{
+			std::cout << i << "번" << "\n";
+		}
+	}
 }
 
+
 //문제 14번
+//D	A A
+//B	C D
+//E	F A
+//A	A D
+//F	G E
+//위 배열을 하드코딩 해 주세요
+//그리고 문자 하나를 입력받아주세요.
+//그 문자가 있는 곳의 좌표를 모두 출력하면 됩니다.
+//입력 예시
+//A
+//출력 예시
+//(0, 1)
+//(0, 2)
+//(2, 2)
+//(3, 0)
+//(3, 1)
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[5][3] =
+	{
+		{'D','A','A'},
+		{'B','C','D'},
+		{'E','F','A'},
+		{'A','A','D'},
+		{'F','G','E'}
+	};
+	char a;
+	std::cin >> a;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (arr2d[i][j] == a)
+			{
+				std::cout << "(" << i << "," << j << ")";
+				std::cout << "\n";
+			}
+		}
+	}
 }
 
 //문제 15번
+//10 3	20
+//60 30	40
+//20 30	40
+//3x3 배열이 있습니다.
+//이 배열을 하드코딩 해 주고, 숫자를 2개 입력받아주세요
+//만약 변수 a와 b에다가 숫자를 입력받았다고 하면
+//a 보다 같거나 크고
+//b보다 같거나 작은
+//값이 총 몇개인지 출력 해 주세요
+//ex) 30 40을 입력했다면, 30 ~40 의 값이 몇개인지 세서 출력하면 됩니다.
+//입력 예시
+//30 40
+//출력 예시
+//4
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[3][3] =
+	{
+		{10,3,20},
+		{60,30,40},
+		{20,30,40}
+	};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (a <= arr2d[i][j] && arr2d[i][j] <= b)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << count;
 }
 
 //문제 16번
+//input함수에서 문자 6개를 2 x 3 배열에 입력받아주세요(2중 for문 이용)
+//findUpper함수에서 대문자가 몇개인지 세고 출력 해 주세요
+//findLower함수에서 소문자가 몇개인지 세고 출력 해 주세요
+//main함수에서는 input함수, findUpper함수, findLower함수를 각각 한번씩 호출하면 됩니다.
+//입력 예시
+//D F A B C e
+//출력 예시
+//대문자5개
+//소문자1개
 
 #include <iostream>
 
+char arr2d[2][3];
+void input()
+{
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cin >> arr2d[i][j];
+		}
+	}
+}
+
+void findUpper()
+{
+	int count = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if ('A' <= arr2d[i][j] && arr2d[i][j] <= 'Z')
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << "대문자 " << count << "개" << "\n";
+}
+
+void findLower()
+{
+	int count = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if ('a' <= arr2d[i][j] && arr2d[i][j] <= 'z')
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << "소문자 " << count << "개";
+}
+
 int main()
 {
-
+	input();
+	findUpper();
+	findLower();
 }
 
 //문제 17번
+//3	5 14
+//2	3 9
+//6 2 7
+//3x3 배열을 하드코딩 해 주세요
+//그리고 숫자 1개를 입력받아주세요
+//그 숫자의 배수가 몇개있는지 출력 해 주세요
+//ex) 만약 7을 입력받았다면 7의 배수가 2개 있으므로 답은 2 입니다
+//[TIP]
+//몇 배수 인지 판단하는 방법은
+//MOD 연산자(%)를 사용하면 됩니다.
+//입력 예시
+//3
+//출력 예시
+//4
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[3][3] =
+	{
+		{3,5,14},
+		{2,3,9},
+		{6,2,7}
+	};
+	int a;
+	std::cin >> a;
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			int mod = arr2d[i][j] % a;
+			if (mod == 0)
+			{
+				count++;
+			}
+		}
+	}
+	std::cout << count;
 }
 
 //문제 18번
+//PROJECT 라는 구조체를 정의 해 주세요
+//PROJECT 안에는 다음과 같은 변수들을 묶습니다.
+//- int num;
+//-char id;
+//-int vect[4];
+//그리고 PROJECT 타입의 구조체 변수 z를 하나 만들어주세요.
+//이제 0보다 큰 숫자 하나를 입력받아주세요.
+//만약 한자리 수를 입력 받았다면 z에 다음 값을 채워주세요
+//num : 5 / id : 'G' / vect : {1, 2, 3, 4}
+//만약 두자리 수를 입력 받았다면 z에 다음 값을 채워주세요
+//num : 8 / id : 'T' / vect : {5, 1, 2, 3}
+//만약 세자리 수 '이상'이면 z에 다음 값을 채워주세요
+//num : 10 / id : 'Q' / vect : {9, 1, 6, 2}
+//이제 z.num과 z.id값과 z.vect값을 모두 출력해주세요
+//[힌트]
+//배열에 다음과 같이 숫자를 넣는 것은 불가능합니다.
+//int vect[5];
+//vect[5] = { 1, 2, 3, 4 };   Runtime Error
+//한꺼번에 숫자를 넣는 것은 배열 만들때만 가능합니다.
+//int vect[5] = { 1, 2, 3, 4 };   가능
+//배열을 만들고 난 뒤에는 숫자를 하나씩 넣어줘야 합니다.
+//int vect[5];
+//vect[0] = 1;
+//vect[1] = 2;
+//vect[2] = 3;
+//vect[4] = 4;
+//입력 예시
+//10
+//출력 예시
+//8
+//T
+//5 1 2 3
 
 #include <iostream>
 
+struct PROJECT
+{
+	int num;
+	char id;
+	int vect[4];
+};
+
 int main()
 {
-
+	PROJECT z = {};
+	int a;
+	std::cin >> a;
+	if (1 <= a && a <= 9)
+	{
+		z.num = 5;
+		z.id = 'G';
+		z.vect[0] = 1;
+		z.vect[1] = 2;
+		z.vect[2] = 3;
+		z.vect[3] = 4;
+	}
+	else if (10 <= a && a <= 99)
+	{
+		z.num = 8;
+		z.id = 'T';
+		z.vect[0] = 5;
+		z.vect[1] = 1;
+		z.vect[2] = 2;
+		z.vect[3] = 3;
+	}
+	else if (100 <= a)
+	{
+		z.num = 10;
+		z.id = 'Q';
+		z.vect[0] = 9;
+		z.vect[1] = 1;
+		z.vect[2] = 6;
+		z.vect[3] = 2;
+	}
+	std::cout << z.num << "\n"
+		<< z.id << "\n" << z.vect[0] << z.vect[1] << z.vect[2] << z.vect[3];
 }
 
 //문제 19번
+//먼저 숫자를 하나 입력 받아 주세요.
+//입력 받은 숫자가 홀수라면
+//숫자 하나 더 입력을 받은 후, 그 숫자를 BBQ에 보내주세요.
+//입력 받은 숫자가 짝수라면
+//문자 하나 더 입력을 받은 후, 그 문자를 KFC에 보내주세요.
+//BBQ함수는
+//1 ~전달받은 숫자 까지 출력하는 함수입니다.
+//KFC함수는
+//전달받은 문자를 7회 반복해서 출력하는 함수입니다.
+//ex)
+//[입력]
+//7 // 홀수
+//[출력결과]
+//1234567
+//입력 예시
+//4
+//A
+//출력 예시
+//AAAAAAA
 
 #include <iostream>
 
+void BBQ(int _a)
+{
+	for (int i = 1; i <= _a; i++)
+	{
+		std::cout << i;
+	}
+}
+
+void KFC(int _a)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		std::cout << _a;
+	}
+}
+
 int main()
 {
-
+	int a;
+	std::cin >> a;
+	int mod = a % 2;
+	if (mod == 1)
+	{
+		BBQ(a);
+	}
+	if (mod == 0)
+	{
+		KFC(a);
+	}
 }

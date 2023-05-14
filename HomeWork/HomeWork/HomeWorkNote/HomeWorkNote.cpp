@@ -1,25 +1,36 @@
 ﻿#include <iostream>
 
+void BBQ(int _a)
+{
+	for (int i = 1; i <= _a; i++)
+	{
+		std::cout << i;
+	}
+}
+
+void KFC(int _a)
+{
+	for (int i = 0; i < 7; i++)
+	{
+		std::cout << (char)(_a);
+	}
+}
+
 int main()
 {
-	char arr[3][6] = {};
-	char a;
+	int a;
 	std::cin >> a;
-	char b;
-	std::cin >> b;
-	for (int i = 0; i < 3; i++)
+	int mod = a % 2;
+	if (mod == 1)
 	{
-		for (int j = 0; j < 6; j++)
-		{
-			if (0 <= j && j <= 3)
-			{
-				std::cout << a;
-			}
-			else if (4 <= j && j <= 5)
-			{
-				std::cout << b;
-			}
-		}
-		std::cout << "\n";
+		int b;
+		std::cin >> b;
+		BBQ(b);
+	}
+	if (mod == 0)
+	{
+		char d;
+		std::cin >> d;
+		KFC(d);
 	}
 }
