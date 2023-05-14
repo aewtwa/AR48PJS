@@ -656,37 +656,170 @@ int main()
 }
 
 //문제 17번
+//문자 하나와 숫자 하나를 입력받으세요
+//입력받은 문자를 아래와 같은 규칙으로 출력 해 주세요
+//ex) 만약 A 3을 입력받았다면
+//AAA
+//AAA
+//AAA
+//ex) 만약 B 5를 입력받았다면
+//BBBBB
+//BBBBB
+//BBBBB
+//BBBBB
+//BBBBB
+//입력 예시
+//C 2
+//출력 예시
+//CC
+//CC
 
 #include <iostream>
 
 int main()
 {
-
+	char a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	for (int i = 0; i < b; i++)
+	{
+		for (int j = 0; j < b; j++)
+		{
+			std::cout << a;
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 18번
+//3x3 사이즈의 2차배열을 선언하고 0으로 초기화 해주세요
+//그리고 숫자 3개를 입력받아주세요(좌표y, 좌표x, 넣을 값)
+//입력받은 좌표에다가 값을 넣어주시면 됩니다.
+//ex) 만약 0 2 5라고 입력했다면 좌표(0, 2)에다가 5를 넣으시면 됩니다.
+//0	0 5
+//0	0 0
+//0	0 0
+//그리고 이 배열값을 출력하시면 됩니다.
+//입력 예시
+//0 2 5
+//출력 예시
+//0 0 5
+//0 0 0
+//0 0 0
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[3][3] = {};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	arr[a][b] = c;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << arr[i][j] <<" ";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 19번
+//6 x 3 배열을 만들어주세요
+//그리고 숫자 2개를 입력받아주세요.
+//배열의 절반을 갈라서 윗부분은 첫번째 숫자로 채워우고
+//아랫부분은 두번째 숫자로 채우면 됩니다.
+//숫자를 다 채운배열을 출력 해주세요.
+//(2중 for를 이용해 주세요)
+//ex) 만약 3, 5를 입력받았다면 아래와 같이 채워주세요.
+//3	3 3
+//3	3 3
+//3	3 3
+//5	5 5
+//5	5 5
+//5	5 5
+//이렇게 채우고
+//채운 숫자를 출력하시면 됩니다.
+//입력 예시
+//3 5
+//출력 예시
+//333
+//333
+//333
+//555
+//555
+//555
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[6][3] = {};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (0 <= i && i <= 2)
+			{
+				std::cout << a;
+			}
+			else if (3 <= i && i <= 5)
+			{
+				std::cout << b;
+			}
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 20번
+//문자 2개를 입력 받으세요
+//2차 배열에 입력받은 문자들을 아래와 같이 채워주세요
+//다시 for문을 돌려
+//전체 배열을 출력하는 하면 됩니다.
+//ex) 만약 A  G를 입력받았다면
+//A	A A	A G	G
+//A	A A	A G	G
+//A	A A	A G	G
+//입력 예시
+//A G
+//출력 예시
+//AAAAGG
+//AAAAGG
+//AAAAGG
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[3][6] = {};
+	char a;
+	std::cin >> a;
+	char b;
+	std::cin >> b;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			if (0 <= j && j <= 3)
+			{
+				std::cout << a;
+			}
+			else if (4 <= j && j <= 5)
+			{
+				std::cout << b;
+			}
+		}
+		std::cout << "\n";
+	}
 }

@@ -2,17 +2,23 @@
 
 int main()
 {
+	char arr[3][6] = {};
 	char a;
 	std::cin >> a;
 	char b;
 	std::cin >> b;
-	int c;
-	std::cin >> c;
-	for (int i = 0; i < c; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		for (char i = a; i <= b; i++)
+		for (int j = 0; j < 6; j++)
 		{
-			std::cout << i;
+			if (0 <= j && j <= 3)
+			{
+				std::cout << a;
+			}
+			else if (4 <= j && j <= 5)
+			{
+				std::cout << b;
+			}
 		}
 		std::cout << "\n";
 	}
