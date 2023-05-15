@@ -204,70 +204,369 @@ int main()
 
 int main()
 {
-
+	char a;
+	std::cin >> a;
+	char b;
+	std::cin >> b;
+	char c;
+	std::cin >> c;
+	char* Pa = &a;
+	char* Pb = &b;
+	char* Pc = &c;
+	(*Pa)++;
+	(*Pb)++;
+	(*Pc)++;
+	std::cout << a;
+	std::cout << b;
+	std::cout << c;
 }
 
 //문제 5번
+//int형 변수 a, b 에 숫자 2개를 입력 받으세요
+//그리고 int pointer형 변수 p, t를 선언하고 각각 a, b를 가르켜주세요.(pointing)
+//이제 변수 a와 b를 Swap하려고 합니다.
+//* p와* t를 이용해서 두 값을 SWAP 하고 변수* p와* t를 출력 해 주세요
+//[HINT]
+//int temp;
+//temp변수와* p, * t 를 가지고 SWAP을 할 수 있습니다
+//입력 예시
+//3 6
+//출력 예시
+//6 3
 
 #include <iostream>
 
 int main()
 {
-
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int* p = &a;
+	int* t = &b;
+	int temp = 0;
+	temp = *p;
+	*p = *t;
+	*t = temp;
+	std::cout << a;
+	std::cout << b;
 }
 
 //문제 6번
+//3	4 1	3 2	7 3
+//위 배열을 하드코딩 해 주세요
+//그리고 숫자 하나를 입력받아주세요
+//그 숫자가 존재하면 "발견" 출력
+//존재하지 않으면 "미발견" 출력
+//counting방식으로 풀지 말고, flag방식으로 문제를 풀어주세요
+//[TIP] Counting VS Flag
+//Counting방식은 내가 원하는 값이 몇개 있는지 세는 방식입니다
+//Flag방식은 스위치 변수를 하나 두고, 원하는 값이 발견되면 스위치를 켜는 방식입니다.
+//물론 Flag대신 Counting방식으로도 코딩할 수 있지만,
+//몇 개인지 셀때는 Counting
+//존재여부를 검사할때는 Flag
+//가독성을 위해 Flag를 쓸 때와 Counting을 할 때를 구분해서 써 주세요
+//입력 예시
+//3
+//출력 예시
+//발견
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[7] = { 3,4,1,3,2,7,3 };
+	int a;
+	std::cin >> a;
+	int flag = 0;
+	for (int i = 0; i < 7; i++)
+	{
+		if (arr[i] == a)
+		{
+			flag = 1;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "발견";
+	}
+	else
+	{
+		std::cout << "미발견";
+	}
 }
 
 //문제 7번
+//7칸짜리 int형 배열을 만들어주세요.
+//그리고 이 배열에 숫자 7개를 입력받아주세요
+//예로들어 4 1 5 2 3 2 2 를 입력받았다고하면
+//4	1 5	2 3	2 2
+//이렇게 채워질 수 있습니다.
+//이 상태에서 MAX값과 MIN값을 구해서 출력 해 주세요
+//입력 예시
+//4 1 5 2 3 2 2
+//출력 예시
+//MAX = 5
+//MIN = 1
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[7] = {};
+	int MAX = 0;
+	int MIN = 987654321;
+	for (int i = 0; i < 7; i++)
+	{
+		std::cin >> arr[i];
+		if (arr[i] > MAX)
+		{
+			MAX = arr[i];
+		}
+		if (arr[i] < MIN)
+		{
+			MIN = arr[i];
+		}
+	}
+	std::cout << "MAX = " << MAX << "\n";
+	std::cout << "MIN = " << MIN;
 }
 
 //문제 8번
+//다음 문장을 배열에 하드코딩 해 주세요
+//"StructPointer"
+//그리고 문자 하나를 입력 받으세요
+//그 문자가 만약 존재하면 "발견" 출력
+//존재하지않으면 "미발견" 출력
+//입력 예시
+//P
+//출력 예시
+//발견
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[13] = { 'S','t','r','u','c','t','P','o','i','n','t','e','r' };
+	char a;
+	std::cin >> a;
+	int flag = 0;
+	for (int i = 0; i < 13; i++)
+	{
+		if (arr[i] == a)
+		{
+			flag = 1;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "발견";
+	}
+	else
+	{
+		std::cout << "미발견";
+	}
 }
 
 //문제 9번
+//for문을 돌려 문자 8개를 입력 받아주세요
+//만약 d T e a A B f a 를 입력했다면 아래와 같이 배열이 만들어집니다
+//d	T e	a A	B f	a
+//그리고 big, small이라는 8칸 짜리 배열 2개를 더 만들어주세요
+//만들어진 배열을 탐색하면서 대문자는 big 배열에 채워주세요
+//만들어진 배열을 탐색하면서 소문자는 small 배열에 채워주세요
+//big배열
+//T	A B
+//small 배열
+//d	e a	f a
+//big 배열과 small 배열을 출력 해 주시면 됩니다.
+//입력 예시
+//d T e a A B f a
+//출력 예시
+//big = TAB
+//small = deafa
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[8] = {};
+	for (int i = 0; i < 8; i++)
+	{
+		std::cin >> arr[i];
+	}
+	char big[8] = {};
+	int bigidx = 0;
+	char small[8] = {};
+	int smallidx = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		if ('A' <= arr[i] && arr[i] <= 'Z')
+		{
+			big[bigidx] = arr[i];
+			bigidx++;
+		}
+		else if ('a' <= arr[i] && arr[i] <= 'z')
+		{
+			small[smallidx] = arr[i];
+			smallidx++;
+		}
+	}
+	std::cout << "big = ";
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << big[i];
+	}
+	std::cout << "\n";
+	std::cout << "small = ";
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << small[i];
+	}
 }
 
 //문제 10번
+//전역배열 vect[2][5] 를 하드코딩 해주세요.
+//3	2 6	2 4
+//1	4 2	6 5
+//그리고 아래 그림과 같이 코딩을 해 주세요.
+//main에서는 KFC함수를 호출하고, 그 결과를 return 받습니다.
+//return 받은 값이 1이라면 "값이 존재합니다" 를 출력
+//return 받은 값이 0이라면 "값이 없습니다"를 출력
+//[TIP] return 명령어에 대해서1
+//return 명령어는 함수를 종료시키면서 호출했던 곳으로 돌아가는 명령어입니다
+//void 함수에서는 return 명령어가 없어도 되지만, 일부러 넣는 경우들이 있습니다. (함수를 강제로 종료할 때)
+//예로들어
+//void KFC()
+//{
+//	cout << "#"; //실행 됨
+//	return; //실행 됨
+//	cout << "@"; //실행안되는 코드
+//}
+//여기서 KFC함수를 호출하면 #@가 뜨지않고, #만 뜨고 KFC함수가 바로 종료되게 됩니다.
+//그리고 KFC 함수는 void로 시작하는 함수이기 때문에 호출 한 함수로 돌려줄 값이 없습니다.
+//[TIP2] return 명령어에 대해서2
+//return 명령어는 무조건 맨 뒤에 있어야 하는 것이 아닙니다.
+//소스코드 중간 어디에서나 집어넣을 수 있고, 여러개 집어넣어도 됩니다.
+//함수를 즉시 종료 시킬 때 사용합니다.
+//int isCheck(int g)
+//{
+//	if (g == 1)
+//	{
+//		return 0;
+//	}
+//	cout << "#";
+//	return 100;
+//}
+//이 소스코드는
+//isCheck라는 함수에 숫자1을 보낼경우-- > return 0을 수행하고 바로 함수를 끝냅니다.
+//isCheck라는 함수에 숫자5를 보낼경우-- > #을 출력하고, return 100을 수행하고 바로 함수를 끝냅니다.
+//입력 예시
+//2
+//출력 예시
+//값이 존재합니다
 
 #include <iostream>
 
-int main()
+int vect[2][5] =
 {
+	{3,2,6,2,4},
+	{1,4,2,6,5}
+};
 
+int KFC(int _a)
+{
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (vect[i][j] == _a)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
 }
 
+int main()
+{
+	int target;
+	std::cin >> target;
+	if (KFC(target) == 1)
+	{
+		std::cout << "값이 존재합니다.";
+	}
+	else if (KFC(target) == 0)
+	{
+		std::cout << "값이 없습니다.";
+	}
+}
+
+
 //문제 11번
+//아래와 같이 2차 배열을 하드 코딩 해 주세요
+//1	3 6	2
+//4	2 4	5
+//6	3 7	3
+//1	5 4	6
+//숫자 1개를 입력 받아주세요
+//입력받은 숫자보다 더 큰 값을 찾아서, 16칸 짜리 select 배열에 값을 채우는 문제입니다
+//만약 숫자 2를 입력 받았다면 select 배열에는 아래와 같이 채워집니다
+//3	6 4	4 5	6 3	7 3	5 4	6
+//만약 숫자 4를 입력 받았다면 select 배열에는 아래와 같이 채워집니다
+//6	5 6	7 5	6
+//입력 예시
+//4
+//출력 예시
+//6 5 6 7 5 6
 
 #include <iostream>
+int arr2d[4][4] =
+{
+	{1,3,6,2},
+	{4,2,4,5},
+	{6,3,7,3},
+	{1,5,4,6}
+};
+
+int select[16] = {};
+int selectidx = 0;
+
+int input()
+{
+	int a;
+	std::cin >> a;
+	return a;
+}
+
+void biger(int _a)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (arr2d[i][j] > _a)
+			{
+				select[selectidx] = arr2d[i][j];
+				selectidx++;
+			}
+		}
+	}
+}
+
+void output()
+{
+	for (int i = 0; i < 16; i++)
+	{
+		std::cout << select[i];
+	}
+}
 
 int main()
 {
-
+	biger(input());
+	output();
 }
 
 //문제 12번
