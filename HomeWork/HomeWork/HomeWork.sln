@@ -3,25 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level1", "HomeWork Level1\HomeWork Level1.vcxproj", "{BB399D88-AFA5-4C67-BB23-C32F57DDB387}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_01", "HomeWork Level1\HomeWork Level1.vcxproj", "{BB399D88-AFA5-4C67-BB23-C32F57DDB387}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level2", "HomeWork Level2\HomeWork Level2.vcxproj", "{9EED7DA9-A4D2-453F-914D-7DC8DE6C0382}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_02", "HomeWork Level2\HomeWork Level2.vcxproj", "{9EED7DA9-A4D2-453F-914D-7DC8DE6C0382}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level3", "HomeWork Level3\HomeWork Level3.vcxproj", "{9FE4999A-FFB6-4472-982B-74594EC97480}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_03", "HomeWork Level3\HomeWork Level3.vcxproj", "{9FE4999A-FFB6-4472-982B-74594EC97480}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level4", "HomeWork Level4\HomeWork Level4.vcxproj", "{CB116CBD-502B-4657-845A-8D321E176F44}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_04", "HomeWork Level4\HomeWork Level4.vcxproj", "{CB116CBD-502B-4657-845A-8D321E176F44}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level5", "HomeWork Level5\HomeWork Level5.vcxproj", "{B5E94562-6215-485B-90DD-6D902A08EAF4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_05", "HomeWork Level5\HomeWork Level5.vcxproj", "{B5E94562-6215-485B-90DD-6D902A08EAF4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level6", "HomeWork Level6\HomeWork Level6.vcxproj", "{6DEBC9E2-2A0D-4B90-AA04-94D715CF7BBD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_06", "HomeWork Level6\HomeWork Level6.vcxproj", "{6DEBC9E2-2A0D-4B90-AA04-94D715CF7BBD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level7", "HomeWork Level7\HomeWork Level7.vcxproj", "{1A20784B-FDDC-4D5D-8A46-A59DA041B4E4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_07", "HomeWork Level7\HomeWork Level7.vcxproj", "{1A20784B-FDDC-4D5D-8A46-A59DA041B4E4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWorkNote", "HomeWorkNote\HomeWorkNote.vcxproj", "{3B15098F-844D-443F-955D-371BE544A516}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level8", "HomeWork Level8\HomeWork Level8.vcxproj", "{023A65BF-C455-4E9A-882A-AAC705662FD1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_08", "HomeWork Level8\HomeWork Level8.vcxproj", "{023A65BF-C455-4E9A-882A-AAC705662FD1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level9", "HomeWork Level9\HomeWork Level9.vcxproj", "{1CA81E82-CB63-4C39-8D4C-DA1B90B56E6C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_09", "HomeWork Level9\HomeWork Level9.vcxproj", "{1CA81E82-CB63-4C39-8D4C-DA1B90B56E6C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_10", "HomeWork Level_10\HomeWork Level_10.vcxproj", "{E5C9217F-6017-45F1-84DA-76001E535493}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork Level_11", "HomeWork Level_11\HomeWork Level_11.vcxproj", "{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +115,22 @@ Global
 		{1CA81E82-CB63-4C39-8D4C-DA1B90B56E6C}.Release|x64.Build.0 = Release|x64
 		{1CA81E82-CB63-4C39-8D4C-DA1B90B56E6C}.Release|x86.ActiveCfg = Release|Win32
 		{1CA81E82-CB63-4C39-8D4C-DA1B90B56E6C}.Release|x86.Build.0 = Release|Win32
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Debug|x64.ActiveCfg = Debug|x64
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Debug|x64.Build.0 = Debug|x64
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Debug|x86.ActiveCfg = Debug|Win32
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Debug|x86.Build.0 = Debug|Win32
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Release|x64.ActiveCfg = Release|x64
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Release|x64.Build.0 = Release|x64
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Release|x86.ActiveCfg = Release|Win32
+		{E5C9217F-6017-45F1-84DA-76001E535493}.Release|x86.Build.0 = Release|Win32
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Debug|x64.ActiveCfg = Debug|x64
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Debug|x64.Build.0 = Debug|x64
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Debug|x86.ActiveCfg = Debug|Win32
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Debug|x86.Build.0 = Debug|Win32
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Release|x64.ActiveCfg = Release|x64
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Release|x64.Build.0 = Release|x64
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Release|x86.ActiveCfg = Release|Win32
+		{90DC358D-7DF2-4114-BCC2-4C76EA519A8F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

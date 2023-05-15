@@ -1,36 +1,68 @@
 ﻿#include <iostream>
 
-void BBQ(int _a)
-{
-	for (int i = 1; i <= _a; i++)
-	{
-		std::cout << i;
-	}
-}
-
-void KFC(int _a)
-{
-	for (int i = 0; i < 7; i++)
-	{
-		std::cout << (char)(_a);
-	}
-}
-
 int main()
 {
 	int a;
 	std::cin >> a;
-	int mod = a % 2;
+	int mod = 0;
+	mod = a % 5;
+	int arr2d[3][3] = {};
+	int x = 0;
+	int y = 0;
+	int b = 9;
 	if (mod == 1)
 	{
-		int b;
-		std::cin >> b;
-		BBQ(b);
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				arr2d[y][x] = b;
+				y++;
+				b--;
+			}
+			y = 0;
+			x++;
+		}
 	}
-	if (mod == 0)
+	else if (mod == 2)
 	{
-		char d;
-		std::cin >> d;
-		KFC(d);
+		x = 2;
+		y = 0;
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				arr2d[y][x] = b;
+				x--;
+				b--;
+			}
+			x = 2;
+			y++;
+		}
+	}
+	else
+	{
+		x = 0;
+		y = 0;
+		b = 10;
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				arr2d[y][x] = b;
+				y++;
+				b++;
+			}
+			y = 0;
+			x++;
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
 	}
 }
