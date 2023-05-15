@@ -65,9 +65,9 @@ class Player
 {
 };
 
-std::vector<GameObject> GameObjects = {};
+std::vector< GameObject> GameObjects = {};
 GameObject GamePlayer;
-int2 PlayerPos = GamePlayer.GetPos();
+
 const int MapXsize = 5;
 const int MapYsize = 5;
 int arr2d[MapYsize][MapXsize] = {};
@@ -87,7 +87,7 @@ void SetMap()
 
 void PlayerMove()
 {
-	
+	int2 PlayerPos = GamePlayer.GetPos();
 
 	if (0 == _kbhit())
 	{
@@ -130,21 +130,6 @@ void PlayerMove()
 	GamePlayer.SetPos(PlayerPos);
 }
 
-void setObject()
-{
-	int GameObjectsCount = GameObjects.size();
-	for (int i = 0; i <= GameObjectsCount; i++)
-	{
-		for (int j = 0; j < 5; j++)
-		{
-			for (int k = 0; k < 5; k++)
-			{
-
-			}
-		}
-	}
-}
-
 void MapPrint()
 {
 	for (int i = 0; i < 5; i++)
@@ -155,9 +140,12 @@ void MapPrint()
 		}
 		std::cout << "\n";
 	}
+
 	/*
 		gameobjects들을 순회하면서 gameobject 들을 출력해보세요
 	*/
+
+
 }
 
 int main()
@@ -167,14 +155,13 @@ int main()
 
 	GamePlayer.SetObjectPrinter('@');
 	GamePlayer.SetPos(int2(2, 2));
-
 	while (true)
 	{
 		system("cls");
 		SetMap();
 		PlayerMove();
-		setObject();
 		MapPrint();
 		Sleep(100);
 	}
+	int a = 0;
 }
