@@ -471,30 +471,135 @@ int main()
 }
 
 //문제 10번
+//main 함수에서 yesOrNo 함수를 호출 해 주세요.
+//yesOrNo 함수에서는 숫자 하나를 입력 받아 주세요.
+//입력받은 숫자 하나를 3으로 나누었을때
+//나머지가 0일 경우 7을
+//나머지가 1일 경우 35를
+//나머지가 2일 경우 50을 리턴하는 함수를 작성 해 주세요.
+//main함수에선 yesOrNo 함수가 리턴한 값을 출력 하시면 됩니다.
+//ex ) 5
+//35
+//ex) 3
+//7
+//입력 예시
+//6
+//출력 예시
+//7
 
 #include <iostream>
 
+int yesOrNo()
+{
+	int a;
+	std::cin >> a;
+	int mod = 0;
+	mod = a % 3;
+	if (mod == 0)
+	{
+		return 7;
+	}
+	else if (mod == 1)
+	{
+		return 35;
+	}
+	else if (mod == 2)
+	{
+		return 50;
+	}
+}
+
 int main()
 {
-
+	std::cout << yesOrNo();;
 }
 
 //문제 11번
+//main 함수에서 scoring 함수를 호출 해 주세요.
+//scoring 함수에서는 점수를 하나 입력 받습니다.
+//그 점수가 90 이상일 경우 A를,
+//그렇지 않고 80 이상일 경우 B를,
+//그렇지 않고 70 이상일 경우 C를,
+//나머지의 경우 D를 리턴 해 주세요.
+//main 함수에선 scoring에서 리턴 받은 값을 출력 해 주세요.
+//ex ) 95
+//A
+//ex) 55
+//D
+//입력 예시
+//85
+//출력 예시
+//B
 
 #include <iostream>
 
+char scoring()
+{
+	int a;
+	std::cin >> a;
+	if (a >= 90)
+	{
+		return 'A';
+	}
+	else if (a >= 80)
+	{
+		return 'B';
+	}
+	else if (a >= 70)
+	{
+		return 'C';
+	}
+	else
+	{
+		return 'D';
+	}
+}
+
 int main()
 {
-
+	std::cout << scoring();
 }
 
 //문제 12번
+//main 함수에서 aToZ 함수를 호출 해 주세요.
+//aToZ 함수에서는
+//하나의 문자를 입력 받아 주세요.
+//입력 받은 문자가 A에 더 가까울 경우 A를 리턴 해 주세요.
+//만약 입력 받은 문자가 Z에 가까울 경우 Z를 리턴 해 주세요.
+//main 함수에서는 리턴받은 값을 출력 해 주세요.
+//ex)
+//M
+//A
+//ex)
+//X
+//Z
+//ex)
+//F
+//A
+//입력 예시
+//M
+//출력 예시
+//A
 
 #include <iostream>
 
+char AToZ()
+{
+	char a;
+	std::cin >> a;
+	if ('Z' - a > a - 'A')
+	{
+		return 'A';
+	}
+	else if (a - 'A' > 'Z' - a)
+	{
+		return 'Z';
+	}
+}
+
 int main()
 {
-
+	std::cout << AToZ();
 }
 
 //문제 13번
