@@ -163,4 +163,5 @@ int main()
 		MapPrint();
 		Sleep(100);
 	}
+	int a = 0;
 }
