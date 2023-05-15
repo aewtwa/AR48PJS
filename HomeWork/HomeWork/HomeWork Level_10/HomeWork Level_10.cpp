@@ -139,12 +139,12 @@ int main()
 		{
 			for (int j = 0; j < 3; j++)
 			{
-				arr2d[y][x] = b;
-				y++;
+				arr2d[i][j] = b;
+				i++;
 				b--;
 			}
-			y = 0;
-			x++;
+			i = 0;
+			j++;
 		}
 	}
 	else if (mod == 2)
@@ -153,7 +153,7 @@ int main()
 		y = 0;
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 2; j < 3; j--)
 			{
 				arr2d[y][x] = b;
 				x--;
@@ -165,19 +165,13 @@ int main()
 	}
 	else
 	{
-		x = 0;
-		y = 0;
 		b = 10;
 		for (int i = 0; i < 3; i++)
 		{
 			for (int j = 0; j < 3; j++)
 			{
 				arr2d[y][x] = b;
-				y++;
-				b++;
 			}
-			y = 0;
-			x++;
 		}
 	}
 	for (int i = 0; i < 3; i++)
@@ -191,11 +185,24 @@ int main()
 }
 
 //문제 4번
+//아래 그림과 같이 프로그램을 작성 해 주세요
+//main함수에서는 even(a / b); 또는 odd(a / b); 를 호출하면 됩니다.
+//입력 예시
+//5 2
+//출력 예시
+//4
+//7
 
 #include <iostream>
 
 int main()
 {
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int mod = 0;
+	mod = a / b;
 
 }
 
