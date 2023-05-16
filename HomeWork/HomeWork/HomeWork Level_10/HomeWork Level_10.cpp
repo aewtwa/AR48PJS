@@ -1038,7 +1038,7 @@ void run(int _a)
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 0; j < 3; j--)
+			for (int j = 0; j < 3; j++)
 			{
 				arr2d[i][j] = a;
 				a++;
@@ -1049,7 +1049,7 @@ void run(int _a)
 	{
 		for (int i = 0; i < 3; i++)
 		{
-			for (int j = 2; j >= 3; j++)
+			for (int j = 2; j >= 0; j--)
 			{
 				arr2d[i][j] = a;
 				a++;
@@ -1060,8 +1060,9 @@ void run(int _a)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			std::cout << arr2d[i][j];
+			std::cout << arr2d[i][j] << " ";
 		}
+		std::cout << "\n";
 	}
 }
 
@@ -1069,4 +1070,5 @@ int main()
 {
 	int a;
 	std::cin >> a;
+	run(a);
 }
