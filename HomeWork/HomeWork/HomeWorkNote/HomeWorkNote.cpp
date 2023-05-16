@@ -1,39 +1,44 @@
 ﻿#include <iostream>
 
+void run(int _a)
+{
+	int arr2d[3][3] = {};
+	int a = 1;
+	if (_a < 10)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				arr2d[i][j] = a;
+				a++;
+			}
+		}
+	}
+	if (_a >= 10)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 2; j >= 0; j--)
+			{
+				arr2d[i][j] = a;
+				a++;
+			}
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+}
+
 int main()
 {
-	char arr[8] = {};
-	for (int i = 0; i < 8; i++)
-	{
-		std::cin >> arr[i];
-	}
-	char big[8] = {};
-	int bigidx = 0;
-	char small[8] = {};
-	int smallidx = 0;
-	for (int i = 0; i < 8; i++)
-	{
-		if ('A' <= arr[i] && arr[i] <= 'Z')
-		{
-			big[bigidx] = arr[i];
-			bigidx++;
-		}
-		else if ('a' <= arr[i] && arr[i] <= 'z')
-		{
-			small[smallidx] = arr[i];
-			smallidx++;
-		}
-	}
-	std::cout << "big = ";
-	for (int i = 0; i < 8; i++)
-	{
-		std::cout << big[i];
-	}
-	std::cout << "\n";
-	std::cout << "small = ";
-	for (int i = 0; i < 8; i++)
-	{
-		std::cout << small[i];
-	}
-	int a = 0;
+	int a;
+	std::cin >> a;
+	run(a);
 }

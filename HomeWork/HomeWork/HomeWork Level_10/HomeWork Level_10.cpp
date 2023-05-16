@@ -603,82 +603,470 @@ int main()
 }
 
 //문제 13번
+//아래의 그림처럼 4 x 4 배열에 숫자를 번호 순서대로 채우고 출력 해 주세요.
+//입력 값은 없습니다.
+//2 10 18 26
+//4 12 20 28
+//6 14 22 30
+//8 16 24 32
+//출력 예시
+//2 10 18 26
+//4 12 20 28
+//6 14 22 30
+//8 16 24 32
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[4][4] = {};
+	int a = 2;
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			arr2d[j][i] = a;
+			a = a + 2;
+		}
+	}
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 14번
+//2차배열에 값을 채워주세요(번호 순서대로 값을 채워주세요)
+//21	16	11	6	 1
+//22	17	12	7	2
+//23	18	13	8	3
+//24	19	14	9	4
+//25	20	15	10	5
+//숫자 하나를 입력받으세요
+//그 숫자에 해당하는 행 전체를 입력받은 숫자로 채워주세요
+//ex) 만약 숫자 1을 입력받았다면 1번 행을 모두 1로 채우면 됩니다
+//21	16	11	6	 1
+//1	1	1	1	1
+//23	18	13	8	3
+//24	19	14	9	4
+//25	20	15	10	5
+//ex) 만약 숫자 3을 입력받았다면 3번 행을 모두 3으로 채우면 됩니다
+//21	16	11	6	 1
+//22	17	12	7	2
+//23	18	13	8	3
+//3	3	3	3	3
+//25	20	15	10	5
+//입력 예시
+//3
+//출력 예시
+//21 16 11 6 1
+//22 17 12 7 2
+//23 18 13 8 3
+//3 3 3 3 3
+//25 20 15 10 5
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[5][5] = {};
+	int a = 1;
+	int b = 0;
+	std::cin >> b;
+	for (int i = 4; i >= 0; i--)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			arr2d[j][i] = a;
+			a++;
+			if (j == b)
+			{
+				arr2d[j][i] = b;
+			}
+		}
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 15번
+//아래 그림과 같은 Fruit 구조체 타입을 만들어주세요
+//Fruit 구조체 변수 banana, apple을 만들어 주세요.
+//이제 banana.size와 apple.size를 입력 받고, 각 과일의 가격을 계산하여 price에 넣어주세요.
+//바나나 가격 = banana.size * 250
+//사과 가격 = apple.size * 500
+//이제 banana.price와 apple.price 의 합을 출력하면 됩니다.
+//입력 예시
+//10
+//20
+//출력 예시
+//12500원
 
 #include <iostream>
 
+struct Fruit
+{
+	int size;
+	int price;
+};
+
 int main()
 {
-
+	Fruit banana = {};
+	Fruit apple = {};
+	std::cin >> banana.size;
+	std::cin >> apple.size;
+	banana.price = banana.size * 250;
+	apple.price = apple.size * 500;
+	std::cout << banana.price + apple.price << "원";
 }
 
 //문제 16번
+//숫자 3개를 입력 받으세요.
+//3 x 4 배열을 만들고,
+//첫번째 입력받은 숫자를 이용해서 맨 윗줄을 아래와 같이 채워주세요.
+//두번째 입력받은 숫자를 이용해서 중간줄을 아래와 같이 채워주세요.
+//세번째 입력받은 숫자를 이용해서 아랫줄을  아래와 같이 채워주세요.
+//예로들어 1 11 7 이렇게 숫자 3개가 입력 되면
+//1	 2  3  4
+//11 12	13 14
+//7	 8  9  10
+//입력 예시
+//1 11 7
+//출력 예시
+//1  2  3  4
+//11 12 13 14
+//7  8  9  10
 
 #include <iostream>
 
 int main()
 {
-
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	int arr2d[3][4] = {};
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			if (i == 0)
+			{
+				arr2d[i][j] = a;
+				a++;
+			}
+			if (i == 1)
+			{
+				arr2d[i][j] = b;
+				b++;
+			}
+			if (i == 2)
+			{
+				arr2d[i][j] = c;
+				c++;
+			}
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 17번
+//2차배열에 아래와 같이 2중 for문으로 값을 채워주세요
+//10 16	22
+//11 17	23
+//12 18	24
+//13 19	25
+//14 20	26
+//15 21	27
+//변수 a, b에 숫자를 입력받아주세요(숫자 2개 입력받아주세요)
+//그리고 a줄 ~b줄까지 숫자 7로 채우고 출력 해 주세요
+//(a <= b)
+//만약 2 4를 입력받았다면 아래와 같이 2번줄 부터 4번줄까지 숫자7로 채우면 됩니다.
+//10 16	22
+//11 17	23
+//7	7 7
+//7	7 7
+//7	7 7
+//15 21	27
+//입력 예시
+//2 4
+//출력 예시
+//10 16 22
+//11 17 23
+//7 7 7
+//7 7 7
+//7 7 7
+//15 21 27
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[6][3] = {};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int c = 10;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 6; j++)
+		{
+			arr2d[j][i] = c;
+			c++;
+			if (a <= j && j <= b)
+			{
+				arr2d[j][i] = 7;
+			}
+		}
+	}
+	for (int i = 0; i < 6; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 18번
 
 #include <iostream>
 
+struct BBQ
+{
+	int x;
+	int data[3];
+};
+
 int main()
 {
-
+	BBQ g = {};
+	std::cin >> g.x;
+	int sum = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		std::cin >> g.data[i];
+		sum = sum + g.data[i];
+	}
+	std::cout << sum << " ";
+	std::cout << g.x;
 }
 
 //문제 19번
+//아래 그림과 같이 코딩을 해 주세요
+//7 x 5 배열은 전역배열로 만들어주세요
+//(전역변수는 쓰지 말아주세요)
+//main함수에서는
+//INPUT함수 / PROCESS함수 / OUTPUT함수를 각각 호출할 때
+//값을 넘기고 전달받는 부분이 소스코드에 들어가야 합니다.
+//입력 예시
+//1
+//출력 예시
+//3
 
 #include <iostream>
 
+int arr2d[7][5] =
+{
+	{1,},
+	{1,0,1},
+	{1,1,0,1},
+	{1,0,1},
+	{0,1,0,0,1},
+	{0,0,0,1},
+	{1,1}
+};
+
+int input()
+{
+	int a;
+	std::cin >> a;
+	return a;
+}
+
+int process(int _a)
+{
+	int count = 0;
+	for (int i = 0; i < 7; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (arr2d[i][_a] == 1)
+			{
+				count++;
+				break;
+			}
+		}
+	}
+	return count;
+}
+
+void output(int _a)
+{
+	std::cout << _a;
+}
+
 int main()
 {
-
+	output(process(input()));
 }
 
 //문제 20번
+//3 x 5 문자배열을 하드코딩 해 주세요(전역배열 사용)
+//D A C C D
+//S D F A E
+//E E T J H
+//그리고 문자 하나를 입력받는데 그 문자가 존재하는지 아닌지 출력 하는 문제입니다.
+//(전역변수는 사용하지마세요)
+//아래 규칙에 맞게 함수를 만들어주시면 됩니다
+//[CHECK함수 힌트]
+//void CHECK(char ch)
+//{
+//	for (y = 0; y < 3; y++) {
+//		for (x = 0; x < 3; x++) {
+//			if (vect[y][x] == ch) {
+//				return 1;
+//			}
+//		}
+//	}
+//	return 0;
+//}
+//입력 예시
+//A
+//출력 예시
+//있음
 
 #include <iostream>
 
+char arr2d[3][5] =
+{
+	{'D','A','C','C','D'},
+	{'S','D','F','A','E'},
+	{'E','E','T','J','H'}
+};
+
+char input()
+{
+	char a;
+	std::cin >> a;
+	return a;
+}
+
+int check(char _ch)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (arr2d[i][j] == _ch)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+void output(int _a)
+{
+	if (_a == 1)
+	{
+		std::cout << "있음";
+	}
+	else if (_a == 0)
+	{
+		std::cout << "없음";
+	}
+}
+
 int main()
 {
-
+	output(check(input()));
 }
 
 //문제 21번
+//[전역변수를 사용하지 말고 풀어주세요]
+//main함수에서 숫자 1개를 입력받으세요
+//run함수에 입력받은 숫자를 보내고 run함수에서 다음과 같이 처리를 해 주세요
+//run함수 안에서는...
+//[3x3] 2차배열을 만들고 아래 규칙에 따라 값을 채우고, 출력 해 주세요
+//만약 입력받은 숫자가 10보다 작으면(< 10)
+//1	2 3
+//4	5 6
+//7	8 9
+//만약 입력받은 숫자가 10보다 같거나 크면(>= 10)
+//3	2 1
+//6	5 4
+//9	8 7
+//* 번호 순서대로 배열에 값을 넣어주시면 됩니다
+//입력 예시
+//15
+//출력 예시
+//321
+//654
+//987
 
 #include <iostream>
 
+void run(int _a)
+{
+	int arr2d[3][3] = {};
+	int a = 1;
+	if (_a < 10)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j--)
+			{
+				arr2d[i][j] = a;
+				a++;
+			}
+		}
+	}
+	if (_a >= 10)
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 2; j >= 3; j++)
+			{
+				arr2d[i][j] = a;
+				a++;
+			}
+		}
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << arr2d[i][j];
+		}
+	}
+}
+
 int main()
 {
-
+	int a;
+	std::cin >> a;
 }
