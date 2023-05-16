@@ -1,14 +1,38 @@
 ﻿#include <iostream>
 
-
+//return 한개만 반환
+//포인터를 이용하여
+//여러개의 값을 return 해주는 효과를 볼 수 있다.
 void test(int* a, int* b)
 {
     *a += 1;
     *b += 1;
 }
 
+//void test(int arr[2][3])
+//{
+//    arr[0][0] = 1;
+//}
+
+//*arr
+//배열 포인터
+void test(int(*pointer)[3])
+{
+    //arr[0][0] = 1;
+    pointer[1][2] = 99;
+
+    int a = 0;
+
+}
+
 int main()
 {
+    int Arr[2][3] =
+    {
+        1,2,3,
+        4,5,6,
+    };
+    test(Arr);
     int num = 0;
     char ch = '\0';
     char* pCh = &ch;
