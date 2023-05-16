@@ -675,73 +675,414 @@ int main()
 }
 
 //문제 14번
+//A	1 1	1 5	A w	z
+//위 배열을 하드코딩 해 주세요
+//그리고 문자 하나를 입력받으세요
+//입력받은 문자가 3개 이상 존재한다면 "THREE" 출력
+//입력받은 문자가 2개 존재한다면 "TWO" 출력
+//입력받은 문자가 1개 존재한다면 "ONE" 출력
+//입력받은 문자가 없다면 "NOTHING" 출력
+//입력 예시
+//A
+//출력 예시
+//TWO
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[8] = { 'A','1','1','1','5','A','w','z' };
+	char a;
+	std::cin >> a;
+	int count = 0;
+	for (int i = 0; i < 8; i++)
+	{
+		if (arr[i] == a)
+		{
+			count++;
+		}
+	}
+	if (count >= 3)
+	{
+		std::cout << "THREE";
+	}
+	else if (count == 2)
+	{
+		std::cout << "TWO";
+	}
+	else if (count == 1)
+	{
+		std::cout << "ONE";
+	}
+	else if (count == 0)
+	{
+		std::cout << "NOTHING";
+	}
 }
 
 //문제 15번
+//2차배열을 하드코딩 해 주세요
+//a	b a	c z
+//c	t a	c d
+//c	c c	c a
+//그리고 문자 1개를 입력받아주세요
+//입력받은 문자가
+//3개 이상이면 "이야"
+//5개 이상이면 "와우"
+//7개 이상이면 "세상에"
+//위 3가지 경우가 아니라면 "이런"를 출력 해 주세요
+//를 출력 해 주세요
+//입력 예시
+//c
+//출력 예시
+//세상에
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[3][5] =
+	{
+		{'a','b','a','c','z'},
+		{'c','t','a','c','d'},
+		{'c','c','c','c','a'}
+	};
+	char a;
+	std::cin >> a;
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			if (arr[i][j] == a)
+			{
+				count++;
+			}
+		}
+	}
+	if (count >= 7)
+	{
+		std::cout << "세상에";
+	}
+	else if (count >= 5)
+	{
+		std::cout << "와우";
+	}
+	else if (count >= 3)
+	{
+		std::cout << "이야";
+	}
+	else
+	{
+		std::cout << "이런";
+	}
 }
 
 //문제 16번
+//숫자 6개를 입력받아주세요
+//만약 3 1 5 0 0 3 을 입력하였다면 아래와 같이 채워집니다
+//3	1 5
+//0	0 3
+//입력 받은 값들을 출력하는데
+//숫자 0은 '#'으로 바꾸어서 출력 해 주세요
+//[HINT] 2중 for문을 돌면서 출력을 합니다
+//만약 지금 출력할 값이 0 이 아니면 배열 값을 출력하고
+//지금 출력할 값이 0이라면 #을 출력하면 됩니다
+//입력 예시
+//3 1 5 0 0 3
+//출력 예시
+//315
+//##3
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[2][3] = {};
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			std::cin >> arr2d[i][j];
+		}
+	}
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (arr2d[i][j] == 0)
+			{
+				std::cout << (char)('#');
+			}
+			else
+			{
+				std::cout << arr2d[i][j];
+			}
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 17번
+//main함수에서 아래와 같이 배열 5칸을 선언 및 하드코딩 해 주세요
+//3	5 1	2 7
+//그리고 같은 사이즈의 배열을 하나 더 만들고, 숫자 5개를 이 배열에 입력 받아주세요
+//만약 3 5 1 1 1 을 입력하였다면 아래와 같이 채우면 됩니다
+//3	5 1	1 1
+//이제 CompareGo함수로 배열을 모두 전달 해 주세요
+//CompareGo 함수에서 전달받은 두개의 배열이 완전히 똑같다면 "두배열은완전같음" 출력
+//다른 숫자가 하나라도 있다면 "두배열은같지않음" 출력
+//[HINT] 두 배열이 완전히 같은지 다른지 알기 위해서는
+//flag를 써서, 다른 글자가 존재 하는지를 찾으면 됩니다.
+//다른 글자가 존재한다면 flag를 1 켜고 break
+//입력 예시
+//3 5 1 1 1
+//출력 예시
+//두배열은같지않음
 
 #include <iostream>
 
+void CompareGo(int _a[], int _b[])
+{
+	int flag = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (_a[i] != _b[i])
+		{
+			flag = 1;
+			break;
+		}
+	}
+
+	if (flag == 1)
+	{
+		std::cout << "두 배열은 같지 않음.";
+	}
+	else
+	{
+		std::cout << "두 배열은 완전 같음.";
+	}
+}
+
 int main()
 {
-
+	int arr1[5] = { 3,5,1,2,7 };
+	int arr2[5] = {};
+	for (int i = 0; i < 5; i++)
+	{
+		std::cin >> arr2[i];
+	}
+	CompareGo(arr1, arr2);
 }
 
 //문제 18번
+//a	b E
+//E	2 W
+//3	2 4
+//위 2차배열을 하드코딩 해 주세요 그리고 출력을 해 주세요
+//출력을 할 때 다음 규칙을 적용 시켜주세요
+//- 대문자는 소문자로 바꾸어 출력
+//- 소문자는 대문자로 바꾸어 출력
+//- 숫자로 된 문자는 5를 더한 값으로 바꾸어 출력 해 주세요
+//* 배열 값을 바꾸는 것이 아니라,
+//배열 값을 그대로 둔 채, 문자를 바꾸어서 출력만 합니다.
+//출력 예시
+//A B e
+//e 7 w
+//8 7 9
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[3][3] =
+	{
+		{'a','b','E'},
+		{'E','2','W'},
+		{'3','2','4'}
+	};
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if ('a' <= arr[i][j] && arr[i][j] <= 'z')
+			{
+				std::cout << (char)(arr[i][j] - ('a' - 'A')) << " ";
+			}
+			else if ('A' <= arr[i][j] && arr[i][j] <= 'Z')
+			{
+				std::cout << (char)(arr[i][j] + ('a' - 'A')) << " ";
+			}
+			else if ('0' <= arr[i][j] && arr[i][j] <= '9')
+			{
+				std::cout << (char)(arr[i][j] + ('6' - '1')) << " ";
+			}
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 19번
+//전역배열을 하나를 아래와 같이 만들어주세요
+//이 문제는 전역변수를 쓰지않고 푸는 문제입니다(전역배열만 써주세요)
+//a	b d
+//e	w z
+//q	v a
+//Input함수에서 대문자 1개를 입력받아주세요
+//Process함수에 입력받은 문자를 전달 해 주세요
+//그리고 전달받은 대문자를 소문자로 바꾸고, 그 소문자가 배열에
+//존재한다면 "존재", 없다면 "없음"을 출력 해 주세요
+//ex) 만약 대문자 A를 입력받는다면
+//소문자인 a가 배열에 존재하는지 찾으면 됩니다.
+//입력 예시
+//A
+//출력 예시
+//존재
 
 #include <iostream>
 
+char arr2d[3][3] =
+{
+	{'a','b','d'},
+	{'e','w','z'},
+	{'q','v','a'}
+};
+
+char input()
+{
+	char a;
+	std::cin >> a;
+	return a;
+}
+
+void process(char _a)
+{
+	int flag = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if ((char)(_a + ('a' - 'A')) == arr2d[i][j])
+			{
+				flag = 1;
+				break;
+			}
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "존재";
+	}
+	else
+	{
+		std::cout << "없음";
+	}
+}
+
 int main()
 {
-
+	process(input());
 }
 
 //문제 20번
+//3	1 6
+//7	8 4
+//9	2 3
+//위 2차배열을 하드코딩 해 주세요
+//변수 a, b, c에 숫자 3개를 입력받아주세요
+//입력받은 값을 활용해서(a, b) 좌표에 값 c를 넣어주세요
+//그리고 MAX와 MIN값을 구한 후 그 합을 출력 해 주세요
+//ex) 만약 0 2 0 을 입력했다면(0, 2) 좌표에 숫자 0을 먼저 넣어주세요
+//그리고 전체 3x3 배열에서 MAX와 MIN값을 찾으면 됩니다.
+//MAX = 9, MIN = 0 이 됩니다.따라서 출력은 9 + 0 = 9를 출력하면 됩니다.
+//입력 예시
+//0 2 0
+//출력 예시
+//9
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[3][3] =
+	{
+		{3,1,6},
+		{7,8,4},
+		{9,2,3}
+	};
+	int a;
+	std::cin >> a;
+	int b;
+	std::cin >> b;
+	int c;
+	std::cin >> c;
+	int MAX = 0;
+	int MIN = 987654321;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (a == i && b == j)
+			{
+				arr2d[i][j] = c;
+			}
+			if (arr2d[i][j] > MAX)
+			{
+				MAX = arr2d[i][j];
+			}
+			else if (arr2d[i][j] < MIN)
+			{
+				MIN = arr2d[i][j];
+			}
+		}
+	}
+	std::cout << MAX + MIN;
 }
 
 //문제 21번
+//2 x 3 배열에 숫자 6개를 입력받아주세요
+//맨 뒤에서 부터 순차적으로 입력받으시면 됩니다
+//예로들어
+//만약 7 2 3 4 5 6을 입력받았다면 아래와 같이 채워집니다
+//6	5 4
+//3	2 7
+//그리고 6칸짜리 int형 배열을 하나 더 만들고,
+//위 2차 배열값들을 6칸 짜리 int배열에 값을 옮겨주세요(2중for문 사용)
+//6	5 4	3 2	7
+//그리고[0]과[5]번 index의 값을 SWAP 해 주세요
+//이렇게 만들어진 최종 1차원 배열 값을 출력 해 주세요
+//입력 예시
+//7 2 3 4 5 6
+//출력 예시
+//7 5 4 3 2 6
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d[2][3] = {};
+	for (int i = 1; i >= 0; i--)
+	{
+		for (int j = 2; j >= 0; j--)
+		{
+			std::cin >> arr2d[i][j];
+		}
+	}
+	int arr[6] = {};
+	int arridx = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			arr[arridx] = arr2d[i][j];
+			arridx++;
+		}
+	}
+	int c = arr[0];
+	arr[0] = arr[5];
+	arr[5] = c;
+	for (int i = 0; i < 6; i++)
+	{
+		std::cout << arr[i];
+	}
 }
