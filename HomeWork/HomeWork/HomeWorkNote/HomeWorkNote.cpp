@@ -2,17 +2,25 @@
 
 int main()
 {
+	int arr2d[3][3] = {};
 	int a;
 	std::cin >> a;
-	int c = 1;
-	for (int i = 0; i < a; i++)
+	int xidx = 2;
+	for (size_t i = 0; i < 3; i++)
 	{
-		for (int y = 0; y < 3; y++)
+		for (size_t j = xidx; j < 3; j++)
 		{
-			std::cout << c;
-			c++;
+			arr2d[i][j] = a;
+			a++;
 		}
-		c = 1;
+		xidx--;
+	}
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			std::cout << arr2d[i][j];
+		}
 		std::cout << "\n";
 	}
 }
