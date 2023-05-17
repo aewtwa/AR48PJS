@@ -44,5 +44,28 @@ int main()
 		"EHDKEL"
 	};
 
+	std::cin >> &str2D[0][0]; // str2D[0] 같다
+	std::cin >> str2D[1];
+	std::cin >> str2D[2];
+
+	char cmpA[256] = "HELLO";
+	char cmpB[256] = "HELLT";
+
+
+	if (cmpA == cmpB)
+	{
+
+	}
+
+	int flag = 0;
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (cmpA[i] != cmpB[i])
+		{
+			flag = 1;
+			break;
+		}
+	}
+
 	return 0;
 }

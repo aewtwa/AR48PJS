@@ -35,5 +35,18 @@ int main()
 		a++;
 	}
 
+	// 2중 while문
+	int y = 1;
+	while (y < 10)
+	{
+		int x = 0;
+		while (x < 10)
+		{
+			//
+			x++;
+		}
+		y++;
+	}
+
 	return 0;
 }
