@@ -4,13 +4,15 @@ int main()
 {
 	int a;
 	std::cin >> a;
-	for (int i = 0; i < 4; i++)
+	int c = 1;
+	for (int i = 0; i < a; i++)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int y = 0; y < 3; y++)
 		{
-			std::cout << a;
+			std::cout << c;
+			c++;
 		}
+		c = 1;
 		std::cout << "\n";
-		a--;
 	}
 }
