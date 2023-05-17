@@ -2,27 +2,15 @@
 
 int main()
 {
-	char a[256];
+	int a;
 	std::cin >> a;
-	char b[256];
-	std::cin >> b;
-	int check = 0;
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < 4; i++)
 	{
-		if (a[i] == '\0')
+		for (int i = 0; i < 4; i++)
 		{
-			check = i;
-			break;
+			std::cout << a;
 		}
+		std::cout << "\n";
+		a--;
 	}
-	std::cout << check;
-	for (int i = 0; i < 256; i++)
-	{
-		if (b[i] == '\0')
-		{
-			check = i;
-			break;
-		}
-	}
-	std::cout << check;
 }
