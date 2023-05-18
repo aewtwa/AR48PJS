@@ -2,25 +2,18 @@
 
 int main()
 {
-	int arr2d[3][3] = {};
-	int a;
+	char arr2d[2][256] =
+	{
+		"457132",
+		"DFQWGZ"
+	};
+	char a = 0;
 	std::cin >> a;
-	int xidx = 2;
-	for (size_t i = 0; i < 3; i++)
+	for (size_t i = 0; i < 256; i++)
 	{
-		for (size_t j = xidx; j < 3; j++)
+		if (arr2d[0][i] == a)
 		{
-			arr2d[i][j] = a;
-			a++;
+			std::cout << arr2d[1][i];
 		}
-		xidx--;
-	}
-	for (size_t i = 0; i < 3; i++)
-	{
-		for (size_t j = 0; j < 3; j++)
-		{
-			std::cout << arr2d[i][j];
-		}
-		std::cout << "\n";
 	}
 }
