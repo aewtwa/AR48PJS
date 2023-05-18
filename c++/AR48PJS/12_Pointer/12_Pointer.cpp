@@ -16,9 +16,8 @@ void test(int* a, int* b)
 
 //*arr
 //배열 포인터
-void test(int(*pointer)[3])
+void test(int (*pointer)[3])
 {
-    //arr[0][0] = 1;
     pointer[1][2] = 99;
 
     int a = 0;
