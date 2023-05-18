@@ -466,37 +466,164 @@ int main()
 }
 
 //문제 11번
+//D	A T	A  W \0
+//B	B Q	K \0 \0
+//위와 같이 문장 2개를 2차배열에 하드코딩 해 주세요
+//숫자 하나를 입력받습니다
+//입력받은 숫자가 홀수면 윗줄을 정렬하고
+//입력받은 숫자가 짝수면 아랫줄을 정렬 해 주세요
+//ex) 만약 1을 입력받았다면 홀수이므로 윗줄만 정렬해야 합니다
+//입력 예시
+//3
+//출력 예시
+//AADTW
+//BBQK
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[2][6] =
+	{
+		"DATAW",
+		"BBQK"
+	};
+	int a = 0;
+	std::cin >> a;
+	int mod = a % 2;
+	if (mod == 1)
+	{
+		for (size_t i = 0; i < 6; i++)
+		{
+			for (size_t j = i + 1; j < 6; j++)
+			{
+				if (arr2d[0][i] > arr2d[0][j])
+				{
+					int c = arr2d[0][i];
+					arr2d[0][i] = arr2d[0][j];
+					arr2d[0][j] = c;
+				}
+			}
+		}
+	}
+	else
+	{
+		for (size_t i = 0; i < 6; i++)
+		{
+			for (size_t j = i + 1; j < 6; j++)
+			{
+				if (arr2d[1][i] > arr2d[1][j])
+				{
+					int c = arr2d[1][i];
+					arr2d[1][i] = arr2d[1][j];
+					arr2d[1][j] = c;
+				}
+			}
+		}
+	}
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 6; j++)
+		{
+			std::cout << arr2d[i][j];
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 12번
+//아래와 같은 문장을 하드코딩 해 주세요
+//P	O T	I O	\0
+//A	B C	D E	\0
+//Y	O U	R E	\0
+//그리고 변수 a, b에 숫자 2개를 입력받아주세요
+//각 문장에서 a ~b에 해당하는 칸의 글자를 뽑아내어 출력 하시면 됩니다
+//(2중 for문을 이용하세요, a <= b)
+//만약 1 ~3을 입력하였다면 1번칸 ~3번칸에 해당하는 글자들을 뽑으면 됩니다
+//P	O T	I O	\0
+//A	B C	D E	\0
+//Y	O U	R E	\0
+//출력결과 : OTIBCDOUR
+//입력 예시
+//1 3
+//출력 예시
+//OTIBCDOUR
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[3][6] =
+	{
+		"POTIO",
+		"ABCDE",
+		"YOURE"
+	};
+	int a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = a; j <= b; j++)
+		{
+			std::cout << arr2d[i][j];
+		}
+	}
 }
 
 //문제 13번
+//char 변수 2개를 만들고 문자 2개를 입력받아주세요
+//그리고 그 문자를 가르키는 포인터 2개를 만들어주세요
+//포인터만을 이용하여 두개의 char변수를 SWAP 하고 출력 해 주세요
+//입력 예시
+//D A
+//출력 예시
+//A D
 
 #include <iostream>
 
 int main()
 {
-
+	char A = 0;
+	std::cin >> A;
+	char B = 0;
+	std::cin >> B;
+	char* pA = &A;
+	char* pB = &B;
+	int c = *pA;
+	*pA = *pB;
+	*pB = c;
+	std::cout << A << " ";
+	std::cout << B;
 }
 
 //문제 14번
+//두 문장을 하나의 이차배열에 입력받아주세요(최대 8글자)
+//두 문장에서 같은 index에 있지만 다른 글자가 몇개인지 Counting 하여 출력 해 주세요
+//만약 "BackLog" "BackBt" 두 문장을 입력받았다면 다른 글자는 총 3글자 입니다
+//B	a c	k L	o g
+//B	a c	k B	t
+//입력 예시
+//BackLog
+//BackBt
+//출력 예시
+//3
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[2][8] = {};
+	std::cin >> arr2d[0];
+	std::cin >> arr2d[1];
+	int count = 0;
+	for (size_t j = 0; j < 8; j++)
+	{
+		if (arr2d[0][j] != arr2d[1][j])
+		{
+			count++;
+		}
+	}
+	std::cout << count;
 }
