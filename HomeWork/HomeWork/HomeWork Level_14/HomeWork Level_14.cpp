@@ -356,21 +356,113 @@ int main()
 }
 
 //문제 9번
+//최대 5글자인 문장 4개를 입력받아주세요(2차배열에 입력받아주세요)
+//입력받은 문장에서 알파벳 A, B가 모두 존재하면 "대발견" 출력
+//알파벳 A, B중 하나만 존재하면 "중발견" 출력
+//알파벳 A, B가 모두 존재하지 않으면 "미발견" 출력
+//입력 예시
+//SHOW
+//YOUR
+//JASON
+//DATA
+//출력 예시
+//중발견
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[4][5] = {};
+	int A = 0;
+	int B = 0;
+	int C = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr2d[i];
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			if (arr2d[i][j] == 'A')
+			{
+				A = 1;
+			}
+			else if (arr2d[i][j] == 'B')
+			{
+				B = 1;
+			}
+		}
+	}
+	if (A == 1 && B == 1)
+	{
+		std::cout << "대발견";
+	}
+	else if (A == 1 || B == 1)
+	{
+		std::cout << "중발견";
+	}
+	else
+	{
+		std::cout << "미발견";
+	}
 }
 
 //문제 10번
+//2차배열에 두 문장을 입력받아주세요(최대 5글자)
+//그리고 12칸짜리 1차원 char배열을 선언 해 주세요
+//입력받은 두 문장을 1차원 배열에 옮긴 후 출력 해 주세요
+//ex) "World", "BBQ" 이렇게 두 문장을 2차배열에 입력받았다면
+//아래와 같이 1차배열로 문장을 옮겨 적어주면 됩니다
+//W o r l d B B	Q \0
+//[HINT] 먼저 두 문장의 길이를 먼저 구해야 합니다
+//그리고 for문을 각각 돌려 1차배열에 값을 채우면 됩니다
+//입력 예시
+//World
+//BBQ
+//출력 예시
+//WorldBBQ
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[2][5] = {};
+	std::cin >> arr2d[0];
+	std::cin >> arr2d[1];
+	char arr[12] = {};
+	int arr2d1len = 0;
+	int arr2d2len = 0;
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (arr2d[0][i] != '\0')
+		{
+			arr2d1len++;
+		}
+		if (arr2d[1][i] != '\0')
+		{
+			arr2d2len++;
+		}
+	}
+	for (size_t i = 0; i < 12; i++)
+	{
+		if (i < arr2d1len)
+		{
+			arr[i] = arr2d[0][i];
+		}
+		else if (arr2d1len <= i && i <= arr2d1len + arr2d2len)
+		{
+			arr[i] = arr2d[1][i - arr2d1len];
+		}
+		else
+		{
+			break;
+		}
+	}
+	for (size_t i = 0; i < 12; i++)
+	{
+		std::cout << arr[i];
+	}
 }
 
 //문제 11번
