@@ -297,48 +297,271 @@ int main()
 }
 
 //문제 7번
+//*전역배열 / 전역변수를 쓰지 않고 푸는 문제입니다
+//main함수에서 문장 2개를 입력받으세요
+//그리고 2개의 문장을 FindABC 함수로 전달 해 주세요
+//FindABC 함수에서는 대문자 A / 대문자B / 대문자 C를 각각 Counting하는 함수입니다
+//main함수에서는 FindABC함수를 통해서 구한 A, B, C의 개수를 출력 해 주세요
+//입력 예시
+//A_ShowABC
+//ABCDEFG
+//출력 예시
+//A : 3
+//B : 2
+//C : 2
 
 #include <iostream>
 
+void findABC(char _a[256], char _b[256], int* _c, int* _d, int* _e)
+{
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (_a[i] == 'A')
+		{
+			(*_c)++;
+		}
+		else if (_a[i] == 'B')
+		{
+			(*_d)++;
+		}
+		else if (_a[i] == 'C')
+		{
+			(*_e)++;
+		}
+	}
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (_b[i] == 'A')
+		{
+			(*_c)++;
+		}
+		else if (_b[i] == 'B')
+		{
+			(*_d)++;
+		}
+		else if (_b[i] == 'C')
+		{
+			(*_e)++;
+		}
+	}
+}
+
 int main()
 {
-
+	char arra[256] = {};
+	std::cin >> arra;
+	char arrb[256] = {};
+	std::cin >> arrb;
+	int Acount = 0;
+	int Bcount = 0;
+	int Ccount = 0;
+	int* pAcount = &Acount;
+	int* pBcount = &Bcount;
+	int* pCcount = &Ccount;
+	findABC(arra, arrb, &Acount, &Bcount, &Ccount);
+	std::cout << "A:" << Acount << "\n";
+	std::cout << "B:" << Bcount << "\n";
+	std::cout << "C:" << Ccount;
 }
 
 //문제 8번
+//아래와 같은 구조체를 먼저 정의 해 주세요
+//구조체 변수 int1, int2 를 만들어 주세요
+//이 구조체 변수에 들어갈 내용을 입력 받고
+//평균을 구해서 출력 해 주세요
+//name = char 배열
+//age = int 변수
+//weight = int 변수
+//[TIP] 정의하다 라는 뜻
+//1. 함수 정의
+//함수를 호출하려면 함수를 미리 만들어 놔야 합니다.
+//함수를 미리 만들어 두는 것을 "함수를 정의하다" 라고 표현합니다
+//2. 구조체 정의
+//구조체 변수를 만드려면 미리 구조체 Type을 만들어 두어야 합니다
+//구조체 Type을 미리 만들어 두는 것을 "구조체 정의하다" 라고 표현합니다
+//구조체 변수를 만드는 것은 "선언하다" 라고 부릅니다.
+//정의하다 vs 선언하다 이 단어를 구분할 줄 알아야 합니다.
+//"정의하다"라는 용어 알아두세요!
+//입력 예시
+//JASON
+//35
+//80
+//TOMS
+//20
+//40
+//출력 예시
+//JASON & TOMS
+//평균27세
+//평균60KG
 
 #include <iostream>
 
+struct PROFILE
+{
+	char name[7];
+	int age;
+	int weight;
+};
+
 int main()
 {
-
+	PROFILE int1 = {};
+	PROFILE int2 = {};
+	std::cin >> int1.name;
+	std::cin >> int1.age;
+	std::cin >> int1.weight;
+	std::cin >> int2.name;
+	std::cin >> int2.age;
+	std::cin >> int2.weight;
+	std::cout << int1.name << " & " << int2.name << "\n";
+	std::cout << "평균" << (int1.age + int2.age) / 2 << "세" << "\n";
+	std::cout << "평균" << (int1.weight + int2.weight) / 2 << "KG";
 }
 
 //문제 9번
+//아래 배열을 전역으로 하드코딩 해 주세요
+//(전역변수를 쓰지않고 푸는 문제입니다)
+//D	A S
+//Q	W V
+//R	T Y
+//main함수에서
+//- 좌표 2쌍(숫자 4개) 입력 받아주세요(y축, x축)
+//- Find함수를 호출하는데 입력받은 숫자를 넘겨주세요
+//Find함수는 좌표 2쌍에 해당하는 값을 찾아주는 함수입니다
+//main함수에서 좌표에 해당하는 값을 출력 해 주세요
+//입력 예시
+//0 2
+//1 1
+//출력 예시
+//S W
 
 #include <iostream>
 
+char arr2d[3][256] =
+{
+	"DAS",
+	"QWV",
+	"RTY"
+};
+
+char find(int _a, int _b)
+{
+	char a = 0;
+	a = arr2d[_a][_b];
+	return a;
+}
+
 int main()
 {
-
+	int X1 = 0;
+	std::cin >> X1;
+	int Y1 = 0;
+	std::cin >> Y1;
+	int X2 = 0;
+	std::cin >> X2;
+	int Y2 = 0;
+	std::cin >> Y2;
+	std::cout << find(X1, Y1);
+	std::cout << find(X2, Y2);
 }
 
 //문제 10번
+//아래 표는 나라별 거리를 나타낸 표 입니다
+//A B C D E F G
+//4 2 5 1 6 7 3
+//알파벳은 나라를 의미합니다
+//A 나라에서 E 나라까지 가려면 B, C, D를 거쳐야 합니다
+//따라서 거리는 2 + 5 + 1 = 8 이 됩니다
+//민스는 지효를 만나기 위해 얼마나 멀리 떨어져 있는지 알아보려고 합니다
+//민스가 있는 나라와, 지효가 있는 나라를 입력 받고
+//두 사람의 거리를 계산해서 출력 해 주세요
+//ex) 만약 E B를 입력받았다면
+//E와 B 사이에 D와 C가 있으니까 1 + 5 = 6 이 정답입니다
+//[힌트] 알파벳을 인덱스로 바꾸는 방법
+//char ch1, ch2;
+//cin >> ch1 >> ch2;
+//int aIndex = ch1 - 'A';
+//int bIndex = ch2 - 'A';
+//입력 예시
+//E B
+//출력 예시
+//6
 
 #include <iostream>
 
 int main()
 {
-
+	char arr2d[2][256] =
+	{
+		"ABCDEFG",
+		"4251673"
+	};
+	char a = 0;
+	std::cin >> a;
+	char b = 0;
+	std::cin >> b;
+	int aidx = a - 'A';
+	int bidx = b - 'A';
+	int c = 0;
+	int d = 0;
+	if (aidx > bidx)
+	{
+		for (int i = bidx + 1; i <= aidx - 1; i++)
+		{
+			c = arr2d[1][i] - 48;
+			d = d + c;
+		}
+	}
+	else if (bidx > aidx)
+	{
+		for (int i = aidx + 1; i <= bidx - 1; i++)
+		{
+			c = arr2d[1][i] - 48;
+			d = d + c;
+		}
+	}
+	std::cout << d;
 }
 
 //문제 11번
+//1x5 배열 A, B, C 3개를 만들고 숫자 15개를 입력 받으세요.
+//배열 A와 배열 B의 각각 같은 index값 끼리 곱을 합니다.
+//그리고 배열 C칸과 같은 index끼리 합을 구한 결과를 출력 하세요.
+//ex)
+//입력: = > 출력: 10 17 10 15 67
+//3 5 1 2 7
+//1 2 1 5 9
+//7 7 9 5 4
+//입력 예시
+//3 5 1 2 7
+//1 2 1 5 9
+//7 7 9 5 4
+//출력 예시
+//10 17 10 15 67
 
 #include <iostream>
 
 int main()
 {
-
+	int arrA[5] = {};
+	int arrB[5] = {};
+	int arrC[5] = {};
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arrA[i];
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arrB[i];
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arrC[i];
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cout << arrA[i] * arrB[i] + arrC[i] << " ";
+	}
 }
 
 //문제 12번
@@ -347,5 +570,46 @@ int main()
 
 int main()
 {
-
+	int arr2d[4][4] =
+	{
+		{3,4,1,6},
+		{3,5,3,6},
+		{},
+		{5,4,6,0}
+	};
+	int arr[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr[i];
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		arr2d[2][i] = arr[i];
+	}
+	int MAX = 0;
+	int MIN = 987654321;
+	int MAXXidx = 0;
+	int MAXYidx = 0;
+	int MINXidx = 0;
+	int MINYidx = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (arr2d[i][j] > MAX)
+			{
+				MAX = arr2d[i][j];
+				MAXXidx = j;
+				MAXYidx = i;
+			}
+			else if (arr2d[i][j] < MIN)
+			{
+				MIN = arr2d[i][j];
+				MINXidx = j;
+				MINYidx = i;
+			}
+		}
+	}
+	std::cout << "MAX = " << MAX << "(" << MAXYidx << "," << MAXXidx << ")" << "\n";
+	std::cout << "MAX = " << MIN << "(" << MINYidx << "," << MINXidx << ")";
 }
