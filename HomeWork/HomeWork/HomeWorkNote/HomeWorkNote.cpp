@@ -2,16 +2,38 @@
 
 int main()
 {
-	char arr2d[2][8] = {};
-	std::cin >> arr2d[0];
-	std::cin >> arr2d[1];
-	int count = 0;
-	for (size_t j = 0; j < 8; j++)
+	char arr[11] = {};
+	std::cin >> arr;
+	int arrlen = 0;
+	int flag = 0;
+	for (size_t i = 0; i < 11; i++)
 	{
-		if (arr2d[0][j] != arr2d[1][j])
+		if (arr[i] == '\0')
 		{
-			count++;
+			arrlen = i;
+			break;
 		}
 	}
-	std::cout << count;
+	for (size_t i = 0; i < arrlen; i = i + 2)
+	{
+		int y = 0;
+		y = i + 1;
+		if (('A' <= arr[i] && arr[i] <= 'Z') && 
+			('a' <= arr[y] && arr[y] <= 'z'))
+		{
+			flag = 1;
+		}
+		else
+		{
+			flag = 0;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "개구리문장";
+	}
+	else
+	{
+		std::cout << "일반문장";
+	}
 }
