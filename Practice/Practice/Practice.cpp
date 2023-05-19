@@ -45,12 +45,16 @@ public:
 	{
 		mObjectPrinter = _Printer;
 	}
+	char GetObjectPrinter() const
+	{
+		return mObjectPrinter;
+	}
 
 	void SetPos(int2 _Pos)
 	{
 		mPos = _Pos;
 	}
-	int2 GetPos()
+	int2 GetPos() const
 	{
 		return mPos;
 	}
@@ -65,8 +69,9 @@ class Player
 {
 };
 
-std::vector< GameObject> GameObjects = {};
-GameObject GamePlayer;
+std::vector< GameObject*> GameObjects = {};
+GameObject* GamePlayer;
+GameObject GamePlayerReal = {};
 
 const int MapXsize = 5;
 const int MapYsize = 5;
@@ -87,7 +92,7 @@ void SetMap()
 
 void PlayerMove()
 {
-	int2 PlayerPos = GamePlayer.GetPos();
+	int2 PlayerPos = GamePlayer->GetPos();
 
 	if (0 == _kbhit())
 	{
@@ -127,17 +132,15 @@ void PlayerMove()
 		}
 		break;
 	}
-	GamePlayer.SetPos(PlayerPos);
+	GamePlayer->SetPos(PlayerPos);
 }
 
 void SetObjects()
 {
-	for (int i = 0; i < MapYsize; i++)
+	for (size_t i = 0; i < GameObjects.size(); i++)
 	{
-		for (int j = 0; j < MapXsize; j++)
-		{
-			arr2d[i][j] = GamePlayer.SetObjectPrinter('@');
-		}
+		int2 objectPos = GameObjects[i]->GetPos();
+		arr2d[objectPos.mY][objectPos.mX] = GameObjects[i]->GetObjectPrinter();
 	}
 }
 
@@ -147,21 +150,21 @@ void MapPrint()
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			std::cout << 'a';
+			std::cout << static_cast<char>(arr2d[i][j]);
 		}
 		std::cout << "\n";
 	}
-	/*
-		gameobjects들을 순회하면서 gameobject 들을 출력해보세요
-	*/
+	
 }
 
-int main()
+GameObject* obj = new GameObject(); 
 
+int main()
 {
+	GamePlayer = &GamePlayerReal;
 	GameObjects.push_back(GamePlayer);
-	GamePlayer.SetObjectPrinter('@');
-	GamePlayer.SetPos(int2(2, 2));
+	GamePlayer->SetObjectPrinter('@');
+	GamePlayer->SetPos(int2(2, 2));
 	while (true)
 	{
 		system("cls");
