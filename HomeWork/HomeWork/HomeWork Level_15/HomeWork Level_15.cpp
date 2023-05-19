@@ -546,10 +546,54 @@ int main()
 }
 
 //문제 11번
+//2차배열에 다섯문장을 입력받아주세요(최대 10글자)
+//이 다섯 문장 중 가장 긴 문장을 출력하시면 됩니다
+//[HINT]
+//문장의 길이를 저장 할 int length[5] 배열을 만들어주세요
+//이 배열에 각 문장의 길이를 저장하고 MAX 값이 있는 index를 구하면
+//가징 긴 문장이 어디에 있는지 찾을 수 있어요
+//입력 예시
+//ABC
+//BBQ
+//KFC
+//SHOWSHOW
+//OPT
+//출력 예시
+//SHOWSHOW
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[5][11] = {};
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+	}
+	int arrlen[5] = {};
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 11; j++)
+		{
+			if (arr[i][j] == '\0')
+			{
+				arrlen[i] = j;
+				break;
+			}
+		}
+	}
+	int max = 0;
+	int maxidx = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (arrlen[i] > max)
+		{
+			max = arrlen[i];
+			maxidx = i;
+		}
+	}
+	for (size_t i = 0; i < 11; i++)
+	{
+		std::cout << arr[maxidx][i];
+	}
 }

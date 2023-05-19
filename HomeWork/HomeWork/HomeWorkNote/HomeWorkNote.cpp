@@ -2,38 +2,35 @@
 
 int main()
 {
-	char arr[11] = {};
-	std::cin >> arr;
-	int arrlen = 0;
-	int flag = 0;
+	char arr[5][11] = {};
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+	}
+	int arrlen[5] = {};
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 11; j++)
+		{
+			if (arr[i][j] == '\0')
+			{
+				arrlen[i] = j;
+				break;
+			}
+		}
+	}
+	int max = 0;
+	int maxidx = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		if (arrlen[i] > max)
+		{
+			max = arrlen[i];
+			maxidx = i;
+		}
+	}
 	for (size_t i = 0; i < 11; i++)
 	{
-		if (arr[i] == '\0')
-		{
-			arrlen = i;
-			break;
-		}
-	}
-	for (size_t i = 0; i < arrlen; i = i + 2)
-	{
-		int y = 0;
-		y = i + 1;
-		if (('A' <= arr[i] && arr[i] <= 'Z') && 
-			('a' <= arr[y] && arr[y] <= 'z'))
-		{
-			flag = 1;
-		}
-		else
-		{
-			flag = 0;
-		}
-	}
-	if (flag == 1)
-	{
-		std::cout << "개구리문장";
-	}
-	else
-	{
-		std::cout << "일반문장";
+		std::cout << arr[maxidx][i];
 	}
 }
