@@ -2,35 +2,35 @@
 
 int main()
 {
-	char arr[5][11] = {};
-	for (size_t i = 0; i < 5; i++)
+	int a = 0;
+	std::cin >> a;
+	int arr2d[4][4] = {};
+	for (int i = 0; i < 4; i++)
 	{
-		std::cin >> arr[i];
-	}
-	int arrlen[5] = {};
-	for (size_t i = 0; i < 5; i++)
-	{
-		for (size_t j = 0; j < 11; j++)
+		int mod = i % 2;
+		if (mod == 1)
 		{
-			if (arr[i][j] == '\0')
+			for (int j = 3; j >= 0; j--)
 			{
-				arrlen[i] = j;
-				break;
+				arr2d[i][j] = a;
+				a++;
+			}
+		}
+		else
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				arr2d[i][j] = a;
+				a++;
 			}
 		}
 	}
-	int max = 0;
-	int maxidx = 0;
-	for (int i = 0; i < 5; i++)
+	for (size_t i = 0; i < 4; i++)
 	{
-		if (arrlen[i] > max)
+		for (size_t j = 0; j < 4; j++)
 		{
-			max = arrlen[i];
-			maxidx = i;
+			std::cout << arr2d[i][j] << " ";
 		}
-	}
-	for (size_t i = 0; i < 11; i++)
-	{
-		std::cout << arr[maxidx][i];
+		std::cout << "\n";
 	}
 }
