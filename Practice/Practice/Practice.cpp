@@ -75,9 +75,9 @@ int arr2d[MapYsize][MapXsize] = {};
 void SetMap()
 {
 	char MapPrint = 'a';
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < MapYsize; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < MapXsize; j++)
 		{
 			arr2d[i][j] = MapPrint;
 		}
@@ -130,6 +130,17 @@ void PlayerMove()
 	GamePlayer.SetPos(PlayerPos);
 }
 
+void SetObjects()
+{
+	for (int i = 0; i < MapYsize; i++)
+	{
+		for (int j = 0; j < MapXsize; j++)
+		{
+			arr2d[i][j] = GamePlayer.SetObjectPrinter('@');
+		}
+	}
+}
+
 void MapPrint()
 {
 	for (int i = 0; i < 5; i++)
@@ -140,19 +151,15 @@ void MapPrint()
 		}
 		std::cout << "\n";
 	}
-
 	/*
 		gameobjects들을 순회하면서 gameobject 들을 출력해보세요
 	*/
-
-
 }
 
 int main()
 
 {
 	GameObjects.push_back(GamePlayer);
-
 	GamePlayer.SetObjectPrinter('@');
 	GamePlayer.SetPos(int2(2, 2));
 	while (true)
@@ -160,6 +167,7 @@ int main()
 		system("cls");
 		SetMap();
 		PlayerMove();
+		SetObjects();
 		MapPrint();
 		Sleep(100);
 	}
