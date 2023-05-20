@@ -2,25 +2,23 @@
 
 int main()
 {
-	char arr2d[3][10] = {};
-	int last[3] = {};
-	for (int i = 0; i < 3; i++)
+	int a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	char c = 0;
+	std::cin >> c;
+
+	for (size_t k = 0; k < 2; k++)
 	{
-		std::cin >> arr2d[i];
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 10; j++)
+		for (size_t i = 0; i < a; i++)
 		{
-			if (arr2d[i][j] == '\0')
+			for (size_t j = 0; j < b; j++)
 			{
-				last[i] = j - 1;
-				break;
+				std::cout << c;
 			}
+			std::cout << "\n";
 		}
-	}
-	for (int i = 0; i < 3; i++)
-	{
-		std::cout << arr2d[i][last[i]];
+		std::cout << "\n";
 	}
 }
