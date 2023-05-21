@@ -3,16 +3,25 @@
 #include <Windows.h>
 #include <vector>
 
+enum class eGameObjectType
+{
+	Player,
+	Wall,
+
+	End,
+};
+
 class Map
 {
 public:
 
-static const int MapXsize = 5;
-static const int MapYsize = 5;
 
 protected:
 
 private:
+	static const int MapXsize = 5;
+	static const int MapYsize = 5;
+
 	Map()
 	{
 	}
@@ -69,26 +78,41 @@ class Player
 {
 };
 
-std::vector< GameObject*> GameObjects = {};
-GameObject* GamePlayer;
-GameObject GamePlayerReal = {};
 
-const int MapXsize = 5;
+std::vector<GameObject*> GameObjects[static_cast<UINT>(eGameObjectType::End)] = {};
+GameObject* GamePlayer;
+
+const int MapXsize = 6;
 const int MapYsize = 5;
-int arr2d[MapYsize][MapXsize] = {};
+char arrMap[MapYsize][MapXsize] =
+	{
+		"#####",
+		"#   #",
+		"#   #",
+		"#   #",
+		"#####"
+	};
 
 void SetMap()
 {
-	char MapPrint = 'a';
+	char MapPrint = ' ';
 	for (int i = 0; i < MapYsize; i++)
 	{
 		for (int j = 0; j < MapXsize; j++)
 		{
-			arr2d[i][j] = MapPrint;
+			if (arrMap[i][j] == '#')
+			{
+				continue;
+			}
+			arrMap[i][j] = MapPrint;
 		}
 	}
 }
 
+void SetWall()
+{
+
+}
 
 void PlayerMove()
 {
@@ -137,10 +161,15 @@ void PlayerMove()
 
 void SetObjects()
 {
-	for (size_t i = 0; i < GameObjects.size(); i++)
+	UINT TypeSize = static_cast<UINT>(eGameObjectType::End);
+
+	for (size_t i = 0; i < TypeSize; i++)
 	{
-		int2 objectPos = GameObjects[i]->GetPos();
-		arr2d[objectPos.mY][objectPos.mX] = GameObjects[i]->GetObjectPrinter();
+		for (size_t j = 0; j < GameObjects[i].size(); j++)
+		{
+			int2 objectPos = GameObjects[i][j]->GetPos();
+			arrMap[objectPos.mY][objectPos.mX] = GameObjects[i][j]->GetObjectPrinter();
+		}
 	}
 }
 
@@ -150,19 +179,33 @@ void MapPrint()
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			std::cout << static_cast<char>(arr2d[i][j]);
+			std::cout << (arrMap[i][j]);
 		}
 		std::cout << "\n";
 	}
 	
 }
 
-GameObject* obj = new GameObject(); 
+
+GameObject* obj = new GameObject();
 
 int main()
 {
-	GamePlayer = &GamePlayerReal;
-	GameObjects.push_back(GamePlayer);
+	for (int i = 0; i < MapYsize; i++)
+	{
+		for (int j = 0; j < MapXsize; j++)
+		{
+			if('#' == arrMap[i][j])
+			{
+				GameObject* newWall = new GameObject();
+				GameObjects[(UINT)eGameObjectType::Wall].push_back(newWall);
+				newWall->SetPos(int2(j, i));
+				newWall->SetObjectPrinter('#');
+			}
+		}
+	}
+	GamePlayer = new GameObject();	
+	GameObjects[(UINT)eGameObjectType::Player].push_back(GamePlayer);
 	GamePlayer->SetObjectPrinter('@');
 	GamePlayer->SetPos(int2(2, 2));
 	while (true)
@@ -174,5 +217,15 @@ int main()
 		MapPrint();
 		Sleep(100);
 	}
-	int a = 0;
+
+	UINT TypeSize = static_cast<UINT>(eGameObjectType::End);
+
+	for (size_t i = 0; i < TypeSize; i++)
+	{
+		for (size_t j = 0; j < GameObjects[i].size(); j++)
+		{
+			delete GameObjects[i][j];
+			GameObjects[i][j] = nullptr;
+		}
+	}
 }
