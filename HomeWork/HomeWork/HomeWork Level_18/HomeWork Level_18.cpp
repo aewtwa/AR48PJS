@@ -709,7 +709,11 @@ int main()
 	char arr[256] = {};
 	for (size_t i = 0; i < n; i++)
 	{
-
+		if (vect == '\0')
+		{
+			break;
+		}
+		arr[vect[i]]++;
 	}
 }
 
