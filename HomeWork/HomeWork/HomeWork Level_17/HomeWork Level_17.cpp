@@ -576,73 +576,409 @@ int main()
 }
 
 //문제 12번
+//아래에 그림처럼 vect배열을 하드코딩 하고, 비트배열을 입력 받으세요.
+//마스킹 한 후 나오는 값을 7로 바꾸어 출력 해주세요
+//3 5 4 2 6 6 5
+//입력 예제
+//0 1 1 0 1 1 0
+//출력 결과
+//0770770
 
 #include <iostream>
 
 int main()
 {
-
+    int vect[7] = { 3,5,4,2,6,6,5 };
+    int bit[7] = {};
+    for (size_t i = 0; i < 7; i++)
+    {
+        std::cin >> bit[i];
+    }
+    for (size_t i = 0; i < 7; i++)
+    {
+        if (bit[i] == 1)
+        {
+            std::cout << 7;
+        }
+        else
+        {
+            std::cout << 0;
+        }
+    }
 }
 
 //문제 13번
+//금고 비밀번호는 3 7 4 9 입니다.
+//그리고 네 자리 비밀번호를 input 배열에 입력받고,
+//완전히 동일한 비밀번호인지 isSame 함수를 이용해서 풀어주세요.
+//동일하면 "pass", 그렇지 않으면 "fail" 로 출력 해주세요.
+//입력 예제
+//3 7 4 9
+//출력 결과
+//pass
 
 #include <iostream>
 
+void input(int* _a)
+{
+    for (size_t i = 0; i < 4; i++)
+    {
+        std::cin >> _a[i];
+    }
+}
+
+void isSame(int* _a, int* _b)
+{
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (_a[i] != _b[i])
+        {
+            std::cout << "fail";
+            return;
+        }
+    }
+    std::cout << "pass";
+}
+
 int main()
 {
-
+    int password[4] = { 3,7,4,9 };
+    int arr[4] = {};
+    input(arr);
+    isSame(arr, password);
 }
 
 //문제 14번
+//다이어트를 시작하기 위해 칼로리별로 과일이 몇 개 있는지 counting하려고 합니다.
+//먼저 levelTable 배열을 하드코딩 해 주세요
+//10  20
+//30  60
+//100 150
+//200 300
+//levelTable에서
+//lev0(단계0)은 10 <= x <= 20 사이의 칼로리를,
+//lev1(단계1)은 30 <= x <= 60 사이의 칼로리를,
+//lev2(단계2)는 100 <= x <= 150 사이의 칼로리를,
+//lev3(단계3)은 200 <= x <= 300 사이의 칼로리를 뜻합니다.
+//이제 과일 6개의 칼로리를 입력 받으세요. (숫자 6개 입력)
+//단계0부터 단계3까지 각 단계마다
+//과일이 몇개 있는지 Counting 후 출력 해 주세요.
+//입력 예제
+//15 15 15 40 100 105
+//출력 결과
+//lev0 : 3
+//lev1 : 1
+//lev2 : 2
+//lev3 : 0
 
 #include <iostream>
 
 int main()
 {
-
+    int arr2d[4][2] =
+    {
+        10,20,
+        30,60,
+        100,150,
+        200,300
+    };
+    int arr[6] = {};
+    for (size_t i = 0; i < 6; i++)
+    {
+        std::cin >> arr[i];
+    }
+    int arr2[4] = {};
+    for (size_t k = 0; k < 6; k++)
+    {
+        for (size_t i = 0; i < 4; i++)
+        {
+            if (arr2d[i][0] <= arr[k] && arr[k] <= arr2d[i][1])
+            {
+                if (i == 0)
+                {
+                    arr2[i]++;
+                }
+                if (i == 1)
+                {
+                    arr2[i]++;
+                }
+                if (i == 2)
+                {
+                    arr2[i]++;
+                }
+                if (i == 3)
+                {
+                    arr2[i]++;
+                }
+            }
+        }
+    }
+    for (size_t i = 0; i < 4; i++)
+    {
+        std::cout << "Lev" << i << " : " << arr2[i] << "\n";
+    }
 }
 
 //문제 15번
+//map 배열을 하드코딩하고,
+//pix 배열에 숫자 4개를 입력받으세요
+//pix배열에 있는 색상값들이 map에 존재하는 컬러인지 확인해주는 프로그램을 작성 해주세요.
+//만약 pix배열에
+//1 10
+//55 - 5
+//값이 입력되었다면, 아래 그림같이 배열에 값이 채워집니다.
+//pix 배열에 있는 컬러가 map에 있다면 Y를, 없다면 N을 출력하면 됩니다.
+//ex)
+//입력 예제
+//1 10
+//55 - 5
+//출력 결과
+//N N
+//Y Y
 
 #include <iostream>
 
 int main()
 {
-
+    int map[2][3] =
+    {
+        3,55,42,
+        -5,-9,-10
+    };
+    int pix[2][2] = {};
+    for (size_t i = 0; i < 2; i++)
+    {
+        for (size_t j = 0; j < 2; j++)
+        {
+            std::cin >> pix[i][j];
+        }
+    }
+    int arr[2][2] = {};
+    for (size_t i = 0; i < 2; i++)
+    {
+        for (size_t j = 0; j < 2; j++)
+        {
+            for (size_t k = 0; k < 2; k++)
+            {
+                for (size_t l = 0; l < 3; l++)
+                {
+                    if (map[k][l] == pix[i][j])
+                    {
+                        arr[i][j] = 1;
+                        break;
+                    }
+                    else
+                    {
+                        arr[i][j] = 0;
+                    }
+                }
+                if (arr[i][j] == 1)
+                {
+                    break;
+                }
+            }
+        }
+    }
+    for (size_t i = 0; i < 2; i++)
+    {
+        for (size_t j = 0; j < 2; j++)
+        {
+            if (arr[i][j] == 1)
+            {
+                std::cout << "Y ";
+            }
+            else
+            {
+                std::cout << "N ";
+            }
+        }
+        std::cout << "\n";
+    }
 }
 
 //문제 16번
+//arr배열에 숫자 6개를 입력 받습니다.
+//masking 처리 후 남은값들 중에서
+//min값을 찾고 min값의 index를 출력 하세요.
+//입력 예제
+//3 5 4 2 5 1
+//출력 결과
+//arr[0] = 3
 
 #include <iostream>
 
 int main()
 {
-
+    int mask[6] = { 1,0,1,0,1,0 };
+    int arr[6] = {};
+    for (size_t i = 0; i < 6; i++)
+    {
+        std::cin >> arr[i];
+    }
+    int min = 987654321;
+    int minidx = 0;
+    for (size_t i = 0; i < 6; i++)
+    {
+        if (mask[i] == 1)
+        {
+            for (size_t j = 0; j < 6; j++)
+            {
+                if (arr[i] < min)
+                {
+                    min = arr[i];
+                    minidx = i;
+                }
+            }
+        }
+    }
+    std::cout << "arr[" << minidx << "] = " << min;
 }
 
 //문제 17번
+//masking 처리 후, 3부터 5사이의 숫자가 존재하는지 출력.
+//(3 <= x <= 5)
+//ex)
+//존재하면 "발견"
+//존재하지 않으면 "미발견"
+//입력 예제
+//1 1 1
+//1 0 0
+//1 0 0
+//출력 결과
+//발견
 
 #include <iostream>
 
 int main()
 {
-
+    int arr1[3][3] =
+    {
+        3,1,9,
+        7,2,1,
+        1,0,8
+    };
+    int arr2[3][3] = {};
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 3; j++)
+        {
+            std::cin >> arr2[i][j];
+        }
+    }
+    int flag = 0;
+    for (size_t i = 0; i < 3; i++)
+    {
+        for (size_t j = 0; j < 3; j++)
+        {
+            if (arr2[i][j] == 1)
+            {
+                if (3 <= arr1[i][j] && arr1[i][j] <= 5)
+                {
+                    flag = 1;
+                    break;
+                }
+            }
+        }
+        if (flag == 1)
+        {
+            break;
+        }
+    }
+    if (flag == 1)
+    {
+        std::cout << "발견";
+    }
+    else
+    {
+        std::cout << "미발견";
+    }
 }
 
 //문제 18번
+//3	5 4	2
+//위 배열을 하드코딩하고,
+//네 자리 비트배열을 입력 받으세요.
+//마스킹 처리 후, 남은 숫자들의 합을 구해서 출력하면 됩니다.
+//예를들어
+//0 1 0 1 을 입력했다면, 다음과 같이 그릴 수 있습니다.
+//입력 예제
+//0 1 0 1
+//출력 결과
+//7
 
 #include <iostream>
 
 int main()
 {
-
+    int arr[4] = { 3,5,4,2 };
+    int arr1[4] = {};
+    for (size_t i = 0; i < 4; i++)
+    {
+        std::cin >> arr1[i];
+    }
+    int sum = 0;
+    for (size_t i = 0; i < 4; i++)
+    {
+        if (arr1[i] == 1)
+        {
+            sum = sum + arr[i];
+        }
+    }
+    std::cout << sum;
 }
 
 //문제 19번
+//A B C D E
+//F G H I J
+//K L M N O
+//P Q R S T
+//U V W X Y
+//문자 1개를 입력 받으세요.
+//해당 알파벳이 'M'(2, 2)로 부터 얼만큼 떨어져있는지 offset값을 출력 해주세요.
+//(offset : y, x 기준)
+//예를들어
+//N은 0, 1 만큼 떨어져있고,
+//H는 - 1, 0 만큼 떨어져있습니다.
+//입력 예제
+//F
+//출력 결과
+//- 1, -2
 
 #include <iostream>
 
 int main()
 {
-
+    char map[5][5] =
+    {
+        'A','B','C','D','E',
+        'F','G','H','I','J',
+        'K','L','M','N','O',
+        'P','Q','R','S','T',
+        'U','V','W','X','Y'
+    };
+    int y = 0;
+    int x = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (map[i][j] == 'M')
+            {
+                y = i;
+                x = j;
+            }
+        }
+    }
+    char a = 0;
+    std::cin >> a;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (map[i][j] == a)
+            {
+                std::cout << i - y << "," << j - x;
+            }
+        }
+    }
 }

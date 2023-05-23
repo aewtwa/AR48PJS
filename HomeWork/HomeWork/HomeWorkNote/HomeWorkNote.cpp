@@ -2,29 +2,37 @@
 
 int main()
 {
-	int arr2d[3][5] =
-	{
-		1,3,3,5,1,
-		3,6,2,4,2,
-		1,9,2,6,5
-	};
-	int n = 0;
-	std::cin >> n;
-	int arr[10] = {};
-	for (size_t i = 0; i < 3; i++)
-	{
-		for (size_t j = 0; j < 5; j++)
-		{
-			int target = arr2d[i][j];
-			arr[target]++;
-		}
-	}
-	int arr1[10] = {};
-	for (size_t i = 1; i < 10; i++)
-	{
-		if (arr[i] == n)
-		{
-			std::cout << i;
-		}
-	}
+    char map[5][5] =
+    {
+        'A','B','C','D','E',
+        'F','G','H','I','J',
+        'K','L','M','N','O',
+        'P','Q','R','S','T',
+        'U','V','W','X','Y'
+    };
+    int y = 0;
+    int x = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (map[i][j] == 'M')
+            {
+                y = i;
+                x = j;
+            }
+        }
+    }
+    char a = 0;
+    std::cin >> a;
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if (map[i][j] == a)
+            {
+                std::cout << i - y << "," << j - x;
+            }
+        }
+    }
 }
