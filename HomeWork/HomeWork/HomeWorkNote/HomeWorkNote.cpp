@@ -2,17 +2,36 @@
 
 int main()
 {
-	char vect[10] = "MINCODING";
-	int n = 0;
-	std::cin >> n;
-	int bucket[256] = {};
+	char arr[256] = {};
+	std::cin >> arr;
+	char arr1[6] = "GHOST";
+	int flag = 0;
 	for (size_t i = 0; i < 256; i++)
 	{
-		bucket[vect[i]]++;
+		if (arr[i] == arr1[0])
+		{
+			for (size_t j = 0; j < 5; j++)
+			{
+				for (size_t k = i; k < i + 5; k++)
+				{
+					if (arr1[j] == arr[k])
+					{
+						flag = 1;
+					}
+					else
+					{
+						flag = 0;
+					}
+				}
+			}
+		}
 	}
-	char arr[256] = {};
-	for (size_t i = 0; i < n; i++)
+	if (flag == 1)
 	{
-		std::cin >> arr[i];
+		std::cout << "존재";
+	}
+	else
+	{
+		std::cout << "존재하지 않음";
 	}
 }

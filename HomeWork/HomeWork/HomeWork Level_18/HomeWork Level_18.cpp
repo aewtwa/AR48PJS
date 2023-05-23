@@ -333,9 +333,48 @@ int main()
 
 #include <iostream>
 
+void isPattern(int(*_a)[3], int* _b)
+{
+	int floor = 0;
+	int count = 3;
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (_a[i][j] == _b[j])
+			{
+				floor = 5 - i;
+				count--;
+			}
+			else
+			{
+				break;
+			}
+		}
+		if (count == 0)
+		{
+			break;
+		}
+	}
+	std::cout << floor << "층";
+}
+
 int main()
 {
-
+	int arr2d[5][3] =
+	{
+		15,18,17,
+		4,6,9,
+		10,1,3,
+		7,8,9,
+		15,2,6
+	};
+	int family[3] = {};
+	for (size_t i = 0; i < 3; i++)
+	{
+		std::cin >> family[i];
+	}
+	isPattern(arr2d, family);
 }
 
 //문제 9번
@@ -706,14 +745,27 @@ int main()
 	char vect[10] = "MINCODING";
 	int n = 0;
 	std::cin >> n;
-	char arr[256] = {};
-	for (size_t i = 0; i < n; i++)
+	int arr[256] = {};
+	char arr2[256] = {};
+	std::cin >> arr2;
+	for (size_t i = 0; i < 10; i++)
 	{
-		if (vect == '\0')
+		if (vect[i] == '\0')
 		{
 			break;
 		}
 		arr[vect[i]]++;
+	}
+	for (size_t i = 0; i < n; i++)
+	{
+		if (arr[arr2[i]] > 0)
+		{
+			std::cout << "O";
+		}
+		else
+		{
+			std::cout << "X";
+		}
 	}
 }
 
@@ -744,32 +796,158 @@ int main()
 
 int main()
 {
-
+	char arr2d[3][256] = {};
+	for (size_t i = 0; i < 3; i++)
+	{
+		std::cin >> arr2d[i];
+	}
+	int arr[256] = {};
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 256; j++)
+		{
+			arr[arr2d[i][j]]++;
+		}
+	}
+	int flag = 0;
+	for (size_t i = 1; i < 256; i++)
+	{
+		if (arr[i] > 1)
+		{
+			flag = 1;
+			break;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "NO";
+	}
+	else
+	{
+		std::cout << "Perfect";
+	}
 }
 
 //문제 18번
+//한문장을 입력 받고, 중복 알파벳을 제거한 후 알파벳 순서대로 출력 해주세요.
+//(A~F글자, 최대 10글자, direct address table 자료구조를 이용해주세요)
+//ex)
+//입력 : ABBACCDEA
+//출력 : ABCDE
+//입력 예제
+//ABBACCDEA
+//출력 결과
+//ABCDE
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[11] = {};
+	std::cin >> arr;
+	int bucket[256] = {};
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (arr[i] == '\0')
+		{
+			bucket[arr[i]]++;
+			break;
+		}
+	}
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (bucket[i] > 0)
+		{
+			std::cout << (char)i;
+		}
+	}
 }
 
 //문제 19번
+//한문장을 입력받고, 각 글자마다 수를 출력 해주세요.
+//최대 10글자 까지 입력될 수 있습니다
+//(DirectAddressTable을 이용해주세요)
+//ex)
+//입력 : BTABATP
+//출력 :
+//A:2
+//B : 2
+//P : 1
+//T : 2
+//입력 예제
+//BTABATP
+//출력 결과
+//A : 2
+//B : 2
+//P : 1
+//T : 2
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[11] = {};
+	std::cin >> arr;
+	int bucket[256] = {};
+	for (size_t i = 0; i < 10; i++)
+	{
+		bucket[arr[i]]++;
+	}
+	for (size_t i = 1; i < 256; i++)
+	{
+		if (bucket[i] > 0)
+		{
+			std::cout << (char)i << " : " << bucket[i] << "\n";
+		}
+	}
 }
 
 //문제 20번
+//한 문장을 입력 받으세요.
+//한 문장에서 GHOST 단어가 존재하는지 찾아서 출력 해 주세요.
+//QGHOSTA를 입력 받았다면
+//입력받은 문장안에 GHOST 가 존재 하므로 존재를 출력 해 주세요.
+//ABGOSAT를 입력 받았다면
+//입력받은 문장안에 GHOST가 존재 하지 않으므로 존재하지 않음 을 출력 해 주세요.
+//입력 예제
+//QGHOSTA
+//출력 결과
+//존재
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[256] = {};
+	std::cin >> arr;
+	char arr1[6] = "GHOST";
+	int flag = 0;
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (arr[i] == arr1[0])
+		{
+			for (size_t j = 0; j < 5; j++)
+			{
+				for (size_t k = i; k < i + 5; k++)
+				{
+					if (arr1[j] == arr[k])
+					{
+						flag = 1;
+					}
+					else
+					{
+						flag = 0;
+					}
+				}
+			}
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "존재";
+	}
+	else
+	{
+		std::cout << "존재하지 않음";
+	}
 }
