@@ -32,22 +32,15 @@ int main()
     std::cin >> b;
     int Y = 0;
     int X = 0;
-    int flag = 0;
     for (size_t i = 0; i < 3; i++)
     {
-        for (size_t j = 0; j < 5; j++)
+        for (size_t j = 0; j < 4; j++)
         {
             if (map[i][j] == A)
             {
                 Y = i;
                 X = j;
-                flag = 1;
-                break;
             }
-        }
-        if (flag == 1)
-        {
-            break;
         }
     }
     std::cout << "Find : " << map[Y + a][X + b];
