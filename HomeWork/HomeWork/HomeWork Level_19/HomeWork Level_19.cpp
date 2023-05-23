@@ -84,6 +84,21 @@ int main()
 }
 
 //문제 3번
+//왼쪽과 같은 형태의 구조체를 정의해주세요.
+//그리고 구조체 변수 bob, tom을 만들고, 문장 4개를 구조체 변수에 입력 받아주세요.
+//sanghi, bulgogi, chicken, dove
+//만약 네 문장을 아래와 같이 입력 받았다면, 아래와 같이 채워주세요.
+//이제 각각 몇글자인지 출력하면 됩니다.
+//입력 예제
+//sanghi
+//bulgogi
+//chicken
+//dove
+//출력 결과
+//bob.burger1 = 6
+//bob.burger2 = 7
+//tom.burger1 = 7
+//tom.burger2 = 4
 
 #include <iostream>
 
@@ -92,6 +107,17 @@ struct MC
 	char burger1[8];
 	char burger2[8];
 };
+
+int getlen(char* _a)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		if (_a[i] == '\0')
+		{
+			return i;
+		}
+	}
+}
 
 int main()
 {
@@ -105,42 +131,10 @@ int main()
 	int bobburger2count = 0;
 	int tomburger1count = 0;
 	int tomburger2count = 0;
-	for (int i = 0; i < 8; i++)
-	{
-		if (bob.burger1[i] == '\0')
-		{
-			bobburger1count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (bob.burger2[i] == '\0')
-		{
-			bobburger2count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (tom.burger1[i] == '\0')
-		{
-			tomburger1count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (tom.burger2[i] == '\0')
-		{
-			tomburger2count = i;
-			break;
-		}
-	}
-	std::cout << "bob.burger1 = " << bobburger1count << "\n";
-	std::cout << "bob.burger2 = " << bobburger2count << "\n";
-	std::cout << "tom.burger1 = " << tomburger1count << "\n";
-	std::cout << "tom.burger2 = " << tomburger2count;
+	std::cout << "bob.burger1 = " << getlen(bob.burger1) << "\n";
+	std::cout << "bob.burger2 = " << getlen(bob.burger2) << "\n";
+	std::cout << "tom.burger1 = " << getlen(tom.burger1) << "\n";
+	std::cout << "tom.burger2 = " << getlen(tom.burger2);
 }
 
 //문제 4번

@@ -6,6 +6,17 @@ struct MC
 	char burger2[8];
 };
 
+int getlen(char* _a)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		if (_a[i] == '\0')
+		{
+			return i;
+		}
+	}
+}
+
 int main()
 {
 	MC bob = {};
@@ -18,41 +29,8 @@ int main()
 	int bobburger2count = 0;
 	int tomburger1count = 0;
 	int tomburger2count = 0;
-	for (int i = 0; i < 8; i++)
-	{
-		if (bob.burger1[i] == '\0')
-		{
-			bobburger1count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (bob.burger2[i] == '\0')
-		{
-			bobburger2count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (tom.burger1[i] == '\0')
-		{
-			tomburger1count = i;
-			break;
-		}
-	}
-	for (int i = 0; i < 8; i++)
-	{
-		if (tom.burger2[i] == '\0')
-		{
-			tomburger2count = i;
-			break;
-		}
-	}
-	std::cout << "bob.burger1 = " << bobburger1count << "\n";
-	std::cout << "bob.burger2 = " << bobburger2count << "\n";
-	std::cout << "tom.burger1 = " << tomburger1count << "\n";
-	std::cout << "tom.burger2 = " << tomburger2count;
+	std::cout << "bob.burger1 = " << getlen(bob.burger1) << "\n";
+	std::cout << "bob.burger2 = " << getlen(bob.burger2) << "\n";
+	std::cout << "tom.burger1 = " << getlen(tom.burger1) << "\n";
+	std::cout << "tom.burger2 = " << getlen(tom.burger2);
 }
-	
