@@ -7,11 +7,19 @@
 class Player
 {
 public:
+    // 생성자 (라는 함수)
+    Player()
+        : x(0)
+        , y(0)
+        , grade(0)
+    {
+        
+    }
 
-
-private:
+public:
     int x;
     int y;
+    char grade;
 };
 
 
@@ -19,7 +27,13 @@ int main()
 {
     Player warrior;
 
+    int len = sizeof(warrior);
 
+    // 바이트 패딩
+    // 캐시적중율
+    warrior.x = 10;
+    warrior.y = 10;
+    warrior.grade = 'A';
 
     return;
 }

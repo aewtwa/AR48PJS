@@ -47,6 +47,50 @@ void Increase()
     std::cout << g;
 }
 
+// 전달인자 parameter
+// 전달인자 이름은 같지만 다른변수이다.
+// paramter 변수이름은 소문자로 지어준다.
+// 이름을 다르게 지어서 원천적으로
+// 헷갈리게 되는 현상을 차단하자.
+
+// 얕은 복사 (call by value)
+// 재귀 함수 
+// 가상 함수
+// 허수 상대성이론
+
+// 함수의 이름을 똑같이 하고 전달인자를 다르게 해주는 문법을
+// 함수 오버로딩 overloading
+int Add(int a /*= a2*/, int b)
+{
+    int temp = 0;
+    temp = a + b;
+    a = 7;
+    return temp;
+}
+float Add(float a /*= a2*/, float b)
+{
+    float temp = 0;
+    temp = a + b;
+    a = 7;
+    return temp;
+}
+char Add(char a /*= a2*/, char b)
+{
+    char temp = 0;
+    temp = a + b;
+    a = 7;
+    return temp;
+}
+
+
+// 함수 템플릿 (function template)
+template <typename T>
+T Add(T a, T b)
+{
+    T temp = 0;
+    temp = a + b;
+    return temp;
+}
 
 int main()
 {
