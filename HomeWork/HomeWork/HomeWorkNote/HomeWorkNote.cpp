@@ -1,36 +1,48 @@
 ﻿#include <iostream>
 
-struct MC
-{
-	char burger1[8];
-	char burger2[8];
-};
+int image[4][4] = {};
 
-int getlen(char* _a)
+int rectSum(int _a, int _b)
 {
-	for (int i = 0; i < 8; i++)
+	int sum = 0;
+	int max = 0;
+	for (size_t y = 0; y < 2; y++)
 	{
-		if (_a[i] == '\0')
+		for (size_t x = 0; x < 3; x++)
 		{
-			return i;
+			sum = sum + image[_a + y][_b + x];
 		}
 	}
+	return sum;
 }
 
 int main()
 {
-	MC bob = {};
-	MC tom = {};
-	std::cin >> bob.burger1;
-	std::cin >> bob.burger2;
-	std::cin >> tom.burger1;
-	std::cin >> tom.burger2;
-	int bobburger1count = 0;
-	int bobburger2count = 0;
-	int tomburger1count = 0;
-	int tomburger2count = 0;
-	std::cout << "bob.burger1 = " << getlen(bob.burger1) << "\n";
-	std::cout << "bob.burger2 = " << getlen(bob.burger2) << "\n";
-	std::cout << "tom.burger1 = " << getlen(tom.burger1) << "\n";
-	std::cout << "tom.burger2 = " << getlen(tom.burger2);
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> image[i][j];
+		}
+	}
+	int A = 0;
+	int B = 0;
+	int sumarr[4][4] = {};
+	int max = 0;
+	int maxY = 0;
+	int maxX = 0;
+	for (A = 0; A < 4; A++)
+	{
+		for (B = 0; B < 4; B++)
+		{
+			sumarr[A][B] = rectSum(A, B);
+			if (max < sumarr[A][B])
+			{
+				max = sumarr[A][B];
+				maxY = A;
+				maxX = B;
+			}
+		}
+	}
+	std::cout << "(" << maxY << "," << maxX << ")";
 }
