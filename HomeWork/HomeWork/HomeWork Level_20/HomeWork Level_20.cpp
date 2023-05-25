@@ -197,25 +197,24 @@ int main()
 
 #include <iostream>
 
-int arr[8] = { 3,7,4,1,9,4,6,2 };
-
-void abc(int _a)
+void abc(int* _a, int _b)
 {
-	if (_a == 0)
+	if (_b == 0)
 	{
-		std::cout << arr[_a];
+		std::cout << _a[_b];
 		return;
 	}
-	std::cout << arr[_a];
-	abc(_a - 1);
-	std::cout << arr[_a];
+	std::cout << _a[_b];
+	abc(_a, _b - 1);
+	std::cout << _a[_b];
 }
 
 int main()
 {
+	int arr[8] = { 3,7,4,1,9,4,6,2 };
 	int a = 0;
 	std::cin >> a;
-	abc(a);
+	abc(arr, a);
 }
 //문제 8번
 //숫자 1개를 입력받고

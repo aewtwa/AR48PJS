@@ -1,16 +1,39 @@
 ﻿#include <iostream>
 
-void abc(int _a)
+void draw(int(*_a)[4])
 {
-	if (_a == 0)
-		return;
-	abc(_a / 2);
-	std::cout << _a;
+	char a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	if (a == 'G')
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			_a[b][i] = 1;
+		}
+	}
+	else if (a == 'S')
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			_a[i][b] = 1;
+		}
+	}
 }
 
 int main()
 {
-	int a = 0;
-	std::cin >> a;
-	abc(a);
+	int arr[4][4] = {};
+	draw(arr);
+	draw(arr);
+	draw(arr);
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << arr[i][j];
+		}
+		std::cout << "\n";
+	}
 }

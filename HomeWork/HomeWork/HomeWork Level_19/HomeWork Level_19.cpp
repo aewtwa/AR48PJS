@@ -527,39 +527,206 @@ int main()
 }
 
 //문제 10번
+//※ main 함수에서 a, b를 출력 해주세요.
+//입력 예제
+//4 2 5 3 8
+//출력 결과
+//a = 8
+//b = 2
 
 #include <iostream>
 
+void bbq(int* _a, int* _b)
+{
+	int arr[5] = {};
+	int max = 0;
+	int min = 987654321;
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+		if (arr[i] > max)
+			max = arr[i];
+		else if (arr[i] < min)
+			min = arr[i];
+	}
+	*_a = max;
+	*_b = min;
+}
+
 int main()
 {
-
+	int a = 0;
+	int b = 0;
+	bbq(&a, &b);
+	std::cout << "a=" << a << "\n";
+	std::cout << "b=" << b;
 }
 
 //문제 11번
+//5x4 배열에 0 또는 1로 구성된 숫자들을 입력받아주세요.
+//입력받은 배열에 있는 숫자 1은 세포를 뜻합니다.
+//세포 1주변에 아무것도 없으면 세포들이 안정된 상태입니다.
+//즉, 8방향 모두 아무런 숫자가 없어야 합니다.
+//아래 예제를 참고하여,
+//입력받은 세포상태가 "안정된 상태"인지 "불안정한 상태"인지 출력 하세요.
+//입력 예제
+//0 0 0 0
+//1 0 0 0
+//0 0 1 0
+//0 0 0 0
+//1 0 0 1
+//출력 결과
+//안정된 상태
 
 #include <iostream>
 
+int arr[5][4] = {};
+
+int find(int _a, int _b)
+{
+	int offset[8][2] =
+	{
+		-1,-1,
+		-1,0,
+		-1,1,
+		0,-1,
+		0,1,
+		1,-1,
+		1,0,
+		1,1,
+	};
+	for (size_t i = 0; i < 8; i++)
+	{
+		int newY = _a + offset[i][0];
+		int newX = _b + offset[i][1];
+		if (4 < newY || newY < 0 || 3 < newX || newX < 0)
+			continue;
+		if (arr[newY][newX] == 1)
+			return 1;
+	}
+	return 0;
+}
+
 int main()
 {
-
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> arr[i][j];
+		}
+	}
+	int flag = 0;
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (arr[i][j] == 1)
+			{
+				flag = find(i, j);
+				if (flag == 1)
+				{
+					break;
+				}
+			}
+		}
+		if (flag == 1)
+		{
+			break;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "불안정한 상태";
+	}
+	else
+	{
+		std::cout << "안정된 상태";
+	}
 }
 
 //문제 12번
+//1~16 사이의 숫자 4개를 입력 받고 배열에 채워주세요.
+//총 16칸짜리인 4x4 배열을 만들어 주세요.
+//4x4 배열에 아래와 같이 번호를 매긴다고 했을때
+//입력받은 숫자 4개에 해당하는 번호에 값을 1부터 순차적으로 채워준 후 출력 해주세요.
+//아래 예제를 참고하여 소스코드를 작성해주세요.
+//입력 예제
+//3 10 11 15
+//출력 결과
+//0 0 1 0
+//0 0 0 0
+//0 2 3 0
+//0 0 4 0
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[4] = {};
 }
 
 //문제 13번
+//가로 또는 세로를 색칠하는 프로그램을 짜야 합니다.
+//4x4 배열 하나를 준비 해 주세요.
+//만약
+//G 3이라고 입력 받으면 가로 3번줄이 색칠 됩니다.
+//S 2를 입력 받으면 세로 2번줄이 색칠 됩니다.
+//이러한 규칙으로 3개의 명령어를 입력 받고 결과를 출력 하세요.
+//ex)
+//입력:
+//G 3
+//S 2
+//S 0
+//출력 :
+//입력 예제
+//G 3
+//S 2
+//S 0
+//출력 결과
+//1 0 1 0
+//1 0 1 0
+//1 0 1 0
+//1 1 1 1
 
 #include <iostream>
 
+void draw(int(*_a)[4])
+{
+	char a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	if (a == 'G')
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			_a[b][i] = 1;
+		}
+	}
+	else if (a == 'S')
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			_a[i][b] = 1;
+		}
+	}
+}
+
 int main()
 {
-
+	int arr[4][4] = {};
+	draw(arr);
+	draw(arr);
+	draw(arr);
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << arr[i][j];
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 14번
