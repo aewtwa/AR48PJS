@@ -249,54 +249,263 @@ int main()
 
 #include <iostream>
 
+void BBQ(int _a)
+{
+	if (_a == 2)
+	{
+		return;
+	}
+	BBQ(_a + 1);
+}
+
 int main()
 {
-
+	BBQ(0);
 }
 
 //문제 10번
+//한 문장을 입력 받으세요.(최대 10글자)
+//그리고 예제와 같이 계단식으로 출력하세요.
+//중첩 2중 for문을 이용해서 풀어주세요
+//for문을 돌리는 방향 및 순서를 유의 해 주세요
+//입력 예제
+//78ATQP
+//출력 결과
+//P
+//QP
+//TQP
+//ATQP
+//8ATQP
+//78ATQP
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[11] = {};
+	std::cin >> arr;
+	int arrlen = 0;
+	for (int i = 0; i < 11; i++)
+	{
+		if (arr[i] == '\0')
+		{
+			arrlen = i;
+			break;
+		}
+	}
+	int a = 1;
+	for (int i = 0; i < arrlen; i++)
+	{
+		for (int j = arrlen - a; j < arrlen; j++)
+		{
+			std::cout << arr[j];
+		}
+		a++;
+		std::cout << "\n";
+	}
 }
 
 //문제 11번
+//한 문장을 입력 받으세요.(최대 10글자)
+//그리고 문장의 길이 / 2 를 하여 2등분 해주세요.
+//예를들어 "ABCDEAB" 문장을 2등분하면 7 / 2 = 3 이므로
+//0~2번 index 글자 : ABC
+//3~6번 index 글자 : DEAB
+//이렇게 2등분 할 수 있습니다.
+//이렇게 나누어진 두 문장이 동일한 문장인지 확인하는 프로그램을 작성 해주세요.
+//ex1)
+//입력: ABCABC
+//출력 : 동일한문장
+//ex2)
+//입력: ABCDEAB
+//출력 : 다른문장
+//입력 예제
+//ABCABC
+//출력 결과
+//동일한문장
 
 #include <iostream>
 
+char left[6] = {};
+char right[6] = {};
+
+void division(char* _a, int _b, int _c)
+{
+	for (size_t i = 0; i < _c; i++)
+	{
+		left[i] = _a[i];
+	}
+	for (size_t i = _c; i < _b; i++)
+	{
+		right[i - _c] = _a[i];
+	}
+}
+
+int isSame(char* _a, char* _b, int _c)
+{
+	for (size_t i = 0; i < _c; i++)
+	{
+		if (_a[i] != _b[i])
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
 int main()
 {
-
+	char arr[11] = {};
+	std::cin >> arr;
+	int arrlen = 0;
+	for (int i = 0; i < 11; i++)
+	{
+		if (arr[i] == '\0')
+		{
+			arrlen = i;
+			break;
+		}
+	}
+	int div = arrlen / 2;
+	division(arr, arrlen, div);
+	if (isSame(left, right, div) == 0)
+	{
+		std::cout << "동일한 문장";
+	}
+	else
+	{
+		std::cout << "다른 문장";
+	}
 }
 
 //문제 12번
+//두 비트배열을 입력 받아주세요.
+//두 비트배열을 겹쳤을때,
+//색칠한 부분이 겹치면, "걸리다" 출력
+//겹치는 부분이 없다면, "걸리지않는다" 라고 출력 해주세요.
+//(색칠된곳은 1 로 입력을 받고, 색칠안된곳은 0 으로 입력 받으면 됩니다)
+//입력 예제
+//1 1 1 1
+//1 0 0 1
+//1 0 0 0
+//0 0 1 0
+//0 0 0 0
+//0 0 0 0
+//1 1 1 1
+//0 1 0 0
+//출력 결과
+//걸리다
 
 #include <iostream>
 
 int main()
 {
-
+	int arr2d1[4][4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> arr2d1[i][j];
+		}
+	}
+	int arr2d2[4][4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> arr2d2[i][j];
+		}
+	}
+	int flag = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (arr2d1[i][j] == arr2d2[i][j])
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1)
+		{
+			break;
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "걸리다.";
+	}
+	else
+	{
+		std::cout << "걸리지 않는다.";
+	}
 }
 
 //문제 13번
+//문자 1개를 입력받으세요
+//ASCII코드값 기준 입력 받은 문자에서 부터 - 3 문자부터 + 3 문자까지 출력하면 됩니다.
+//만약 G를 입력받았다면 DEFGHIJ 를 출력하면 됩니다.
+//만약 N를 입력받았다면 KLMNOPQ 를 출력하면 됩니다.
+//그런데 만약 출력해야 하는 문자가 A 이전이라면, Z를 출력하면 되고,
+//만약 출력해야 하는 문자가 Z 다음 문자라면 A를 출력하면 됩니다.
+//따라서
+//만약 Y를 입력받았다면 VWXYZAB 를 출력하면 되고,
+//만약 B를 입력받았다면 YZABCDE를 출력하면 됩니다.
+//입력 예제
+//Y
+//출력 결과
+//VWXYZAB
 
 #include <iostream>
 
 int main()
 {
-
+	char a = 0;
+	std::cin >> a;
+	for (int i = a - 3; i <= a + 3; i++)
+	{
+		if (i < 'A')
+		{
+			std::cout << (char)(i + 26);
+		}
+		else if (i > 'Z')
+		{
+			std::cout << (char)(i - 26);
+		}
+		else
+		{
+			std::cout << (char)i;
+		}
+	}
 }
 
 //문제 14번
+//숫자 7개를 배열에 입력 받아주세요.
+//1층 3번 index까지 출력
+//2층 4번 index까지 출력
+//3층 5번 index까지 출력
+//4층 6번 index까지 출력
+//ex)
+//3 5 7 1 4 2 8 을 입력 받았다면 아래와 같이 출력 하면 됩니다.
+//3 5 7 1
+//3 5 7 1 4
+//3 5 7 1 4 2
+//3 5 7 1 4 2 8
+//중첩 2중 for문을 활용해서 출력 해주세요.
+//입력 예제
+//3 5 7 1 4 2 8
+//출력 결과
+//3 5 7 1
+//3 5 7 1 4
+//3 5 7 1 4 2
+//3 5 7 1 4 2 8
 
 #include <iostream>
 
 int main()
 {
-
+	
 }
 
 //문제 15번
