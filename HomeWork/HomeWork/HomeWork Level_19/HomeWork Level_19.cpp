@@ -661,11 +661,54 @@ int main()
 
 #include <iostream>
 
+void write(int(*_a)[4], int _b, int _c)
+{
+	int t = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (t == _b)
+			{
+				_a[i][j] = _c;
+			}
+			t++;
+		}
+	}
+}
+
 int main()
 {
 	int arr[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr[i];
+	}
+	int arr2d[4][4] = {};
+	int bucket[20] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		int target = arr[i];
+		bucket[target - 1]++;
+	}
+	int count = 1;
+	for (size_t i = 0; i < 20; i++)
+	{
+		if (bucket[i] == 1)
+		{
+			write(arr2d, i, count);
+			count++;
+		}
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
-
 //문제 13번
 //가로 또는 세로를 색칠하는 프로그램을 짜야 합니다.
 //4x4 배열 하나를 준비 해 주세요.
@@ -730,28 +773,194 @@ int main()
 }
 
 //문제 14번
+//왼쪽 그림과 같은 sketchbook 구조체를 정의하고, 구조체 변수 1개를 만들어 주세요.
+//이미지에 들어갈 내용을 구조체 변수안 image char배열에 입력받고,
+//어떤 무늬로 구성되어 있는지 알파벳 순서대로 출력하세요.
+//(입력되는 문자는 모두 대문자입니다)
+//ex)
+//[입력][출력]
+//ATK   AGKT
+//AAA
+//TTG
+//입력 예제
+//BBB
+//BCD
+//DZZ
+//출력 결과
+//BCDZ
 
 #include <iostream>
 
+struct sketchbook
+{
+	char image[3][4];
+};
+
 int main()
 {
-
+	sketchbook sk = {};
+	for (size_t i = 0; i < 3; i++)
+	{
+		std::cin >> sk.image[i];
+	}
+	int bucket[256] = {};
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			int target = sk.image[i][j];
+			bucket[target]++;
+		}
+	}
+	for (size_t i = 1; i < 256; i++)
+	{
+		if (bucket[i] > 0)
+		{
+			std::cout << (char)i;
+		}
+	}
 }
 
 //문제 15번
+//A B G K
+//T T A B
+//A C C D
+//3x4 map배열은 위와 같이 하드코딩 하고,
+//2x2 pattern배열을 입력 받아주세요.
+//그리고 map배열에 pattern라는 패턴 배열이 존재하는지 확인하고
+//몇개인지 출력 하면 됩니다.
+//만약, pattern이 존재하고 1개가 발견되었다면 "발견(1개)"  출력
+//만약, pattern이 없다면 "미발견" 출력
+//입력 예제
+//AB
+//CD
+//출력 결과
+//발견(1개)
 
 #include <iostream>
 
+char map[3][5] =
+{
+	"ABGK",
+	"TTAB",
+	"ACCD"
+};
+
+char pattern[2][3] = {};
+
+int find(int _a, int _b)
+{
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			if (map[i + _a][j + _b] != pattern[i][j])
+			{
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
 int main()
 {
-
+	for (size_t i = 0; i < 2; i++)
+	{
+		std::cin >> pattern[i];
+	}
+	int flag = 0;
+	int count = 0;
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			flag = find(i, j);
+			if (flag == 1)
+			{
+				count++;
+			}
+		}
+	}
+	if (count == 0)
+	{
+		std::cout << "미발견";
+	}
+	else
+	{
+		std::cout << "발견(" << count << "개)";
+	}
 }
 
 //문제 16번
+//3 5 1
+//3 8 1
+//1 1 5
+//2x2 size의 bitarray 배열을 입력 받고, map 배열을 하드코딩 하세요.
+//bitarray를 map의(0, 0)에 masking하면 나오는 값은
+//이고  합은 11입니다.
+//bitarray를 map에다 masking 후
+//합을 구했을 때 가장 큰 값이 나오는 좌표를 출력 하세요.
+//입력 예제
+//1 1
+//1 0
+//출력 결과
+//(0, 1)
 
 #include <iostream>
 
+int map[3][3] =
+{
+	3,5,1,
+	3,8,1,
+	1,1,5
+};
+
+int bitarray[2][2] = {};
+
+int sum(int _a, int _b)
+{
+	int sum = 0;
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			if (bitarray[i][j] == 1)
+			{
+				sum += map[i + _a][j + _b];
+			}
+		}
+	}
+	return sum;
+}
+
 int main()
 {
-
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			std::cin >> bitarray[i][j];
+		}
+	}
+	int sumarr[4] = {};
+	int sumidx = 0;
+	int max = 0;
+	int maxy = 0;
+	int maxx = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			sumarr[sumidx] = sum(i, j);
+			if (max < sumarr[sumidx])
+			{
+				max = sumarr[sumidx];
+				maxy = i;
+				maxx = j;
+			}
+			sumidx++;
+		}
+	}
+	std::cout << "(" << maxy << "," << maxx << ")";
 }

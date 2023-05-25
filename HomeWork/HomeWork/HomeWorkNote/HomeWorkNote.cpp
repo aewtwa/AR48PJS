@@ -1,39 +1,57 @@
 ﻿#include <iostream>
 
-void draw(int(*_a)[4])
+int map[3][3] =
 {
-	char a = 0;
-	std::cin >> a;
-	int b = 0;
-	std::cin >> b;
-	if (a == 'G')
+	3,5,1,
+	3,8,1,
+	9,1,5
+};
+
+int bitarray[2][2] = {};
+
+int sum(int _a, int _b)
+{
+	int sum = 0;
+	for (size_t i = 0; i < 2; i++)
 	{
-		for (size_t i = 0; i < 4; i++)
+		for (size_t j = 0; j < 2; j++)
 		{
-			_a[b][i] = 1;
+			if (bitarray[i][j] == 1)
+			{
+				sum += map[i + _a][j + _b];
+			}
 		}
 	}
-	else if (a == 'S')
-	{
-		for (size_t i = 0; i < 4; i++)
-		{
-			_a[i][b] = 1;
-		}
-	}
+	return sum;
 }
 
 int main()
 {
-	int arr[4][4] = {};
-	draw(arr);
-	draw(arr);
-	draw(arr);
-	for (size_t i = 0; i < 4; i++)
+	for (size_t i = 0; i < 2; i++)
 	{
-		for (size_t j = 0; j < 4; j++)
+		for (size_t j = 0; j < 2; j++)
 		{
-			std::cout << arr[i][j];
+			std::cin >> bitarray[i][j];
 		}
-		std::cout << "\n";
 	}
+	int sumarr[4] = {};
+	int sumidx = 0;
+	int max = 0;
+	int maxy = 0;
+	int maxx = 0;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			sumarr[sumidx] = sum(i, j);
+			if (max < sumarr[sumidx])
+			{
+				max = sumarr[sumidx];
+				maxy = i;
+				maxx = j;
+			}
+			sumidx++;
+		}
+	}
+	std::cout << "(" << maxy << "," << maxx << ")";
 }
