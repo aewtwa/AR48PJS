@@ -1,47 +1,46 @@
 ﻿#include <iostream>
 
-int map[4][5] =
-{
-	3,5,4,2,5,
-	3,3,3,2,1,
-	3,2,6,7,8,
-	9,1,1,3,2
-};
-
-int sum(int _a, int _b, int _maxY, int _maxX)
-{
-	int sum = 0;
-	for (int i = _maxY; i < _a + _maxY; i++)
-	{
-		for (int j = _maxX; j < _b + _maxX; j++)
-		{
-			sum += map[i][j];
-		}
-	}
-	return sum;
-}
-
 int main()
 {
+	int y = 5;
+	int x = 5;
 	int a = 0;
 	std::cin >> a;
-	int b = 0;
-	std::cin >> b;
-	int max = 0;
-	int maxY = 0;
-	int maxX = 0;
-	for (int i = 0; i < 4 - a + 1; i++)
+	char** b = new char* [a];
+	for (int i = 0; i < a; i++)
 	{
-		for (int j = 0; j < 5 - b + 1; j++)
+		b[i] = new char[256];
+	}
+	for (int i = 0; i < a; i++)
+	{
+		std::cin >> b[i];
+	}
+	char up[3] = "up";
+	char down[5] = "down";
+	char left[5] = "left";
+	char right[6] = "right";
+	char click[6] = "click";
+	for (int i = 0; i < a; i++)
+	{
+		if (strcmp(up, b[i]) == 0)
 		{
-			if (max < sum(a, b, i, j))
-			{
-				max = sum(a, b, i, j);
-				maxY = i;
-				maxX = j;
-			}
-			
+			y -= 1;
+		}
+		else if (strcmp(down, b[i]) == 0)
+		{
+			y += 1;
+		}
+		else if (strcmp(left, b[i]) == 0)
+		{
+			x -= 1;
+		}
+		else if (strcmp(right, b[i]) == 0)
+		{
+			x += 1;
+		}
+		else if (strcmp(click, b[i]) == 0)
+		{
+			std::cout << y << " , " << x << "\n";
 		}
 	}
-	std::cout << "(" << maxY << "," << maxX << ")";
 }
