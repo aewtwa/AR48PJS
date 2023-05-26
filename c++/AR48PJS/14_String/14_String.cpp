@@ -67,5 +67,30 @@ int main()
 		}
 	}
 
+	char str[256] = "ELLY";
+
+
+	// 문자열 길이 구하는 함수
+	int len = strlen(str);
+
+	char strA[256] = "ELLY";
+	char strB[256] = "ELLY";
+
+	//strcmp 같았을때 0을 반환한다.
+	if (strcmp(strA, strB) == 0)
+	{
+		int a = 0;
+	}
+
+
+	// 복사
+	char strTemp[256] = "";
+	strcpy_s(strTemp, strA);
+
+	//std::string temp = "Hello";
+	//temp += " World";
+
+
+
 	return 0;
 }
