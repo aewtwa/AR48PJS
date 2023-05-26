@@ -241,6 +241,7 @@ int main()
 	int b = strlen(a);
 	abc(b);
 }
+
 //문제 8번
 //생일선물로 마우스를 직접 만들고,
 //내 연인에게 선물을 주며 고백하려 합니다.
@@ -318,33 +319,165 @@ int main()
 }
 
 //문제 9번
+//D T K
+//E A P
+//C Q G
+//P H B
+//4 x 3 배열에 A, B가 하나씩 적혀 있습니다.
+//A와 B를 찾아 상하좌우로 몇칸 떨어져 있는지 출력하면 됩니다.
+//A위치에서 오른쪽 한칸, 밑으로 두칸 움직이면 됩니다.
+//답은 총 세칸 입니다.
+//입력 예제
+//DTK
+//EAP
+//CQG
+//PHB
+//출력 결과
+//3
 
 #include <iostream>
 
 int main()
 {
-
+	char map[4][3] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			std::cin >> map[i][j];
+		}
+	}
+	int AY = 0;
+	int AX = 0;
+	int BY = 0;
+	int BX = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			if (map[i][j] == 'A')
+			{
+				AY = i;
+				AX = j;
+			}
+			else if (map[i][j] == 'B')
+			{
+				BY = i;
+				BX = j;
+			}
+		}
+	}
+	std::cout << (BY - AY) + (BX - AX);
 }
 
 //문제 10번
+//각 세로줄의 합을 구해서 sum이라는 배열에 넣어주세요.
+//그리고 index라는 변수에 숫자 하나를 입력받고,
+//sum[index] 값을 출력 해주세요.
+//입력 예제
+//2
+//출력 결과
+//5
 
 #include <iostream>
 
 int main()
 {
-
+	int map[3][4] =
+	{
+		3,4,1,5,
+		3,4,1,3,
+		5,2,3,6
+	};
+	int sum[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			sum[i] = sum[i] + map[j][i];
+		}
+	}
+	int a = 0;
+	std::cin >> a;
+	std::cout << sum[a];
 }
 
 //문제 11번
+//문장 하나와 문자 2개를 입력받아주세요
+//문장에서, 문자가 존재하는 곳 좌우의 값을 '#'으로 바꾸어 출력 해 주세요
+//* 입력받은 문자는 문장에 각각 1개씩만 존재합니다.
+//* 예제3와 같이, #을 넣는게 불가능하다면 넣지 않습니다.
+//* 설계를 꼼꼼히 하신 후 풀어야 합니다.
+//예제1) APKDB를 입력받고 P D를 입력받으면 #P#D#을 출력하면 됩니다.
+//예제2) REWUQ를 입력받고 W U를 입력받으면 R####이 출력되면 됩니다
+//예제3) ABCDEFG를 입력받고, A G를 입력받으면 A#CDE#G를 출력해야 합니다.
+//입력 예제
+//APKDB
+//P D
+//출력 결과
+//#P#D#
 
 #include <iostream>
 
+char map[256] = {};
+int arr[256] = {};
+
+
+void draw(int _a, int _b)
+{
+	if (-1 < _a - 1)
+	{
+		arr[_a - 1] = 1;
+	}
+	if (_a + 1 < _b)
+	{
+		arr[_a + 1] = 1;
+	}
+}
+
 int main()
 {
-
+	std::cin >> map;
+	int len = strlen(map);
+	char a = 0;
+	std::cin >> a;
+	char b = 0;
+	std::cin >> b;
+	for (size_t i = 0; i < len; i++)
+	{
+		if (map[i] == a || map[i] == b)
+		{
+			draw(i, len);
+		}
+	}
+	for (int i = 0; i < len; i++)
+	{
+		if (arr[i] == 1)
+		{
+			std::cout << "#";
+		}
+		else
+		{
+			std::cout << map[i];
+		}
+	}
 }
 
 //문제 12번
+//우주선인 2차배열에 문자들이 둥둥 공중에 떠있습니다.
+//소행성과의 충돌 위험으로 중력이 있는 행성에 불시착하였더니
+//문자들이 바닥에 떨어졌습니다.
+//아래 그림처럼 입력하고 중력을 받아 바닥에 떨어진 문자상태를 출력하면 됩니다.
+//입력 예제
+//A_C
+//_K_
+//T__
+//___
+//출력 결과
+//___
+//___
+//A__
+//TKC
 
 #include <iostream>
 
