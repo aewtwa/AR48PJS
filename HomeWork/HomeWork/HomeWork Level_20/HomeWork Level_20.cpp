@@ -505,19 +505,94 @@ int main()
 
 int main()
 {
-	
+	int arr[7] = {};
+	for (size_t i = 0; i < 7; i++)
+	{
+		std::cin >> arr[i];
+	}
+	int a = 3;
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j <= a; j++)
+		{
+			std::cout << arr[j];
+		}
+		std::cout << "\n";
+		a++;
+	}
 }
 
 //문제 15번
+//한문장을 입력 받으세요.
+//한문장을 아래와 같이 출력 해주세요.
+//ex)
+//[입력]
+//BBQWORLD
+//[출력]
+//B
+//BB
+//BBQ
+//BBQW
+//BBQWO
+//BBQWOR
+//BBQWORL
+//BBQWORLD
+//ex)
+//[입력]
+//GDPK
+//[츨력]
+//G
+//GD
+//GDP
+//GDPK
+//입력 예제
+//BBQWORLD
+//출력 결과
+//B
+//BB
+//BBQ
+//BBQW
+//BBQWO
+//BBQWOR
+//BBQWORL
+//BBQWORLD
 
 #include <iostream>
 
 int main()
 {
-
+	char arr[256] = {};
+	std::cin >> arr;
+	int arrlen = 0;
+	for (size_t i = 0; i < 256; i++)
+	{
+		if (arr[i] == '\0')
+		{
+			arrlen = i;
+			break;
+		}
+	}
+	int a = arrlen - 1;
+	for (int i = 0; i < arrlen; i++)
+	{
+		for (int i = 0; i < arrlen - a; i++)
+		{
+			std::cout << arr[i];
+		}
+		a--;
+		std::cout << "\n";
+	}
 }
 
 //문제 16번
+//정렬되어 있는 네칸짜리 두 배열에 각각 숫자 4개씩 입력 받습니다.
+//두배열에 있는 8개 숫자들을 합쳐 하나의 배열에 정렬된 상태로 넣으려고 합니다.
+//아래의 알고리즘으로 동작되도록 코딩해주세요.
+//입력 예제
+//1 3 3 7
+//2 3 4 6
+//출력 결과
+//1 2 3 3 3 4 6 7
 
 #include <iostream>
 
@@ -527,10 +602,66 @@ int main()
 }
 
 //문제 17번
+//3 5 4 2 5
+//3 3 3 2 1
+//3 2 6 7 8
+//9 1 1 3 2
+//위 배열을 하드코딩 해주세요.패턴 size를 입력 받으세요.
+//만약 2, 2 를 입력 받았다면
+//2x2 패턴을 적용 시키면 됩니다.
+//그리고 패턴을 적용시키면 합을 구할 수 있습니다.
+//ex)  2, 2 size의 패턴을 0, 0에 적용시키면 합은 3 + 5 + 3 + 3 = 14 입니다.
+//패턴의 size를 입력받고 패턴을 적용시켜 합을 구하여.max값이 나오는 위치를 출력 해주세요.
+//주의 : 입력하실때 y좌표부터 입력받아주세요 ex) 2, 3은 y = 2, x = 3
+//입력 예제
+//2 2
+//출력 결과
+//(2, 3)
 
 #include <iostream>
 
+int map[4][5] =
+{
+	3,5,4,2,5,
+	3,3,3,2,1,
+	3,2,6,7,8,
+	9,1,1,3,2
+};
+
+int sum(int _a, int _b, int _maxY, int _maxX)
+{
+	int sum = 0;
+	for (int i = _maxY; i < _a + _maxY; i++)
+	{
+		for (int j = _maxX; j < _b + _maxX; j++)
+		{
+			sum += map[i][j];
+		}
+	}
+	return sum;
+}
+
 int main()
 {
+	int a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	int max = 0;
+	int maxY = 0;
+	int maxX = 0;
+	for (int i = 0; i < 4 - a + 1; i++)
+	{
+		for (int j = 0; j < 5 - b + 1; j++)
+		{
+			if (max < sum(a, b, i, j))
+			{
+				max = sum(a, b, i, j);
+				maxY = i;
+				maxX = j;
+			}
 
+		}
+	}
+	std::cout << "(" << maxY << "," << maxX << ")";
 }
