@@ -3,30 +3,6 @@
 #include <Windows.h>
 #include <vector>
 
-enum class eGameObjectType
-{
-	Player,
-	Wall,
-
-	End,
-};
-
-class Map
-{
-public:
-
-
-protected:
-
-private:
-	static const int MapXsize = 5;
-	static const int MapYsize = 5;
-
-	Map()
-	{
-	}
-};
-
 class int2
 {
 public:
@@ -39,6 +15,52 @@ public:
 	int mX;
 	int mY;
 };
+
+enum class eGameObjectType
+{
+	Player,
+	Wall,
+
+	End,
+};
+
+class ConsoleGameMap
+{
+public:
+	static ConsoleGameMap& instance()
+	{
+		static ConsoleGameMap Map = {};
+		return Map;
+	}
+	int2 GetMapSize() const
+	{
+		return MapSize;
+	}
+	
+protected:
+
+private:
+	int2 MapSize;
+	char MapPrinter;
+	char arrMap[5][6] =
+	{
+		"#####",
+		"#   #",
+		"#   #",
+		"#   #",
+		"#####"
+	};
+
+	ConsoleGameMap()
+		:MapPrinter(' ')
+		, MapSize(int2(5, 6))
+	{
+	}
+	~ConsoleGameMap()
+	{
+	}
+};
+
 
 class GameObject
 {
@@ -205,6 +227,7 @@ int main()
 			}
 		}
 	}
+	ConsoleGameMap::instance();
 	GamePlayer = new GameObject();	
 	GameObjects[(UINT)eGameObjectType::Player].push_back(GamePlayer);
 	GamePlayer->SetObjectPrinter('@');
