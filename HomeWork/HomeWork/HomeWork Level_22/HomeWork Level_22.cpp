@@ -469,64 +469,318 @@ int main()
 }
 
 //문제 10번
+//A T B   A A A
+//C C B   B B C
+//위 3차배열을 하드코딩 해주세요
+//그리고 문자 1개를 입력 받아주세요
+//3차배열에 입력받은 문자가 존재하면 "발견", 없다면 "미발견"이라고 출력 해주세요
+//입력 예제
+//T
+//출력 결과
+//발견
 
 #include <iostream>
 
+int isSame(char(*_a)[2][3], char _b)
+{
+	for (size_t i = 0; i < 2; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			for (size_t k = 0; k < 3; k++)
+			{
+				if (_a[i][j][k] == _b)
+				{
+					return 1;
+				}
+			}
+		}
+	}
+	return 0;
+}
+
 int main()
 {
-
+	char arr3d[2][2][3] =
+	{
+		'A','T','B',
+		'C','C','B',
+			'A','A','A',
+			'B','B','C'
+	};
+	char a = 0;
+	std::cin >> a;
+	int flag = 0;
+	flag = isSame(arr3d, a);
+	if (flag == 1)
+	{
+		std::cout << "발견";
+	}
+	else
+	{
+		std::cout << "미발견";
+	}
 }
 
 //문제 11번
+//나에게 호감을 갖고 있는 n명의 친구들이 있습니다.
+//이 중 누구와 데이트할지 ox로 데이트 조합을 출력해보려고 합니다.
+//n을 입력받고 그에 따른 데이트 조합을 모두 출력 해주세요.
+//입력 예제
+//2
+//출력 결과
+//xx
+//xo
+//ox
+//oo
 
 #include <iostream>
+char OX[2] = { 'X','O' };
+char path[8] = {};
+void abc(int _a, int _b)
+{
+	if (_a == _b)
+	{
+		std::cout << path;
+		std::cout << "\n";
+		return;
+	}
+	for (size_t i = 0; i < 2; i++)
+	{
+		path[_a] = OX[i];
+		abc(_a + 1, _b);
+		path[_a] = '\0';
+	}
+}
 
 int main()
 {
-
+	int a = 0;
+	std::cin >> a;
+	abc(0, a);
 }
 
 //문제 12번
+//3 x 3 x 3 으로 구성되어 있는 3차 배열을 선언 해 주세요
+//그리고 문자 하나를 입력 받습니다
+//아래 예시와 같이 입력 받은 문자부터 순차적으로 값을 채워주세요
+//ex) 만약 문자 A를 입력하였다면 아래와 같이 채우고 출력
+//ex) 만약 문자 B를 입력하였다면 아래와 같이 채우고 출력
+//입력 예제
+//A
+//출력 결과
+//AAA
+//AAA
+//AAA
+//BBB
+//BBB
+//BBB
+//CCC
+//CCC
+//CCC
 
 #include <iostream>
 
 int main()
 {
-
+	char arr3d[3][3][3] = {};
+	char a = 0;
+	std::cin >> a;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			for (size_t k = 0; k < 3; k++)
+			{
+				arr3d[i][j][k] = a;
+				std::cout << arr3d[i][j][k];
+			}
+			std::cout << "\n";
+		}
+		std::cout << "\n";
+		a++;
+	}
 }
 
 //문제 13번
+//숫자 2개를 변수 a, b에 입력 받습니다
+//아래의 규칙에 따라 값을 채워주세요
+//만약 a에 1, b에 3을 입력 받았다면, 아래와 같이 채우고 출력하면 됩니다.
+//입력 예제
+//1 3
+//출력 결과
+//1 1 1
+//3 3 3
+//
+//1 1 1
+//3 3 3
+//
+//1 1 1
+//3 3 3
 
 #include <iostream>
 
 int main()
 {
+	int arr3d[3][2][3] = {};
+	int a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
 
+			for (size_t k = 0; k < 3; k++)
+			{
+				arr3d[i][0][k] = a;
+				arr3d[i][1][k] = b;
+				std::cout << arr3d[i][j][k];
+			}
+			std::cout << "\n";
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 14번
+//문자 2개를 입력 받으세요.
+//MAP 배열에서 찾을 값을 이용해 price 배열의 값을 찾아야 합니다.
+//예를들어,
+//만약 "B3"을 입력 받았다면 MAP 배열에서 3을 찾을 수 있고
+//price배열의 3번에 해당하는 문자 G를 출력 하면 됩니다.
+//입력 예제
+//B 3
+//출력 결과
+//G
 
 #include <iostream>
 
 int main()
 {
-
+	int map[3][6] =
+	{
+		3,5,4,2,2,3,
+		1,3,3,3,4,2,
+		5,4,4,2,3,5,
+	};
+	char price[5] =
+	{
+		'T','P','G','K','C'
+	};
+	char a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	for (int i = 1; i <= 5; i++)
+	{
+		if (map[a - 'A'][b - 1] == i)
+		{
+			std::cout << price[i - 1];
+		}
+	}
 }
 
 //문제 15번
+//길이가 다른 네 문장을 입력 받으세요. (최대글자는 10글자)
+//가장 짧은 문장부터 긴 문장까지 오름차순 정렬해서 출력 해 주세요.
+//입력 예제
+//kfcmclo
+//zzzzz
+//abc
+//mincoding
+//출력 결과
+//abc
+//zzzzz
+//kfcmclo
+//mincoding
 
 #include <iostream>
+#include <string.h>
 
 int main()
 {
-
+	char str[4][11] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> str[i];
+	}
+	int len[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		len[i] = strlen(str[i]);
+	}
+	char t[256] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = i; j < 4; j++)
+		{
+			if (len[i] > len[j])
+			{
+				strcpy_s(t, str[i]);
+				strcpy_s(str[i], str[j]);
+				strcpy_s(str[j], t);
+			}
+		}
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cout << str[i] << "\n";
+	}
 }
 
 //문제 16번
+//3차배열에 다음 값을 하드코딩 해주세요.(ABCD)
+//그리고 숫자 1개를 입력 받으세요.
+//숫자에 해당하는 배열값을 출력 해주세요.
+//예로들어 0을 입력했다면
+//와 같이 출력하면 됩니다.
+//(빈칸 : 띄어쓰기 한칸)
+//입력 예제
+//0
+//출력 결과
+// #
+//# #
+//###
+//# #
+//# #
 
 #include <iostream>
 
 int main()
 {
-
+	char arr3d[4][5][4] =
+	{
+		" # ",
+		"# #",
+		"###",
+		"# #",
+		"# #",
+			"###",
+			"# #",
+			"###",
+			"# #",
+			"###",
+				"###",
+				"# #",
+				"#  ",
+				"# #",
+				"###",
+					"## ",
+					"# #",
+					"# #",
+					"# #",
+					"## ",
+	};
+	int a = 0;
+	std::cin >> a;
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << arr3d[a][i][j];
+		}
+		std::cout << "\n";
+	}
 }

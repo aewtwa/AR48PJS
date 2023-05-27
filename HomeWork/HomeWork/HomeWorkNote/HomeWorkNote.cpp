@@ -1,40 +1,38 @@
 ﻿#include <iostream>
 
-int isSame(char *_a, char *_b)
+void process(char(*_a)[4])
 {
-	if (strcmp(_a, _b) != 0)
+	for (int k = 0; k < 3; k++)
 	{
-		return 1;
+		for (int i = 3; i >= 0; i--)
+		{
+			for (int j = i - 1; j >= 0; j--)
+			{
+				if (_a[i][k] == '_' && _a[j][k] != '_')
+				{
+					char t = _a[i][k];
+					_a[i][k] = _a[j][k];
+					_a[j][k] = t;
+				}
+			}
+		}
 	}
-	return 0;
 }
 
 int main()
 {
-	char arr[5][256] =
+	char map[4][4] = {};
+	for (size_t i = 0; i < 4; i++)
 	{
-		"JASON",
-		"DR.tom",
-		"EXEXI",
-		"GK12P",
-		"POW"
-	};
-	int flag = 0;
-	char PASSWORD[5][256] = {};
-	for (size_t i = 0; i < 5; i++)
-	{
-		std::cin >> PASSWORD[i];
+		std::cin >> map[i];
 	}
-	for (size_t i = 0; i < 5; i++)
+	process(map);
+	for (size_t i = 0; i < 4; i++)
 	{
-		flag = isSame(arr[i], PASSWORD[i]);
-	}
-	if (flag == 1)
-	{
-		std::cout << "암호 틀림";
-	}
-	else
-	{
-		std::cout << "암호 해제";
+		for (size_t j = 0; j < 3; j++)
+		{
+			std::cout << map[i][j];
+		}
+		std::cout << "\n";
 	}
 }
