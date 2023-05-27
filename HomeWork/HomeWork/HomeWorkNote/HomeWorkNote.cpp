@@ -1,78 +1,40 @@
 ﻿#include <iostream>
 
-char map[5][4] =
+int isSame(char *_a, char *_b)
 {
-	"___",
-	"___",
-	"ATK",
-	"___",
-	"___"
-};
-
-void move(char _a, char* _b)
-{
-	int offset[4][2] =
+	if (strcmp(_a, _b) != 0)
 	{
-		-1,0,
-		1,0,
-		0,-1,
-		0,1
-	};
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			if (map[i][j] == _a && strcmp(_b,"UP") == 0)
-			{
-				char c = map[i][j];
-				map[i][j] = map[i - 1][j];
-				map[i - 1][j] = c;
-				return;
-			}
-			else if (map[i][j] == _a && strcmp(_b, "DOWN") == 0)
-			{
-				char c = map[i][j];
-				map[i][j] = map[i + 1][j];
-				map[i + 1][j] = c;
-				return;
-			}
-			else if (map[i][j] == _a && strcmp(_b, "LEFT") == 0)
-			{
-				char c = map[i][j];
-				map[i][j] = map[i][j - 1];
-				map[i][j - 1] = c;
-				return;
-			}
-			else if (map[i][j] == _a && strcmp(_b, "RIGHT") == 0)
-			{
-				char c = map[i][j];
-				map[i][j] = map[i][j + 1];
-				map[i][j + 1] = c;
-				return;
-			}
-		}
+		return 1;
 	}
+	return 0;
 }
 
 int main()
 {
-	char model[7] = {};
-	char order[7][256] = {};
-	for (size_t i = 0; i < 7; i++)
+	char arr[5][256] =
 	{
-		std::cin >> model[i];
-		std::cin >> order[i];
-	}
-	for (size_t i = 0; i < 7; i++)
+		"JASON",
+		"DR.tom",
+		"EXEXI",
+		"GK12P",
+		"POW"
+	};
+	int flag = 0;
+	char PASSWORD[5][256] = {};
+	for (size_t i = 0; i < 5; i++)
 	{
-		move(model[i], order[i]);
+		std::cin >> PASSWORD[i];
 	}
 	for (size_t i = 0; i < 5; i++)
 	{
-		for (size_t j = 0; j < 3; j++)
-		{
-			std::cout << map[i][j];
-		}
-		std::cout << "\n";
+		flag = isSame(arr[i], PASSWORD[i]);
+	}
+	if (flag == 1)
+	{
+		std::cout << "암호 틀림";
+	}
+	else
+	{
+		std::cout << "암호 해제";
 	}
 }
