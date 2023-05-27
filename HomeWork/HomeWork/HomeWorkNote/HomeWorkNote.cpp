@@ -1,37 +1,49 @@
 ﻿#include <iostream>
 
-void process(char(*_a)[4])
+void write(int(*_a)[4], int _b, int _c)
 {
-	for (int k = 0; k < 3; k++)
+	int t = 0;
+	for (size_t i = 0; i < 4; i++)
 	{
-		for (int i = 3; i >= 0; i--)
+		for (size_t j = 0; j < 4; j++)
 		{
-			for (int j = i - 1; j >= 0; j--)
+			if (t == _b)
 			{
-				if (_a[i][k] == '_' && _a[j][k] != '_')
-				{
-					char t = _a[i][k];
-					_a[i][k] = _a[j][k];
-					_a[j][k] = t;
-				}
+				_a[i][j] = _c;
 			}
+			t++;
 		}
 	}
 }
 
 int main()
 {
-	char map[4][4] = {};
+	int arr[4] = {};
 	for (size_t i = 0; i < 4; i++)
 	{
-		std::cin >> map[i];
+		std::cin >> arr[i];
 	}
-	process(map);
+	int arr2d[4][4] = {};
+	int bucket[20] = {};
 	for (size_t i = 0; i < 4; i++)
 	{
-		for (size_t j = 0; j < 3; j++)
+		int target = arr[i];
+		bucket[target - 1]++;
+	}
+	int count = 1;
+	for (size_t i = 0; i < 20; i++)
+	{
+		if (bucket[i] == 1)
 		{
-			std::cout << map[i][j];
+			write(arr2d, i, count);
+			count++;
+		}
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << arr2d[i][j] << " ";
 		}
 		std::cout << "\n";
 	}
