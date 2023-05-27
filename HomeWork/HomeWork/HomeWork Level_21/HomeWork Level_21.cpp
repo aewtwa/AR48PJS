@@ -623,16 +623,160 @@ int main()
 
 #include <iostream>
 
+int map[7][7] =
+{
+	0,0,0,0,0,0,0,
+	0,0,1,0,1,0,0,
+	0,1,2,0,2,1,0,
+	0,0,1,2,1,0,0,
+	0,0,2,1,0,1,0,
+	0,1,1,0,0,0,0,
+	0,0,0,0,0,0,0
+};
+
+int process(int _a, int _b)
+{
+	map[_a][_b] = 1;
+	int offset[4][2] =
+	{
+		-1,0,
+		1,0,
+		0,-1,
+		0,1
+	};
+	int count = 0;
+	int flag = 0;
+	for (int y = 0; y < 7; y++)
+	{
+		for (int x = 0; x < 7; x++)
+		{
+			if (map[y][x] == 2)
+			{
+				for (int i = 0; i < 4; i++)
+				{
+					int newY = y + offset[i][0];
+					int newX = x + offset[i][1];
+					if (map[newY][newX] != 1)
+					{
+						flag = 1;
+						break;
+					}
+				}
+				if (flag == 0)
+				{
+					count++;
+				}
+				flag = 0;
+			}
+		}
+	}
+	return count;
+}
+
 int main()
 {
-
+	int a = 0;
+	std::cin >> a;
+	int b = 0;
+	std::cin >> b;
+	std::cout << process(a, b);
 }
 
 //문제 16번
+//모델들이 한줄로 무대위에 서있습니다.
+//디렉터는 모델들에게 지시를 7번 합니다.
+//지시 이후 모델들의 위치를 출력 해주세요.
+//(굉장한 노가다 문제입니다)
+//입력 예제
+//A UP
+//T DOWN
+//K UP
+//A RIGHT
+//K UP
+//K LEFT
+//A LEFT
+//출력 결과
+//_K_
+//A__
+//___
+//_T_
+//___
 
 #include <iostream>
 
+char map[5][4] =
+{
+	"___",
+	"___",
+	"ATK",
+	"___",
+	"___"
+};
+
+void move(char _a, char* _b)
+{
+	int offset[4][2] =
+	{
+		-1,0,
+		1,0,
+		0,-1,
+		0,1
+	};
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if (map[i][j] == _a && strcmp(_b, "UP") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i - 1][j];
+				map[i - 1][j] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "DOWN") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i + 1][j];
+				map[i + 1][j] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "LEFT") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i][j - 1];
+				map[i][j - 1] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "RIGHT") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i][j + 1];
+				map[i][j + 1] = c;
+				return;
+			}
+		}
+	}
+}
+
 int main()
 {
-
+	char model[7] = {};
+	char order[7][256] = {};
+	for (size_t i = 0; i < 7; i++)
+	{
+		std::cin >> model[i];
+		std::cin >> order[i];
+	}
+	for (size_t i = 0; i < 7; i++)
+	{
+		move(model[i], order[i]);
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			std::cout << map[i][j];
+		}
+		std::cout << "\n";
+	}
 }

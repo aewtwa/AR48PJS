@@ -1,41 +1,77 @@
 ﻿#include <iostream>
 
-int main()
+char map[5][4] =
 {
-	int map[4][3] =
-	{
-		1,5,3,
-		4,5,5,
-		3,3,5,
-		4,6,2
-	};
+	"___",
+	"___",
+	"ATK",
+	"___",
+	"___"
+};
 
-	int a = 0;
-	std::cin >> a;
-	int b = 0;
-	std::cin >> b;
-	for (size_t i = 0; i < 4; i++)
+void move(char _a, char* _b)
+{
+	int offset[4][2] =
 	{
-		for (size_t j = 0; j < 3; j++)
+		-1,0,
+		1,0,
+		0,-1,
+		0,1
+	};
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 3; j++)
 		{
-			if (a <= map[i][j] && map[i][j] <= b)
+			if (map[i][j] == _a && strcmp(_b,"UP") == 0)
 			{
-				map[i][j] = 0;
+				char c = map[i][j];
+				map[i][j] = map[i - 1][j];
+				map[i - 1][j] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "DOWN") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i + 1][j];
+				map[i + 1][j] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "LEFT") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i][j - 1];
+				map[i][j - 1] = c;
+				return;
+			}
+			else if (map[i][j] == _a && strcmp(_b, "RIGHT") == 0)
+			{
+				char c = map[i][j];
+				map[i][j] = map[i][j + 1];
+				map[i][j + 1] = c;
+				return;
 			}
 		}
 	}
-	for (size_t i = 0; i < 4; i++)
+}
+
+int main()
+{
+	char model[7] = {};
+	char order[7][256] = {};
+	for (size_t i = 0; i < 7; i++)
+	{
+		std::cin >> model[i];
+		std::cin >> order[i];
+	}
+	for (size_t i = 0; i < 7; i++)
+	{
+		move(model[i], order[i]);
+	}
+	for (size_t i = 0; i < 5; i++)
 	{
 		for (size_t j = 0; j < 3; j++)
 		{
-			if (map[i][j] == 0)
-			{
-				std::cout << "#";
-			}
-			else
-			{
-				std::cout << map[i][j];
-			}
+			std::cout << map[i][j];
 		}
 		std::cout << "\n";
 	}
