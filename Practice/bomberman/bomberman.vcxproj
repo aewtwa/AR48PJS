@@ -130,10 +130,12 @@
     <ClCompile Include="bomberman.cpp" />
     <ClCompile Include="ConsoleGameMap.cpp" />
     <ClCompile Include="int2.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleGameMap.h" />
     <ClInclude Include="int2.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

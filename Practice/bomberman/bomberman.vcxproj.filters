@@ -4,9 +4,11 @@
     <ClCompile Include="bomberman.cpp" />
     <ClCompile Include="int2.cpp" />
     <ClCompile Include="ConsoleGameMap.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="int2.h" />
     <ClInclude Include="ConsoleGameMap.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
 </Project>
