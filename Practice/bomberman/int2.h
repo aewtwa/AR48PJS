@@ -12,6 +12,11 @@ public:
 	}
 	int X = 0;
 	int Y = 0;
+
+	inline int2 Half() const
+	{
+		return { X / 2,Y / 2 };
+	}
 protected:
 
 private:
