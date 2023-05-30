@@ -348,21 +348,110 @@ int main()
 
 #include <iostream>
 
-int main()
-{
+int arr[5] = {};
+char path[5] = {};
+int count = 0;
 
+int isdiff()
+{
+	for (size_t i = 0; i < 3; i++)
+	{
+		if (path[i] + 3 < path[i + 1] || path[i] - 3 > path[i + 1])
+			return 1;
+	}
+	return 0;
 }
 
+void abc(int _level)
+{
+	if (_level == 4)
+	{
+		if (isdiff() == 0)
+		{
+			count++;
+		}
+		return;
+	}
+	for (int i = 0; i < 5; i++)
+	{
+		path[_level] = arr[i];
+		abc(_level + 1);
+		path[_level] = '\0';
+	}
+}
+
+int main()
+{
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+	}
+	abc(0);
+	std::cout << count;
+}
 //문제 7번
+//위 배열을 하드코딩 해주세요.
+//그리고 R 또는 L 문자 4개를 입력 받습니다.
+//R은 right 방향을 의미하고
+//L은 left 방향을 의미 합니다.
+//아래 그림과 같이
+//R을 입력 받으면 숫자를 오른쪽으로 한칸씩 모두 이동시키는데 맨 뒤에 있는 숫자는 맨앞으로 와야합니다.
+//반대로 L을 입력 받으면 숫자를 왼쪽으로 한칸씩 모두 이동 시키고 맨 앞에 있는 숫자는 맨 뒤로 보냅니다.
+//R 또는 L을 4번 입력 받은 후 처리된 결과를 출력 해주세요.
+//입력 예제
+//R
+//R
+//R
+//L
+//출력 결과
+//9 7 3 5 1
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[5] = { 3,5,1,9,7 };
+	char arr1[5] = {};
+	std::cin >> arr1;
+	for (int k = 0; k < 4; k++)
+	{
+		if (arr1[k] == 'R')
+		{
+			for (int i = 4; i > 0; i--)
+			{
+				int t = arr[i];
+				arr[i] = arr[i - 1];
+				arr[i - 1] = t;
+			}
+		}
+		else
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				int t = arr[i];
+				arr[i] = arr[i + 1];
+				arr[i + 1] = t;
+			}
+		}
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cout << arr[i];
+	}
 }
 
 //문제 8번
+//#은 암살자들이 있는 위치 입니다. 3명의 암살자의 위치를 입력 받으세요.
+//만약, 직선거리에 상대방이 있다면 서로 총을 쏘게 됩니다.
+//세명의 좌표를 입력 받고
+//서로 총을 쏘지 않는 안전한 위치라면 "안전" 출력
+//그렇지않다면 "위험"을 출력 해주세요.
+//입력 예제
+//0 0
+//1 2
+//2 1
+//출력 결과
+//안전
 
 #include <iostream>
 
