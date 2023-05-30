@@ -2,9 +2,14 @@
 #include "ConsoleGameMap.h"
 #include <windows.h>
 #include "Player.h"
+
 int main()
 {
 	Player OwO = {};
+
+	OwO.GetPos();
+	OwO.SetPos(int2(5,5));
+	OwO.
 	while (true)
 	{
 		ConsoleGameMap::getInstance().MapClear();
