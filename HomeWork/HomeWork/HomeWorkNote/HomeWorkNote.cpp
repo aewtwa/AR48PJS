@@ -2,21 +2,30 @@
 
 struct Node
 {
-	int num;
-	Node* pNext;
+    char* Name; /// 이거 바꿨음
+    Node* Love1;
+    Node* Love2;
 };
-Node* head = nullptr;
 
-int main()
+Node* head = nullptr;
+char Namearr[5][256] =
 {
-	Node FirstNode = {};
-	head = &FirstNode;
-	head->num = 3;
-	head->pNext = new Node;
-	head->pNext->num = 5;
-	head->pNext->pNext = new Node;
-	head->pNext->pNext->num = 4;
-	head->pNext->pNext->pNext = new Node;
-	head->pNext->pNext->pNext->num = 2;
-	int
+   "boss",
+   "wife",
+   "son",
+   "girlfriend",
+   "boyfriend"
+};
+
+Node* FindSon(Node* _Node)
+{
+    Node* p = head;
+    while (true)
+    {
+
+    }
+    if ()
+        son 노드 반환
+
+
 }

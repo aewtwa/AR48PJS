@@ -141,21 +141,106 @@ int main()
 
 #include <iostream>
 
+struct Node
+{
+	int num;
+	Node* pNext;
+};
+Node* head = nullptr;
+Node* tail = nullptr;
+void addNode(int _num)
+{
+	if (head == nullptr)
+	{
+		head = new Node;
+		head->num = _num;
+		head->pNext = nullptr;
+		tail = head;
+	}
+	else
+	{
+		tail->pNext = new Node;
+		tail->pNext->num = _num;
+		tail->pNext->pNext = nullptr;
+		tail = tail->pNext;
+	}
+}
+
 int main()
 {
+	int arr[4] = { 3,5,4,2 };
 
+	for (size_t i = 0; i < 4; i++)
+	{
+		addNode(arr[i]);
+	}
+
+	Node* p = head;
+	while (true)
+	{
+		std::cout << p->num;
+		if (p->pNext == nullptr)
+			break;
+
+		p = p->pNext;
+	}
 }
 
 //문제 6번
+//총 5개의 문자를 입력받습니다.
+//new 또는 malloc을 활용해, 입력받은 문자들을 링크드리스트에 저장 해 주세요.
+//만약 Q T P K Q 를 입력받았다면 아래와 같이 링크드리스트가 만들어집니다.
+//그리고 head pointer를 이용하여 가장 마지막 노드의 값을 출력하세요.
+//입력 예제
+//Q T P K Q
+//출력 결과
+//Q
 
 #include <iostream>
 
+struct Node
+{
+	char ch;
+	Node* pNext;
+};
+
+Node* head = nullptr;
+Node* tail = nullptr;
+
+void addNode(char _ch)
+{
+	if (head == nullptr)
+	{
+		head = new Node;
+		head->ch = _ch;
+		head->pNext = nullptr;
+		tail = head;
+	}
+	else
+	{
+		tail->pNext = new Node;
+		tail->pNext->ch = _ch;
+		tail->pNext->pNext = nullptr;
+		tail = tail->pNext;
+	}
+}
+
 int main()
 {
-
+	char arr[6] = {};
+	std::cin >> arr;
+	for (size_t i = 0; i < 5; i++)
+	{
+		addNode(arr[i]);
+	}
+	std::cout << head->pNext->pNext->pNext->pNext->ch;
 }
 
 //문제 7번
+//아침드라마의 재미는 연인들의 관계입니다.
+//화살표는 사랑하는 사람을 나타낸 표식입니다.
+//아래와 같은 구성으로 관계가 되어 있을때 링크드리스트로 구현해주세요.
+//이제 head를 이용해서 son의 Love1과 Love2가 누구인지 출력 해주세요
 
 #include <iostream>
 
