@@ -1,86 +1,36 @@
 ﻿#include <iostream>
-char map[4][5] = {};
-char map1[4][5] =
-{
-	"ABCD",
-	"BBAB",
-	"CBAC",
-	"BAAA"
-};
 
-int count;
-int Acount = 0;
-int Bcount = 0;
-int Ccount = 0;
-int Dcount = 0;
-
-char isSame()
+int map[4][4] =
 {
-	
-	for (size_t i = 0; i < 4; i++)
+	0,0,0,0,
+	0,1,1,0,
+	2,2,3,0,
+	1,3,3,1
+};;
+
+int isSafe()
+{
+	for (size_t x = 0; x < 4; x++)
 	{
-		for (size_t j = 0; j < 4; j++)
+		for (size_t y = 0; y < 3; y++)
 		{
-			if (map[i][j] == map1[i][j] && map[i][j] == 'A')
+			if (map[y][x] > map[y+1][x])
 			{
-				Acount++;
-			}
-			else if (map[i][j] == map1[i][j] && map[i][j] == 'B')
-			{
-				Bcount++;
-			}
-			else if (map[i][j] == map1[i][j] && map[i][j] == 'C')
-			{
-				Ccount++;
-			}
-			else if (map[i][j] == map1[i][j] && map[i][j] == 'D')
-			{
-				Dcount++;
+				return 1;
 			}
 		}
 	}
-	int countarr[4] = {};
-	countarr[0] = Acount;
-	countarr[1] = Bcount;
-	countarr[2] = Ccount;
-	countarr[3] = Dcount;
-	int max = 0;
-	for (size_t i = 0; i < 4; i++)
-	{
-		if (max < countarr[i])
-		{
-			max = countarr[i];
-		}
-	}
-	return max;
-}
-
-void output()
-{
-	if (count == Acount)
-	{
-		std::cout << "A";
-	}
-	else if (count == Bcount)
-	{
-		std::cout << "B";
-	}
-	else if (count == Ccount)
-	{
-		std::cout << "C";
-	}
-	else
-	{
-		std::cout << "D";
-	}
+	return 0;
 }
 
 int main()
 {
-	for (size_t i = 0; i < 4; i++)
+	if (isSafe() == 1)
 	{
-		std::cin >> map[i];
+		std::cout << "안전하지 않은 성";
 	}
-	count = isSame();
-	output();
+	else
+	{
+		std::cout << "안전한 성";
+	}
 }
