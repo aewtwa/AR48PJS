@@ -454,44 +454,367 @@ int main()
 //안전
 
 #include <iostream>
+int player[3][2] = {};
+int playerYPos(int _a)
+{
+	return player[_a][0];
+}
+
+int playerXPos(int _a)
+{
+	return player[_a][1];
+}
+
+void safe(int _a)
+{
+
+}
 
 int main()
 {
-
+	char map[3][5] = {};
+	int count = 0;
+	int flag = 0;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 2; j++)
+		{
+			std::cin >> player[i][j];
+		}
+	}
+	for (size_t i = 0; i < 3; i++)
+	{
+		map[playerYPos(i)][playerXPos(i)] = '#';
+	}
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (map[i][j] == '#')
+			{
+				count++;
+			}
+		}
+		if (count > 1)
+		{
+			flag = 1;
+			break;
+		}
+		count = 0;
+	}
+	if (flag == 1)
+	{
+		std::cout << "위험";
+	}
+	else
+	{
+		std::cout << "안전";
+	}
 }
 
 //문제 9번
+//4x4 배열을 만들고(0, 0)~(2, 2)까지 3 x 3칸에 다가 아홉 숫자를 입력 받으세요.
+//예를들어
+//1 2 1
+//2 3 4
+//3 2 1    을 입력 받았다면 아래와 같이 배열값이 넣어지게 됩니다.
+//그리고 빈칸에는 가로줄의 합 & 세로줄의 합 & 대간선줄의 합이 계산되어 채워 집니다.
+//배열에 모든 값이 채워지면 출력합니다.
+//적절한 for문을 사용하여 이 프로그램을 만들어 주세요
+//입력 예제
+//1 2 1
+//2 3 4
+//3 2 1
+//출력 결과
+//1 2 1 4
+//2 3 4 9
+//3 2 1 6
+//6 7 6 5
 
 #include <iostream>
 
+int arr[4][4] = {};
+
 int main()
 {
+	int xsum = 0;
+	for (size_t y = 0; y < 3; y++)
+	{
+		for (size_t x = 0; x < 3; x++)
+		{
+			std::cin >> arr[y][x];
+			xsum = xsum + arr[y][x];
+		}
+		arr[y][3] = xsum;
+		xsum = 0;
+	}
 
+	int ysum = 0;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			ysum = ysum + arr[j][i];
+		}
+		arr[3][i] = ysum;
+		ysum = 0;
+	}
+
+	int sum = 0;
+	for (size_t i = 0; i < 3; i++)
+	{
+		sum = sum + arr[i][i];
+		arr[3][3] = sum;
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (arr[i][j] != 0)
+			{
+				std::cout << arr[i][j] << " ";
+			}
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 10번
+//3 5 4 1
+//1 1 2 3
+//6 7 1 2
+//위 숫자들을 하드코딩 해주세요.
+//그리고 각기 다른 숫자 4개를 배열에 입력 받으세요.
+//예로들어 1 3 7 6 을 입력 받았다고 한다면, 이차배열의 값을
+//숫자 1을 3으로 변경
+//숫자 3을 7로 변경
+//숫자 7을 6으로 변경
+//숫자 6을 1로 변경
+//하시면 됩니다.
+//(이 외 나머지 숫자는 그대로 두시면 됩니다)
+//변경된 이차배열 값을 출력해주세요.
+//입력 예제
+//1 3 7 6
+//출력 결과
+//7 5 4 3
+//3 3 2 7
+//1 6 3 2
 
 #include <iostream>
+int map[3][4] =
+{
+	3,5,4,1,
+	1,1,2,3,
+	6,7,1,2
+};
+int arr[4] = {};
+void process(int _Y, int _X, int _a)
+{
+	if (_a + 1 == 4)
+	{
+		map[_Y][_X] = arr[_a - 3];
+	}
+	else
+	{
+		map[_Y][_X] = arr[_a + 1];
+	}
+}
 
 int main()
 {
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr[i];
+	}
 
+	for (int j = 0; j < 3; j++)
+	{
+		for (int k = 0; k < 4; k++)
+		{
+			for (int i = 0; i < 4; i++)
+			{
+				if (arr[i] == map[j][k])
+				{
+					process(j, k, i);
+					break;
+				}
+			}
+		}
+	}
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << map[i][j];
+		}
+		std::cout << "\n";
+	}
 }
 
 //문제 11번
+//8개의 숫자를 배열에 입력받아주세요.
+//배열에서 가장 왼쪽에 있는 숫자를 "피벗"이라고 합니다.
+//만약 아래와 같이 4 1 7 9 6 3 3 6을 입력받으면 피벗은 4가 됩니다.
+//이 배열을 가지고 아래에 나와있는 규칙대로 숫자들을 옮기다보면,
+//신기하게도
+//피벗 왼쪽에는 피벗보다 작은숫자들이
+//피벗 오른쪽에는 피벗보다 큰 숫자들로 구성됩니다.
+//아래의 규칙에 따라 숫자를 옮기고, 결과를 출력 해 주세요
+//요약 :
+//a는 pivot보다 큰수를 찾아야하고
+//b는 pivot보다 작은수를 찾아서 SWAP 해야합니다.
+//입력 예제
+//4 1 7 9 6 3 3 6
+//출력 결과
+//3 1 3 4 6 9 7 6
 
 #include <iostream>
 
 int main()
 {
-
+	int arr[8] = {};
+	for (size_t i = 0; i < 8; i++)
+	{
+		std::cin >> arr[i];
+	}
+	int pivot = 0;
+	pivot = arr[0];
+	int flag = 0;
+	for (int i = 1; i < 8; i++)
+	{
+		for (int j = 7; j >= 1; j--)
+		{
+			if (arr[i] > pivot && arr[j] < pivot)
+			{
+				if (i > j)
+				{
+					int t = arr[0];
+					arr[0] = arr[j];
+					arr[j] = t;
+					flag = 1;
+					break;
+				}
+				int t = arr[i];
+				arr[i] = arr[j];
+				arr[j] = t;
+				break;
+			}
+		}
+		if (flag == 1)
+		{
+			break;
+		}
+	}
+	for (size_t i = 0; i < 8; i++)
+	{
+		std::cout << arr[i];
+	}
 }
 
 //문제 12번
+//아래 그림을 보면 두개의 4x4 배열이 있습니다.
+//왼쪽배열(4x4)는 입력받고,
+//오른쪽배열(4x4)는 하드코딩 해 주세요.
+//A B C D
+//B B A B
+//C B A C
+//B A A A
+//이 두 배열에서 같은 좌표값이 같은 알파벳을 가지고 있으면 황금 좌표 입니다.
+//황금 좌표를 가장 많이 가진 알파벳을 찾아 출력 해주세요.
+//위 예제에서는 B가 황금좌표를 4개를 가지고 있기 때문에
+//정답은 B입니다.
+//입력 예제
+//ABBA
+//BACB
+//CBAA
+//DDAB
+//출력 결과
+//B
 
 #include <iostream>
+char map[4][5] = {};
+char map1[4][5] =
+{
+	"ABCD",
+	"BBAB",
+	"CBAC",
+	"BAAA"
+};
+
+int count;
+int Acount = 0;
+int Bcount = 0;
+int Ccount = 0;
+int Dcount = 0;
+
+char isSame()
+{
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (map[i][j] == map1[i][j] && map[i][j] == 'A')
+			{
+				Acount++;
+			}
+			else if (map[i][j] == map1[i][j] && map[i][j] == 'B')
+			{
+				Bcount++;
+			}
+			else if (map[i][j] == map1[i][j] && map[i][j] == 'C')
+			{
+				Ccount++;
+			}
+			else if (map[i][j] == map1[i][j] && map[i][j] == 'D')
+			{
+				Dcount++;
+			}
+		}
+	}
+	int countarr[4] = {};
+	countarr[0] = Acount;
+	countarr[1] = Bcount;
+	countarr[2] = Ccount;
+	countarr[3] = Dcount;
+	int max = 0;
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (max < countarr[i])
+		{
+			max = countarr[i];
+		}
+	}
+	return max;
+}
+
+void output()
+{
+	if (count == Acount)
+	{
+		std::cout << "A";
+	}
+	else if (count == Bcount)
+	{
+		std::cout << "B";
+	}
+	else if (count == Ccount)
+	{
+		std::cout << "C";
+	}
+	else
+	{
+		std::cout << "D";
+	}
+}
 
 int main()
 {
-
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> map[i];
+	}
+	count = isSame();
+	output();
 }
