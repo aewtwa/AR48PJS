@@ -1,31 +1,25 @@
 ﻿#include <iostream>
 
-struct Node
+char dicenum[6] = { '1','2','3','4','5','6' };
+char path[6] = {};
+void dice(int _level, int _a)
 {
-    char* Name; /// 이거 바꿨음
-    Node* Love1;
-    Node* Love2;
-};
+	if (_level == _a)
+	{
+		std::cout << path << "\n";
+		return;
+	}
+	for (size_t i = 0; i < 6; i++)
+	{
+		path[_level] = dicenum[i];
+		dice(_level + 1, _a);
+		path[_level] = 0;
+	}
+}
 
-Node* head = nullptr;
-char Namearr[5][256] =
+int main()
 {
-   "boss",
-   "wife",
-   "son",
-   "girlfriend",
-   "boyfriend"
-};
-
-Node* FindSon(Node* _Node)
-{
-    Node* p = head;
-    while (true)
-    {
-
-    }
-    if ()
-        son 노드 반환
-
-
+	int n = 0;
+	std::cin >> n;
+	dice(0, n);
 }
