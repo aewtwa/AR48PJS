@@ -46,14 +46,6 @@ private:
 
 int main()
 {
-	int map[4][4] = {};
-	for (size_t i = 0; i < 4; i++)
-	{
-		for (size_t j = 0; j < 4; j++)
-		{
-			std::cin >> map[i][j];
-		}
-	}
 	List A = {};
 	List B = {};
 	List C = {};
