@@ -691,12 +691,86 @@ int main()
 }
 
 //문제 14번
+//링크드리스트로 라인을 구현하고자 합니다.
+//입력받은 문자들을 모두 링크드리스트에 등록을 하고
+//등록이 끝난 후
+//다시 처음부터 출력을 해 주세요
+//* add 함수를 만들어서 작성 해 주세요
+//입력 예제
+//4
+//A B C D
+//출력 결과
+//A B C D
 
 #include <iostream>
+class List
+{
+public:
+	List()
+		:head(nullptr)
+		, tail(nullptr)
+	{
+
+	}
+	struct Node
+	{
+		Node()
+			:ch('\0')
+			, pNext(nullptr)
+		{
+
+		}
+		char ch;
+		Node* pNext;
+	};
+	void push(char _ch)
+	{
+		if (head == nullptr)
+		{
+			head = new Node;
+			head->ch = _ch;
+			tail = head;
+		}
+		else
+		{
+			tail->pNext = new Node;
+			tail->pNext->ch = _ch;
+			tail = tail->pNext;
+		}
+	}
+	void PrintList()
+	{
+		Node* pNode = head;
+		while (true)
+		{
+			if (pNode == nullptr)
+				break;
+
+			std::cout << pNode->ch << " ";
+
+			pNode = pNode->pNext;
+		}
+	}
+private:
+	Node* head;
+	Node* tail;
+};
+
 
 int main()
 {
+	List list = {};
 
+	int a = 0;
+	std::cin >> a;
+
+	char* arr = new char[a];
+	for (int i = 0; i < a; i++)
+	{
+		std::cin >> arr[i];
+		list.push(arr[i]);
+	}
+	list.PrintList();
 }
 
 //문제 15번

@@ -5,7 +5,6 @@ public:
 	List()
 		:head(nullptr)
 		,tail(nullptr)
-		,connected(0)
 	{
 
 	}
@@ -27,38 +26,45 @@ public:
 			head = new Node;
 			head->ch = _ch;
 			tail = head;
-			connected++;
 		}
 		else
 		{
 			tail->pNext = new Node;
 			tail->pNext->ch = _ch;
 			tail = tail->pNext;
-			connected++;
+		}
+	}
+	void PrintList()
+	{
+		Node* pNode = head;
+		while (true)
+		{
+			if (pNode == nullptr)
+				break;
+
+			std::cout << pNode->ch << " ";
+
+			pNode = pNode->pNext;
 		}
 	}
 private:
 	Node* head;
 	Node* tail;
-	int connected;
 };
 
 
 int main()
 {
-	int map[4][4] = {};
-	for (size_t i = 0; i < 4; i++)
+	List list = {};
+
+	int a = 0;
+	std::cin >> a;
+
+	char* arr = new char[a];
+	for (int i = 0; i < a; i++)
 	{
-		for (size_t j = 0; j < 4; j++)
-		{
-			std::cin >> map[i][j];
-		}
+		std::cin >> arr[i];
+		list.push(arr[i]);
 	}
-	List A = {};
-	List B = {};
-	List C = {};
-	List D = {};
-	A.push('B');
-	A.push('C');
-	A.push('D');
+	list.PrintList();
 }
