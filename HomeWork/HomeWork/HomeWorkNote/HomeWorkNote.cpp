@@ -1,70 +1,27 @@
 ﻿#include <iostream>
-class List
-{
-public:
-	List()
-		:head(nullptr)
-		,tail(nullptr)
-	{
-
-	}
-	struct Node
-	{
-		Node()
-			:ch('\0')
-			,pNext(nullptr)
-		{
-
-		}
-		char ch;
-		Node* pNext;
-	};
-	void push(char _ch)
-	{
-		if (head == nullptr)
-		{
-			head = new Node;
-			head->ch = _ch;
-			tail = head;
-		}
-		else
-		{
-			tail->pNext = new Node;
-			tail->pNext->ch = _ch;
-			tail = tail->pNext;
-		}
-	}
-	void PrintList()
-	{
-		Node* pNode = head;
-		while (true)
-		{
-			if (pNode == nullptr)
-				break;
-
-			std::cout << pNode->ch << " ";
-
-			pNode = pNode->pNext;
-		}
-	}
-private:
-	Node* head;
-	Node* tail;
-};
-
 
 int main()
 {
-	List list = {};
-
-	int a = 0;
-	std::cin >> a;
-
-	char* arr = new char[a];
-	for (int i = 0; i < a; i++)
+	int map[4][4] = {};
+	for (size_t i = 0; i < 4; i++)
 	{
-		std::cin >> arr[i];
-		list.push(arr[i]);
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> map[i][j];
+		}
 	}
-	list.PrintList();
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0;  j < 4;  j++)
+		{
+			if (map[i][j] == 1)
+			{
+				if (i == j)
+					continue;
+
+				map[i][i]++;
+			}
+		}
+	}
 }

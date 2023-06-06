@@ -774,10 +774,74 @@ int main()
 }
 
 //문제 15번
+//테트리스게임에서는 한줄이 꽉 찰때 그 줄은 사라지게 됩니다.
+//블럭 상태를 입력 받고, 꽉찬줄이 터트려지고 난 후의 결과를 출력 해주세요.
+//입력 예제
+//0 0 0 0
+//0 0 1 0
+//1 1 1 1
+//1 1 1 1
+//0 1 0 0
+//출력 결과
+//0 0 0 0
+//0 0 0 0
+//0 0 0 0
+//0 0 1 0
+//0 1 0 0
 
 #include <iostream>
 
+int map[5][4] = {};
+
+void pop(int _a)
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		if (map[_a][i] == 1)
+		{
+			continue;
+		}
+		else
+		{
+			return;
+		}
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		map[_a][i] = 0;
+	}
+	if (_a > 0)
+	{
+		for (size_t i = 0; i < 4; i++)
+		{
+			for (int j = _a; j >= 1; j--)
+			{
+				map[j][i] = map[j - 1][i];
+			}
+		}
+	}
+}
+
 int main()
 {
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> map[i][j];
+		}
+	}
 
+	for (size_t i = 0; i < 5; i++)
+	{
+		pop(i);
+	}
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cout << map[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
 }
