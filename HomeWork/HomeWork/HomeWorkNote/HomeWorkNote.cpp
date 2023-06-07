@@ -1,27 +1,32 @@
 ﻿#include <iostream>
 
+char str[16] = {};
+int num[16] = {};
+
+int count = 0;
+
+int abc(int _a, int _b)
+{
+	_a * 10;
+}
+
 int main()
 {
-	int map[4][4] = {};
-	for (size_t i = 0; i < 4; i++)
+	std::cin >> str;
+	for (size_t i = 0; i < 16; i++)
 	{
-		for (size_t j = 0; j < 4; j++)
+		if ('0' <= str[i] && str[i] <= '9')
 		{
-			std::cin >> map[i][j];
+			num[i] = str[i]-48;
+			count++;
 		}
 	}
 
-	for (size_t i = 0; i < 4; i++)
+	for (int i = 0; i < 16; i++)
 	{
-		for (size_t j = 0;  j < 4;  j++)
+		if (num[i] != 0)
 		{
-			if (map[i][j] == 1)
-			{
-				if (i == j)
-					continue;
-
-				map[i][i]++;
-			}
+			num[i]
 		}
 	}
 }

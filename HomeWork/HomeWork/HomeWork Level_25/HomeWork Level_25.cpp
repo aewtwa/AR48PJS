@@ -549,9 +549,6 @@ int main()
 	char command[7] = {};
 	std::cin >> command;
 
-	int minbucket[6] = {};
-	int maxbucket[6] = {};
-
 	for (int i = 0; i < 6; i++)
 	{
 		if (command[i] == 'm')

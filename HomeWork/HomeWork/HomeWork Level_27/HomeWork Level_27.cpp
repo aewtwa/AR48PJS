@@ -596,8 +596,44 @@ int main()
 
 int main()
 {
+	int map[4][4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			std::cin >> map[i][j];
+		}
+	}
 
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 4; j++)
+		{
+			if (map[i][j] == 1)
+			{
+				if (i == j)
+					continue;
+
+				map[i][i]++;
+			}
+		}
+	}
+
+	int max = 0;
+	int maxidx = 0;
+
+	for (int i = 0; i < 4; i++)
+	{
+		if (map[i][i] > max)
+		{
+			max = map[i][i];
+			maxidx = i;
+		}
+	}
+
+	std::cout << (char)(maxidx + 65);
 }
+
 
 //문제 11번
 //숫자 1의 위치를 입력 받으세요. (y, x)
