@@ -3,18 +3,78 @@
 
 #include <iostream>
 
-int main()
+
+// Tree
+// 단방향 그래프
+// Cycle이 없어야한다.
+// 부모자식 구조를 뛰게된다.
+
+
+// 배열을 이용한 트리 표현(인접행렬)
+int matrix[5][5] =
 {
-    std::cout << "Hello World!\n";
+    0,1,1,0,0,
+    0,0,0,1,1,
+    0,0,0,0,0,
+    0,0,0,0,0,
+    0,0,0,0,0,
+};
+
+int matrixGraph[5][5] =
+{
+    0,1,0,0,0,
+    0,0,1,1,0,
+    0,0,0,0,0,
+    1,0,0,0,1,
+    0,0,0,0,0,
+};
+
+char valueGr[10] = "TEQWA";
+char value[10] = "TBECD";
+char path[10] = "";
+int visited[10] = {};
+
+void dfs(int now)
+{
+    std::cout << valueGr[now];
+
+    for (size_t i = 0; i < 5; i++)
+    {
+        if (matrixGraph[now][i] == 1
+            && visited[i] == 0)
+        {
+            visited[i] = 1;
+            dfs(i);
+        }
+    }
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
+void dfs(int level, int now)
+{
+    std::cout << value[now];
+
+    for (size_t i = 0; i < 5; i++)
+    {
+        if (matrix[now][i] == 1)
+        {
+            path[level + 1] = value[i];
+            dfs(level + 1, i);
+            path[level + 1] = 0;
+        }
+    }
+}
+
+
+
+int main()
+{
+    dfs(0, 0);
+
+    std::cout << std::endl;
+
+    visited[0] = 1;
+    dfs(0);
+
+    return 0;
+}

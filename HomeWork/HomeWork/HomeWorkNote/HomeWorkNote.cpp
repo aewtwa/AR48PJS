@@ -1,39 +1,32 @@
 ﻿#include <iostream>
 
+int arr[8] = { 0,3,7,10,5,6,3,6 };
+int path[8] = {};
+void dfs(int _idx, int _level)
+{
+	path[_level] = arr[_idx];
+	int mod = arr[_idx] % 2;
+
+	if (mod == 0)
+	{
+		for (size_t i = 0; i <= _level; i++)
+		{
+			std::cout << path[i] << " ";
+		}
+		std::cout << "\n";
+		return;
+	}
+
+	if (_idx * 2 > 7)
+		return;
+
+	dfs(_idx * 2, _level + 1);
+	path[_level + 1] = 0;
+	dfs(_idx * 2 + 1, _level + 1);
+	path[_level + 1] = 0;
+}
+
 int main()
 {
-	char matrix[9] = { '\0','A','D','F','Z','C','G','Q','H' };
-
-	char a = 0;
-	std::cin >> a;
-	char b = 0;
-	std::cin >> b;
-
-	int aidx = 0;
-	int bidx = 0;
-
-	for (size_t i = 0; i < 9; i++)
-	{
-		if (matrix[i] == a)
-		{
-			aidx = i;
-		}
-	}
-
-	for (size_t i = 0; i < 9; i++)
-	{
-		if (matrix[i] == b)
-		{
-			bidx = i;
-		}
-	}
-
-	if (aidx * 2 == bidx || aidx * 2 + 1 == bidx || bidx * 2 == aidx || bidx * 2 + 1 == aidx)
-	{
-		std::cout << "부모자식관계";
-	}
-	else
-	{
-		std::cout << "아님";
-	}
+	dfs(1, 0);
 }
