@@ -1,32 +1,39 @@
 ﻿#include <iostream>
 
-char str[16] = {};
-int num[16] = {};
-
-int count = 0;
-
-int abc(int _a, int _b)
-{
-	_a * 10;
-}
-
 int main()
 {
-	std::cin >> str;
-	for (size_t i = 0; i < 16; i++)
+	char matrix[9] = { '\0','A','D','F','Z','C','G','Q','H' };
+
+	char a = 0;
+	std::cin >> a;
+	char b = 0;
+	std::cin >> b;
+
+	int aidx = 0;
+	int bidx = 0;
+
+	for (size_t i = 0; i < 9; i++)
 	{
-		if ('0' <= str[i] && str[i] <= '9')
+		if (matrix[i] == a)
 		{
-			num[i] = str[i]-48;
-			count++;
+			aidx = i;
 		}
 	}
 
-	for (int i = 0; i < 16; i++)
+	for (size_t i = 0; i < 9; i++)
 	{
-		if (num[i] != 0)
+		if (matrix[i] == b)
 		{
-			num[i]
+			bidx = i;
 		}
+	}
+
+	if (aidx * 2 == bidx || aidx * 2 + 1 == bidx || bidx * 2 == aidx || bidx * 2 + 1 == aidx)
+	{
+		std::cout << "부모자식관계";
+	}
+	else
+	{
+		std::cout << "아님";
 	}
 }
