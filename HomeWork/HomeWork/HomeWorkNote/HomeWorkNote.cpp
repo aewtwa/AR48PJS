@@ -1,48 +1,53 @@
 ﻿#include <iostream>
 
-struct Node
+class Queue
 {
-	char ch;
-	int num;
+public:
+	struct Node
+	{
+		char ch;
+		Node* pNext;
+	};
+
+	void Enqueue(char _ch)
+	{
+		if (mHead == nullptr)
+		{
+			mHead = new Node;
+			mHead->ch = _ch;
+			mHead->pNext = nullptr;
+			mTail = mHead;
+		}
+		else
+		{
+			mTail->pNext = new Node;
+			mTail->pNext->ch = _ch;
+			mTail->pNext->pNext = mHead;
+			mTail = mTail->pNext;
+		}
+	}
+
+	void Dequeue()
+	{
+		Node* pNode = mHead;
+		mHead = mHead->pNext;
+	}
+
+	void print()
+	{
+
+	}
+
+private:
+	Node* mHead = nullptr;
+	Node* mTail = nullptr;
 };
 
 int main()
 {
-	Node ABC[8] = {};
-	for (size_t i = 0; i < 8; i++)
-	{
-		std::cin >> ABC[i].ch;
-		std::cin >> ABC[i].num;
-	}
-
-	for (size_t i = 0; i < 8; i++)
-	{
-		for (size_t j = i + 1; j < 8; j++)
-		{
-			if (ABC[i].ch > ABC[j].ch)
-			{
-				Node c = ABC[i];
-				ABC[i] = ABC[j];
-				ABC[j] = c;
-			}
-		}
-	}
-
-	for (size_t i = 0; i < 8; i++)
-	{
-		for (size_t j = i + 1; j < 8; j++)
-		{
-			if (ABC[i].ch == ABC[j].ch && ABC[i].num>ABC[j].num)
-			{
-				Node c = ABC[i];
-				ABC[i] = ABC[j];
-				ABC[j] = c;
-			}
-		}
-	}
-
-	for (size_t i = 0; i < 8; i++)
-	{
-		std::cout << ABC[i].ch << " " << ABC[i].num << "\n";
-	}
+	Queue queue = {};
+	queue.Enqueue('B');
+	queue.Enqueue('I');
+	queue.Enqueue('A');
+	queue.Enqueue('H');
 }

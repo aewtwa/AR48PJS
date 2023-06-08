@@ -381,7 +381,56 @@ int main()
 
 int main()
 {
+	char str[16] = {};
+	std::cin >> str;
 
+	int arr[16] = {};
+
+
+	for (size_t i = 0; i < 15; i++)
+	{
+		if ('0' <= str[i] && str[i] <= '9')
+		{
+			arr[i] = str[i] - 48;
+		}
+	}
+
+	for (size_t i = 0; i < 16; i++)
+	{
+		for (size_t j = i + 1; j < 16; j++)
+		{
+			if (arr[i] == '\0')
+			{
+				char c = arr[i];
+				arr[i] = arr[j];
+				arr[j] = c;
+			}
+		}
+	}
+
+	int a = 0;
+	for (size_t i = 0; i < 16; i++)
+	{
+		if (arr[i] == 0)
+		{
+			a = i;
+			break;
+		}
+	}
+
+	if (arr[a - 1] + 5 > 9)
+	{
+		arr[a - 2]++;
+		arr[a - 1] = arr[a - 1] - 10 + 5;
+	}
+	else
+	{
+		arr[a - 1] += 5;
+	}
+	for (size_t i = 0; i < a; i++)
+	{
+		std::cout << arr[i];
+	}
 }
 
 //문제 7번
