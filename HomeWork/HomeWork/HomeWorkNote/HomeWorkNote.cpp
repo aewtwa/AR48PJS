@@ -1,53 +1,47 @@
 ﻿#include <iostream>
 
-class Queue
+struct Node
 {
-public:
-	struct Node
-	{
-		char ch;
-		Node* pNext;
-	};
-
-	void Enqueue(char _ch)
-	{
-		if (mHead == nullptr)
-		{
-			mHead = new Node;
-			mHead->ch = _ch;
-			mHead->pNext = nullptr;
-			mTail = mHead;
-		}
-		else
-		{
-			mTail->pNext = new Node;
-			mTail->pNext->ch = _ch;
-			mTail->pNext->pNext = mHead;
-			mTail = mTail->pNext;
-		}
-	}
-
-	void Dequeue()
-	{
-		Node* pNode = mHead;
-		mHead = mHead->pNext;
-	}
-
-	void print()
+	Node()
+		:ch(0)
+		,mleft(nullptr)
+		,mright(nullptr)
 	{
 
 	}
-
-private:
-	Node* mHead = nullptr;
-	Node* mTail = nullptr;
+	char ch;
+	Node* mleft;
+	Node* mright;
 };
+
+
+void dfs(Node* _node)
+{
+	if (_node == nullptr)
+	{
+		return;
+	}
+	std::cout << _node->ch;
+
+
+	dfs(_node->mleft);
+	dfs(_node->mright);
+}
 
 int main()
 {
-	Queue queue = {};
-	queue.Enqueue('B');
-	queue.Enqueue('I');
-	queue.Enqueue('A');
-	queue.Enqueue('H');
+	Node* head = new Node;
+	head->ch = 'A';
+	head->mleft = new Node;
+	head->mleft->ch = 'B';
+	head->mleft->mleft = new Node;
+	head->mleft->mleft->ch = 'D';
+	head->mleft->mright = new Node;
+	head->mleft->mright->ch = 'E';
+	head->mright = new Node;
+	head->mright->ch = 'C';
+	head->mright->mleft = new Node;
+	head->mright->mleft->ch = 'F';
+
+	dfs(head);
 }

@@ -823,41 +823,51 @@ class Queue
 public:
 	struct Node
 	{
-		Node()
-			:ch('\0')
-			, pNext(nullptr)
-		{
-
-		}
 		char ch;
 		Node* pNext;
 	};
+
 	void Enqueue(char _ch)
 	{
-
+		if (mHead == nullptr)
+		{
+			mHead = new Node;
+			mHead->ch = _ch;
+			mHead->pNext = nullptr;
+			mTail = mHead;
+		}
+		else
+		{
+			mTail->pNext = new Node;
+			mTail->pNext->ch = _ch;
+			mTail->pNext->pNext = mHead;
+			mTail = mTail->pNext;
+		}
 	}
 
 	void Dequeue()
 	{
+		Node* pNode = mHead;
+		mHead = mHead->pNext;
+	}
+
+	void print()
+	{
 
 	}
+
 private:
-	Node* head = nullptr;
-	Node* tail = nullptr;
+	Node* mHead = nullptr;
+	Node* mTail = nullptr;
 };
 
 int main()
 {
-	char arr[4] = { 'B','I','A','H' };
-	Queue queue;
-	for (size_t i = 0; i < 4; i++)
-	{
-		for (size_t j = 0; j < 4; j++)
-		{
-
-		}
-
-	}
+	Queue queue = {};
+	queue.Enqueue('B');
+	queue.Enqueue('I');
+	queue.Enqueue('A');
+	queue.Enqueue('H');
 }
 
 //문제 13번
