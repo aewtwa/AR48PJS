@@ -1,35 +1,49 @@
 ﻿#include <iostream>
-#include <queue>
 
-struct Node
+int arr[3][3] = {};
+
+void isSame(int _a)
 {
-	int num;
-	int level;
-};
-
-int n = 0;
+	int flag = 0;
+	int a = 0;
+	for (size_t i = 0; i < 3; i++)
+	{
+		for (size_t j = i + 1; j < 3; j++)
+		{
+			if (arr[_a][i] != arr[_a][j])
+			{
+				flag = 1;
+			}
+			else
+			{
+				a = arr[_a][i];
+			}
+		}
+	}
+	if (flag == 1)
+	{
+		std::cout << "X" << "\n";
+	}
+	else
+	{
+		std::cout << a << "\n";
+	}
+}
 
 int main()
 {
-	std::cin >> n;
-	std::queue<Node> queue;
-
-	int a = 1;
-	int sum = 0;
-
-	queue.push(Node{ 1, 0 });
-
-	while (!queue.empty())
+	for (size_t i = 0; i < 3; i++)
 	{
-		Node p = queue.front();
-		sum = sum + p.num;
-		if (p.level < n)
+		for (size_t j = 0; j < 3; j++)
 		{
-			a = a * 3;
-			queue.push(Node{a ,p.level+1});
+			std::cin >> arr[i][j];
 		}
-
-		queue.pop();
 	}
-	std::cout << sum;
+
+	for (size_t i = 0; i < 3; i++)
+	{
+		isSame(i);
+	}
+	
+	
 }
