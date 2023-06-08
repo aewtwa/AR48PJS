@@ -1,47 +1,35 @@
 ﻿#include <iostream>
+#include <queue>
 
 struct Node
 {
-	Node()
-		:ch(0)
-		,mleft(nullptr)
-		,mright(nullptr)
-	{
-
-	}
-	char ch;
-	Node* mleft;
-	Node* mright;
+	int num;
+	int level;
 };
 
-
-void dfs(Node* _node)
-{
-	if (_node == nullptr)
-	{
-		return;
-	}
-	std::cout << _node->ch;
-
-
-	dfs(_node->mleft);
-	dfs(_node->mright);
-}
+int n = 0;
 
 int main()
 {
-	Node* head = new Node;
-	head->ch = 'A';
-	head->mleft = new Node;
-	head->mleft->ch = 'B';
-	head->mleft->mleft = new Node;
-	head->mleft->mleft->ch = 'D';
-	head->mleft->mright = new Node;
-	head->mleft->mright->ch = 'E';
-	head->mright = new Node;
-	head->mright->ch = 'C';
-	head->mright->mleft = new Node;
-	head->mright->mleft->ch = 'F';
+	std::cin >> n;
+	std::queue<Node> queue;
 
-	dfs(head);
+	int a = 1;
+	int sum = 0;
+
+	queue.push(Node{ 1, 0 });
+
+	while (!queue.empty())
+	{
+		Node p = queue.front();
+		sum = sum + p.num;
+		if (p.level < n)
+		{
+			a = a * 3;
+			queue.push(Node{a ,p.level+1});
+		}
+
+		queue.pop();
+	}
+	std::cout << sum;
 }
