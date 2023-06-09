@@ -36,7 +36,7 @@
 // Tree
 // 단방향 그래프
 // Cycle이 없어야한다.
-// 부모자식 구조를 띄게된다.
+// 부모자식 구조를 뛰게된다.
 
 
 // 배열을 이용한 트리 표현(인접행렬)
@@ -128,79 +128,122 @@ struct Node
 	int level;
 };
 
+struct Node2
+{
+	int idx;
+	int level;
+};
+
 // 그래프 탐색할떄 노드가 사용됬는지
 // 체크해주는 배열
 int used[256] = {};
 
+
+char binaryTree[256] = "_ABCDEFG";
+//void dfs(int level)
+//{
+//	if (binaryTree[level] == '\0')
+//	{
+//		return;
+//	}
+//
+//	dfs(level * 2);
+//	dfs(level * 2 + 1);
+//}
+
+//int* p = new int[num2];
+
+
 int main()
 {
-	std::queue<Node> queue;
-	queue.push(Node({ 0,0 }));
+	//std::queue<Node> queue;
+	//queue.push(Node({ 0,0 }));
+
+	//while (!queue.empty())
+	//{
+	//	Node p = queue.front();
+	//	std::cout << p.num << " ";
+
+	//	for (int i = 0; i < 6; i++)
+	//	{
+	//		if (bfsMatrix[p.num][i] == 1
+	//			&& used[i] == 0)
+	//		{
+	//			used[i] = 1;
+	//			queue.push(Node{ i, p.level + 1 });
+	//		}
+	//	}
+	//	queue.pop();
+	//}
+
+	std::queue<Node2> queue;
+	queue.push(Node2({ 1,0 }));
 
 	while (!queue.empty())
 	{
-		Node p = queue.front();
-		std::cout << p.num << " ";
+		Node2 p = queue.front();
+		std::cout << binaryTree[p.idx] << " ";
 
-		for (int i = 0; i < 6; i++)
+		if (binaryTree[p.idx * 2] != '\0')
 		{
-			if (bfsMatrix[p.num][i] == 1
-				&& used[i] == 0)
-			{
-				used[i] = 1;
-				queue.push(Node{ i, p.level + 1 });
-			}
+			queue.push(Node2{ p.idx * 2 , p.level + 1 });
 		}
+		if (binaryTree[p.idx * 2 + 1] != '\0')
+		{
+			queue.push(Node2{ p.idx * 2 + 1 , p.level + 1 });
+		}
+
 		queue.pop();
 	}
 
-	//길찾기 BFS
-	struct MazeNode
-	{
-		int x;
-		int y;
-	};
+	////길찾기 BFS
+	//struct MazeNode
+	//{
+	//	int x;
+	//	int y;
+	//};
 
-	int map[3][4] = {};
-	std::queue<MazeNode> mazeQueue;
-	mazeQueue.push(MazeNode({ 0,2 }));
+	//int map[3][4] = {};
+	//std::queue<MazeNode> mazeQueue;
+	//mazeQueue.push(MazeNode({ 0,2 }));
 
-	int direct[4][2] =
-	{
-		0,-1,
-		1,0,
-		0,1,
-		-1,0,
-	};
+	//int direct[4][2] =
+	//{
+	//	0,-1,
+	//	1,0,
+	//	0,1,
+	//	-1,0,
+	//};
 
-	while (!mazeQueue.empty())
-	{
-		MazeNode p = mazeQueue.front();
-		map[p.y][p.x] = 1;
+	//while (!mazeQueue.empty())
+	//{
+	//	MazeNode p = mazeQueue.front();
+	//	map[p.y][p.x] = 1;
 
-		if (p.x == 3 && p.y == 0)
-		{
-			// 찾았다.
-		}
+	//	if (p.x == 3 && p.y == 0)
+	//	{
+	//		// 찾았다.
+	//	}
 
-		for (size_t i = 0; i < 4; i++)
-		{
-			int newX = p.x + direct[i][0];
-			int newY = p.y + direct[i][1];
+	//	for (size_t i = 0; i < 4; i++)
+	//	{
+	//		int newX = p.x + direct[i][0];
+	//		int newY = p.y + direct[i][1];
 
-			if (map[newY][newX] == 1)
-				continue;
-			if (newX < 0 || newY < 0)
-				continue;
-			if (newX >= 4 || newY >= 3)
-				continue;
+	//		if (map[newY][newX] == 1)
+	//			continue;
+	//		if (newX < 0 || newY < 0)
+	//			continue;
+	//		if (newX >= 4 || newY >= 3)
+	//			continue;
 
-			mazeQueue.push(MazeNode({ newX , newY }));
+	//		mazeQueue.push(MazeNode({ newX , newY }));
 
-		}
+	//	}
+	//	
+	//	mazeQueue.pop();
+	//}
 
-		mazeQueue.pop();
-	}
 
 
 	return 0;
