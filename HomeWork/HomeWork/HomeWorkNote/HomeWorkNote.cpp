@@ -1,22 +1,55 @@
 ﻿#include <iostream>
 
-int arr[10] = { 0,3,1,2,1,3,2,1,2,1 };
+char str1[16] = "ABABCGKABABC";
+char str2[16] = "BTBCKABABCT";
+char findstr[16] = {};
+char findmaxstr[16] = {};
+int findstrlen = 0;
+int findmaxstrlen = 0;
 
-void abc(int _idx)
+void isfind(int _1idx, int _2idx)
 {
-	if (_idx > 9)
+	for (int i = _1idx; i < strlen(str1); i++)
 	{
-		std::cout << "도착";
-		return;
+		for (size_t j = _2idx; j < strlen(str2); j++)
+		{
+			if (str1[i] == str2[j])
+			{
+				char ch = str1[i];
+				findstr[findstrlen] = ch;
+				findstrlen++;
+				i++;
+			}
+		}
 	}
-	std::cout << arr[_idx];
-	abc(_idx + arr[_idx]);
-	std::cout << arr[_idx];
+	if (findmaxstrlen < findstrlen)
+	{
+		for (size_t i = 0; i < findstrlen; i++)
+		{
+			findmaxstr[i] = findstr[i];
+		}
+	}
+	for (size_t i = 0; i < 16; i++)
+	{
+		findstr[i] = 0;
+	}
+	findstrlen = 0;
+	return;
 }
 
 int main()
 {
-	int n = 0;
-	std::cin >> n;
-	abc(n);
+	//std::cin >> str1;
+	//std::cin >> str2;
+
+	for (size_t i = 0; i < strlen(str1); i++)
+	{
+		for (size_t j = 0; j < strlen(str2); j++)
+		{
+			if (str1[i] == str2[j])
+			{
+				isfind(i, j);
+			}
+		}
+	}
 }

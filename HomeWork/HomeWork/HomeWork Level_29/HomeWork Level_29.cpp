@@ -969,6 +969,14 @@ int main()
 }
 
 //문제 18번
+//두문장을 입력받으세요.(최대15글자)
+//그리고 가장 긴 같은 단어를 찾아주세요.
+//* 매우 어렵습니다*
+//입력 예제
+//ABABCGKABABC
+//BTBCKABABCT
+//출력 결과
+//KABABC
 
 #include <iostream>
 
