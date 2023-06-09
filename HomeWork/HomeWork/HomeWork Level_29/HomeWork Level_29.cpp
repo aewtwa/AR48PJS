@@ -462,9 +462,25 @@ int main()
 
 #include <iostream>
 
+int arr[10] = { 0,3,1,2,1,3,2,1,2,1 };
+
+void abc(int _idx)
+{
+	if (_idx > 9)
+	{
+		std::cout << "도착";
+		return;
+	}
+	std::cout << arr[_idx];
+	abc(_idx + arr[_idx]);
+	std::cout << arr[_idx];
+}
+
 int main()
 {
-
+	int n = 0;
+	std::cin >> n;
+	abc(n);
 }
 
 //문제 11번
@@ -573,48 +589,383 @@ int main()
 }
 
 //문제 13번
+//숫자 4개씩 2개의 배열에 숫자를 입력 받아주세요.
+//입력값은 정렬된 상태로 숫자가 들어옵니다.
+//이 두배열을 합쳐 정렬된 8개의 숫자를 저장 하려고 합니다.
+//이렇게 합치기 위한 알고리즘은
+//비교를 한 후에 작은 숫자를 result배열에 넣고 화살표를 옆으로 옮김니다.
+//위와 같은 동작을 반복하면, 정렬된 result 배열을 만들 수 있습니다.
+//위 알고리즘대로 코딩하여 result 배열을 만들고 출력 해주세요.
+//입력 예제
+//3 5 9 10
+//2 6 9 11
+//출력 결과
+//2 3 5 6 9 9 10 11
 
 #include <iostream>
 
 int main()
 {
+	int result[8] = {};
+	int arr1[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr1[i];
+	}
+	int arr2[4] = {};
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr2[i];
+	}
 
+	int count = 0;
+
+	for (size_t i = 0; i < 4;)
+	{
+		for (size_t j = 0; j < 4;)
+		{
+			if (arr1[3] < arr2[3])
+			{
+				if (arr1[j] < arr2[i])
+				{
+					result[count] = arr1[j];
+					j++;
+					count++;
+				}
+				else
+				{
+					result[count] = arr2[i];
+					i++;
+					count++;
+				}
+			}
+			else
+			{
+				if (arr1[i] < arr2[j])
+				{
+					result[count] = arr1[i];
+					i++;
+					count++;
+				}
+				else
+				{
+					result[count] = arr2[j];
+					j++;
+					count++;
+				}
+			}
+		}
+		if (arr1[3] < arr2[3])
+		{
+			result[count] = arr2[i];
+			i++;
+		}
+		else
+		{
+			result[count] = arr1[i];
+			i++;
+		}
+	}
+	for (size_t i = 0; i < 8; i++)
+	{
+		std::cout << result[i] << " ";
+	}
 }
 
 //문제 14번
+//4x5 2차배열이 있습니다.
+//블럭을 입력 받아주세요.
+//사각프레임에 블럭이 있을때, 이블럭을 감싸는 사각프레임의 시작점과 끝점의 좌표를 구해주세요.
+//입력 예제
+//0 1 0 0 0
+//0 1 0 0 0
+//0 1 1 1 0
+//0 0 0 0 0
+//출력 결과
+//(0, 1)
+//(2, 3)
 
 #include <iostream>
 
+int map[4][5] = {};
+
+void start()
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			if (map[i][j] == 1)
+			{
+				std::cout << "(" << i << " , " << j << ")";
+				std::cout << "\n";
+				return;
+			}
+		}
+	}
+}
+
+void last()
+{
+	for (int i = 3; i >= 0; i--)
+	{
+		for (int j = 4; j >= 0; j--)
+		{
+			if (map[i][j] == 1)
+			{
+				std::cout << "(" << i << " , " << j << ")";
+				return;
+			}
+		}
+	}
+}
+
 int main()
 {
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			std::cin >> map[i][j];
+		}
+	}
 
+	start();
+	last();
 }
 
 //문제 15번
+//3개의 숫자로 되어있는 톱니바퀴가 있습니다.
+//그림으로 그리면 아래와 같습니다.
+//이 상태에서 아래쪽으로 한칸 돌리면 아래와 같이 됩니다.
+//이 상태에서 두번 더 돌리면 아래와 같이 됩니다.
+//이런식으로 동작하는 톱니바퀴가 4개 있습니다.
+//각 톱니바퀴를 돌려 결과를 출력 하려고 합니다.
+//아래의 톱니바퀴 상태 배열을 하드코딩 해 주세요.
+//그리고 몇번 돌릴지에 대한 숫자 4개를 입력 받아주세요.
+//이 숫자 4개는 4개의 톱니바퀴를 각각 돌릴 횟수입니다.
+//숫재대로 톱니바퀴를 돌렸을 때 나온 결과를 출력 해주세요.
+//입력 예제
+//1 2 1 2
+//출력 결과
+//4626
+//3957
+//7213
 
 #include <iostream>
 
+struct Node
+{
+	int a;
+	int b;
+	int c;
+	int spincount;
+	void spin(int _a)
+	{
+		for (size_t i = 0; i < _a; i++)
+		{
+			int d = c;
+			c = b;
+			b = a;
+			a = d;
+		}
+	}
+	void print()
+	{
+		std::cout << this->a;
+	}
+};
+
+
+
 int main()
 {
-
+	Node arr[4] = {};
+	arr[0].a = 3;
+	arr[0].b = 7;
+	arr[0].c = 4;
+	arr[1].a = 2;
+	arr[1].b = 6;
+	arr[1].c = 9;
+	arr[2].a = 5;
+	arr[2].b = 1;
+	arr[2].c = 2;
+	arr[3].a = 3;
+	arr[3].b = 6;
+	arr[3].c = 7;
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> arr[i].spincount;
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		arr[i].spin(arr[i].spincount);
+	}
+	for (size_t i = 0; i < 4; i++)
+	{
+		arr[i].print();
+	}
+	std::cout << "\n";
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cout << arr[i].b;
+	}
+	std::cout << "\n";
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cout << arr[i].c;
+	}
 }
 
 //문제 16번
+//다섯칸의 맵이 있고 지렁이를 올려두려고 합니다.
+//수명이 2인 지렁이를 2번 index에 올려두면 아래와 같이 됩니다.
+//배열안에 적은 값이 지렁이의 수명입니다
+//지렁이는 1초에 한번씩 오른쪽으로 한칸씩 이동합니다.
+//한칸씩 이동하면서 수명이 1씩 줄어 듭니다.
+//다음 1초 후에는 수명이 0이되어 지렁이는 죽게 됩니다.
+//만약 지렁이가 수명이 남았지만 맵 밖으로 나가도 죽게 됩니다.
+//(죽은 후에는 숫자 0을 표기하지 않습니다)
+//올려놓을 지렁이의 index와 수명을 입력 받고
+//지렁이가 죽을 때 까지 동작 결과를 출력하세요.
+//입력 예제
+//2 2
+//출력 결과
+//__2__
+//___1_
+//_____
 
 #include <iostream>
 
+int map[5] = {};
+
+void next(int* _idx, int* _year)
+{
+
+	map[*_idx] = *_year;
+	(*_idx)++;
+	(*_year)--;
+}
+
+void print()
+{
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (map[i] == 0)
+		{
+			std::cout << "_";
+		}
+		else
+		{
+			std::cout << map[i];
+			map[i] = 0;
+		}
+	}
+	std::cout << "\n";
+}
+
 int main()
 {
+	int idx = 0;
+	std::cin >> idx;
+	int year = 0;
+	std::cin >> year;
+
+	while (!(year == -1 || idx > 5))
+	{
+		next(&idx, &year);
+		print();
+	}
 
 }
 
 //문제 17번
+//아래 배열에 게임 상태를 나타내는 MAP입니다.
+//색칠된 부분은 벽이고 알파벳은 몬스터의 이름입니다.
+//몬스터의 AI는 단순하여   만 순서대로 반복해서 움직입니다.
+//1초 후에는 오른쪽으로 움직이고,
+//2초 후에는 아래로 움직이고,
+//3초 후에는 왼쪽,
+//4초 후에는 위,
+//5초 후에는 다시 오른쪽으로 움직입니다.
+//이 몬스터는 벽을 통과하거나 몬스터끼리 겹치지 못합니다.
+//그래서 움직이려고 하는 곳이 막혀있다면 가만히 서있습니다.
+//* 몬스터는 알파벳 순서대로 움직이게 됩니다.
+//아래 예제에서는 A먼저 움직이고, C움직이고, D가 움직이게 됩니다.
+//MAP을 입력 받고, 5초 후 상황을 출력 해주세요.
+//* 모든 몬스터는 1초에 한번씩 움직이게 됩니다.
+//입력 예제
+//_A_
+//#_D
+//C_#
+//#__
+//출력 결과
+//__A
+//#_D
+//_C#
+//#__
 
 #include <iostream>
 
+char map[4][4] = {};
+
+void move(int* _a)
+{
+	int direct[4][2] =
+	{
+		0,1,
+		1,0,
+		0,-1,
+		-1,0
+	};
+	for (int i = 0; i < 4; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			if ('A' <= map[i][j] && map[i][j] <= 'Z')
+			{
+				int k = *_a;
+				int newY = i + direct[k][0];
+				int newX = j + direct[k][1];
+				if (0 <= newY && newY < 4 && 0 <= newX && newX < 3
+					&& map[newY][newX] == '_')
+				{
+					char c = map[newY][newX];
+					map[newY][newX] = map[i][j];
+					map[i][j] = c;
+				}
+			}
+		}
+	}
+	(*_a)++;
+}
+
+void print()
+{
+	for (size_t i = 0; i < 4; i++)
+	{
+		for (size_t j = 0; j < 3; j++)
+		{
+			std::cout << map[i][j];
+		}
+		std::cout << "\n";
+	}
+}
+
 int main()
 {
-
+	for (size_t i = 0; i < 4; i++)
+	{
+		std::cin >> map[i];
+	}
+	int c = 0;
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (c == 4)
+			c = 0;
+		move(&c);
+	}
+	print();
 }
 
 //문제 18번
