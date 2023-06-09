@@ -980,8 +980,8 @@ int main()
 
 #include <iostream>
 
-char str1[16] = "ABABCGKABABC";
-char str2[16] = "BTBCKABABCT";
+char str1[16] = {};
+char str2[16] = {};
 char findstr[16] = {};
 char findmaxstr[16] = {};
 int findstrlen = 0;
@@ -989,6 +989,7 @@ int findmaxstrlen = 0;
 
 void isfind(int _1idx, int _2idx)
 {
+	int flag = 0;
 	for (int i = _1idx; i < strlen(str1); i++)
 	{
 		for (size_t j = _2idx; j < strlen(str2); j++)
@@ -1000,16 +1001,26 @@ void isfind(int _1idx, int _2idx)
 				findstrlen++;
 				i++;
 			}
+			else
+			{
+				flag = 1;
+				break;
+			}
+		}
+		if (flag == 1)
+		{
+			break;
 		}
 	}
 	if (findmaxstrlen < findstrlen)
 	{
+		findmaxstrlen = findstrlen;
 		for (size_t i = 0; i < findstrlen; i++)
 		{
 			findmaxstr[i] = findstr[i];
 		}
 	}
-	for (size_t i = 0; i < 16; i++)
+	for (size_t i = 0; i < findstrlen; i++)
 	{
 		findstr[i] = 0;
 	}
@@ -1019,8 +1030,8 @@ void isfind(int _1idx, int _2idx)
 
 int main()
 {
-	//std::cin >> str1;
-	//std::cin >> str2;
+	std::cin >> str1;
+	std::cin >> str2;
 
 	for (size_t i = 0; i < strlen(str1); i++)
 	{
@@ -1031,5 +1042,9 @@ int main()
 				isfind(i, j);
 			}
 		}
+	}
+	for (size_t i = 0; i < 16; i++)
+	{
+		std::cout << findmaxstr[i];
 	}
 }
