@@ -712,12 +712,64 @@ int main()
 
 #include <iostream>
 
+char name[5][256] =
+{
+	"Bob",
+	"Amy",
+	"Edgar",
+	"Chloe",
+	"Diane"
+};
+
+int matrix[5][5] =
+{
+	0,1,0,0,0,
+	0,0,1,0,0,
+	0,0,0,0,0,
+	1,0,0,0,0,
+	1,0,0,0,0
+};
+
+
 int main()
 {
+	int count[5] = {};
 
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			if (matrix[j][i] == 1)
+			{
+				count[i]++;
+			}
+		}
+	}
+	int max = 0;
+	int maxidx = 0;
+	for (size_t i = 0; i < 5; i++)
+	{
+		if (max < count[i])
+		{
+			max = count[i];
+			maxidx = i;
+		}
+	}
+	std::cout << name[maxidx];
 }
 
 //문제 13번
+//아래와 같이 5개 노드를 가진 그래프를 인접행렬로 하드코딩 해 주세요
+//그리고 어떤 간선들이 존재하는지 아래와 같이 출력 해주세요.
+//(입력값은 없습니다)
+//출력 결과
+//A B 1
+//A C 7
+//A D 2
+//B C 8
+//B E 5
+//C D 3
+//C E 6
 
 #include <iostream>
 
