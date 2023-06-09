@@ -824,50 +824,60 @@ public:
 	struct Node
 	{
 		char ch;
-		Node* pNext;
+		Node* pnext;
 	};
 
 	void Enqueue(char _ch)
 	{
-		if (mHead == nullptr)
+		if (mhead == nullptr)
 		{
-			mHead = new Node;
-			mHead->ch = _ch;
-			mHead->pNext = nullptr;
-			mTail = mHead;
+			mhead = new Node;
+			mhead->ch = _ch;
+			mhead->pnext = nullptr;
+			mtail = mhead;
 		}
 		else
 		{
-			mTail->pNext = new Node;
-			mTail->pNext->ch = _ch;
-			mTail->pNext->pNext = mHead;
-			mTail = mTail->pNext;
+			mtail->pnext = new Node;
+			mtail->pnext->ch = _ch;
+			mtail->pnext->pnext = nullptr;
+			mtail = mtail->pnext;
 		}
 	}
 
-	void Dequeue()
+	char Dequeue()
 	{
-		Node* pNode = mHead;
-		mHead = mHead->pNext;
+		Node* p = mhead;
+		mhead = mhead->pnext;
+		return p->ch;
 	}
 
 	void print()
 	{
-
+		for (size_t i = 0; i < 4; i++)
+		{
+			Enqueue(Dequeue());
+		}
+		std::cout << Dequeue() << " ";
 	}
-
 private:
-	Node* mHead = nullptr;
-	Node* mTail = nullptr;
+	Node* mhead = nullptr;
+	Node* mtail = nullptr;
 };
 
 int main()
 {
 	Queue queue = {};
+
 	queue.Enqueue('B');
 	queue.Enqueue('I');
 	queue.Enqueue('A');
 	queue.Enqueue('H');
+
+	for (size_t i = 0; i < 4; i++)
+	{
+		queue.print();
+	}
 }
 
 //문제 13번

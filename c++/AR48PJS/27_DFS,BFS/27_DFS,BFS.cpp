@@ -1,20 +1,122 @@
-﻿// 27_DFS,BFS.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
+﻿// 27_Graph.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
 //
 
 #include <iostream>
+#include <queue>
+
+
+int matrixGraph[6][6] =
+{
+	0,1,1,1,0,0,
+	1,0,0,1,0,1,
+	1,0,0,1,0,0,
+	1,1,1,0,1,1,
+	0,0,0,1,0,1,
+	0,1,0,1,1,0,
+};
+
+char valueGr[10] = "ZADCEB";
+char path[10] = "";
+int visited[10] = {};
+
+int cnt = 0;
+
+// 경로가 몇개인지 확인
+void dfs(int now)
+{
+	if (now == 4)
+	{
+		cnt++;
+		return;
+	}
+
+	//std::cout << valueGr[now];
+
+	for (size_t i = 0; i < 6; i++)
+	{
+		if (matrixGraph[now][i] == 1
+			&& visited[i] == 0)
+		{
+			visited[i] = 1;
+			dfs(i);
+			visited[i] = 0;
+		}
+	}
+}
+
+// 모든경로 확인
+void dfs(int now, int level)
+{
+	//if (now == 4)
+	//{
+	//	cnt++;
+	//	return;
+	//}
+
+	std::cout << path;
+	std::cout << std::endl;
+
+	for (size_t i = 0; i < 6; i++)
+	{
+		if (matrixGraph[now][i] == 1
+			&& visited[i] == 0)
+		{
+			path[level + 1] = valueGr[i];
+			visited[i] = 1;
+			dfs(i, level + 1);
+			visited[i] = 0;
+			path[level + 1] = 0;
+		}
+	}
+}
+
+//Node 
+struct Node
+{
+	int num = -1;
+	int used[6] = {};
+};
+
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	visited[0] = 1;
+	path[0] = valueGr[0];
+	dfs(0, 0);
+
+	std::queue<Node> queue;
+	queue.push(Node{ 0, {1,0,0,0,0,0} });
+
+	while (!queue.empty())
+	{
+		Node p = queue.front();
+
+		for (int i = 0; i < 6; i++)
+		{
+			if (matrixGraph[p.num][i] == 1
+				&& p.used[i] == 0)
+			{
+				Node newNode = {};
+				newNode.num = i;
+				memcpy(newNode.used, p.used, sizeof(int) * 6);
+				newNode.used[i] = 1;
+
+				queue.push(newNode);
+			}
+		}
+
+		for (size_t i = 0; i < 6; i++)
+		{
+			if (p.used[i] == 1)
+			{
+				std::cout << valueGr[i];
+			}
+		}
+		std::cout << std::endl;
+
+		queue.pop();
+	}
+
+	return 0;
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
-
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.

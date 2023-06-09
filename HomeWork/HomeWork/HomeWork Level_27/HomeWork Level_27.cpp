@@ -775,8 +775,29 @@ int main()
 
 int main()
 {
+	int matrix[5][5] =
+	{
+		0,1,7,2,0,
+		0,0,8,0,5,
+		0,0,0,3,6,
+		0,0,0,0,0,
+		0,0,0,0,0
+	};
 
+	for (size_t i = 0; i < 5; i++)
+	{
+		for (size_t j = 0; j < 5; j++)
+		{
+			if (matrix[i][j] > 0)
+			{
+				std::cout << (char)('A' + i) << " ";
+				std::cout << (char)('A' + j) << " ";
+				std::cout << matrix[i][j] << "\n";
+			}
+		}
+	}
 }
+
 
 //문제 14번
 //링크드리스트로 라인을 구현하고자 합니다.
