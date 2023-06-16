@@ -492,12 +492,62 @@ int main()
 
 #include <iostream>
 
+int arr[5] = {};
+int path[5] = {};
+int sum = 0;
+int count = 0;
+
+void dfs(int _level)
+{
+	sum = 0;
+
+	if (_level == 5)
+	{
+		for (size_t i = 0; i < _level; i++)
+		{
+			sum = sum + path[i];
+
+		}
+
+		if (10 <= sum && sum <= 20)
+		{
+			count++;
+		}
+
+		return;
+	}
+
+	path[_level] = arr[_level];
+	dfs(_level + 1);
+	path[_level] = 0;
+
+	path[_level] = 0;
+	dfs(_level + 1);
+	path[_level] = 0;
+}
+
 int main()
 {
-
+	for (size_t i = 0; i < 5; i++)
+	{
+		std::cin >> arr[i];
+	}
+	dfs(0);
+	std::cout << count;
 }
 
 //문제 12번
+//B, I, A, H 슈퍼영웅들 중 출동할 사람을 순서대로 뽑아야 합니다.
+//척척박사님은 자신의 이름이 다섯글자이기에 영웅B를 시작으로 n번째 사람을 선택합니다.
+//출동하는 영웅들의 순서를 출력 하세요.
+//(큐를 이용하지 않고, For문 or While문을 활용해서 풀어주세요)
+//만약 5를 입력받았다면,
+//항상 다섯번째 사람을 먼저 출동시키면 됩니다.
+//출동순서 결과 : B A H I
+//입력 예제
+//5
+//출력 결과
+//B A H I
 
 #include <iostream>
 
